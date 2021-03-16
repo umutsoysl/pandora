@@ -1,4 +1,9 @@
 package com.laks.tvseries.core.base.service
 
-class BaseResponse {
+abstract class BaseResponse {
+    private val classTag = this.javaClass.canonicalName
+
+    fun getClassTag(): String {
+        return classTag
+    }
 }
