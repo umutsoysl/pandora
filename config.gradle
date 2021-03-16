@@ -1,0 +1,128 @@
+ext.versions = [
+        code                         : 100,
+        name                         : '1.0.0',
+        minSdk                       : 21,
+        targetSdk                    : 29,
+        compileSdk                   : 30,
+        buildTools                   : '30.0.2',
+
+        // android
+        multidex                     : '2.0.1',
+        supportLibs                  : '1.0.0',
+        recyclerView                 : '1.1.0',
+        constraintLayout             : '2.0.0-beta4',
+        arch                         : '2.2.1',
+        lifecycle_version            : '2.2.0',
+        room_version                 : '2.2.5',
+        installreferrer              : '2.1',
+        material                     : '1.0.0',
+        materialMb                   : '1.1.0',
+        securityCrypto               : '1.1.0-alpha02',
+
+        // google
+        playServices                 : '17.0.0',
+        gson                         : '2.8.2',
+        zxing                        : '3.2.0',
+        mapUtils                     : '2.0.3',
+
+        // firebase
+        //firebase                 : '12.0.1',
+
+        // kotlin
+        kotlin_version               : '1.4.31',
+        kotlinx_coroutines           : '1.3.5',
+        kotlinx_serialization_runtime: '0.14.0',
+
+        // retfofit
+        retrofit                     : '2.6.0',
+        retrofitCoroutinesAdapter    : '0.9.2',
+
+        // okhttp
+        okhttp                       : '3.11.0',
+
+        // 3rd
+        picasso                      : '2.5.2',
+        circleimageview              : '2.1.0',
+        imageCropper                 : '2.7.0',
+        flexbox                      : '2.0.1',
+        lottie                       : '3.4.0',
+        shimmer                      : '0.5.0',
+
+        //di
+        koin_version                 : '2.0.1'
+]
+
+ext.libraries = [
+        // android
+        multidex                   : "androidx.multidex:multidex:$versions.multidex",
+        support                    : "androidx.legacy:legacy-support-v4:$versions.supportLibs",
+        supportRecyclerView        : "androidx.recyclerview:recyclerview:$versions.recyclerView",
+        supportCardView            : "androidx.cardview:cardview:$versions.supportLibs",
+        supportPercent             : "androidx.percentlayout:percentlayout:$versions.supportLibs",
+        supportConstraint          : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+        roomCompiler               : "androidx.room:room-compiler:$versions.room_version",
+        roomRuntime                : "androidx.room:room-runtime:$versions.room_version",
+        roomKtx                    : "androidx.room:room-ktx:$versions.room_version",
+        lifecycleExtensions        : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_version",
+        lifecycleRuntime           : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle_version",
+        lifecycleCompiler          : "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle_version",
+        lifecycleViewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_version",
+        lifecycleLiveData          : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle_version",
+        navigationFragment         : 'androidx.navigation:navigation-fragment-ktx:2.3.1',
+        navigationUi               : 'androidx.navigation:navigation-ui-ktx:2.3.1',
+        appCompat                  : 'androidx.appcompat:appcompat:1.1.0',
+        appCompatMb                : 'androidx.appcompat:appcompat:1.2.0',
+        workManager                : "androidx.work:work-runtime-ktx:$versions.workManager",
+        ktxCore                    : "androidx.core:core-ktx:$versions.ktxCore",
+        securityCrypto             : "androidx.security:security-crypto:$versions.securityCrypto",
+        securityCryptoKtx          : "androidx.security:security-crypto-ktx:$versions.securityCrypto",
+        localbroadcastmanager      : 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0',
+        installreferrer            : "com.android.installreferrer:installreferrer:$versions.installreferrer",
+        material                   : "com.google.android.material:material:$versions.material",
+        materialMb                 : "com.google.android.material:material:$versions.materialMb",
+
+        // google
+        gson                       : "com.google.code.gson:gson:$versions.gson",
+        zxing                      : "com.google.zxing:core:$versions.zxing",
+
+        // firebase
+        // appindexing                : "com.google.firebase:firebase-appindexing:19.1.0",
+        remoteConfig               : "com.google.firebase:firebase-config:19.1.4",
+        messaging                  : "com.google.firebase:firebase-messaging:20.1.6",
+        firebaseAnalytics          : "com.google.firebase:firebase-analytics:17.4.0",
+        // performance                : "com.google.firebase:firebase-perf:19.0.7",
+        firebaseCore               : "com.google.firebase:firebase-core:17.4.0",
+        firebaseCrashlytics      : "com.google.firebase:firebase-crashlytics:17.2.2",
+
+        // kotlin
+        kotlin                     : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin_version",
+        kotlinxSerializationRuntime: "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$versions.kotlinx_serialization_runtime",
+
+
+        kotlinxCoroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx_coroutines",
+        kotlinxCoroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx_coroutines",
+
+        // retrofit
+        retrofit                   : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitGson               : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        retrofitCoroutinesAdapter  : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrofitCoroutinesAdapter",
+
+        // okhhtp
+        okhttp                     : "com.squareup.okhttp3:okhttp:$versions.okhttp",
+        okhttpInterceptor          : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp",
+        okhttpUrlconnection        : "com.squareup.okhttp3:okhttp-urlconnection:$versions.okhttp",
+
+        // 3rd
+        picasso                    : "com.squareup.picasso:picasso:$versions.picasso",
+        circleimageview            : "de.hdodenhof:circleimageview:$versions.circleimageview",
+        photoView                  : "com.github.chrisbanes:PhotoView:$versions.photoView",
+        flexbox                    : "com.google.android:flexbox:$versions.flexbox",
+        lottie                     : "com.airbnb.android:lottie:$versions.lottie",
+        shimmer                    : "com.facebook.shimmer:shimmer:$versions.shimmer",
+
+        //di
+        koin                       : "org.koin:koin-android:$versions.koin_version",
+        koinViewmodel              : "org.koin:koin-androidx-viewmodel:$versions.koin_version",
+        koinScope                  : "org.koin:koin-androidx-scope:$versions.koin_version",
+        koinJava                   : "org.koin:koin-java:$versions.koin_version",
+]
