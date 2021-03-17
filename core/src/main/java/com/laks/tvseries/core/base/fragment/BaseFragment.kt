@@ -23,7 +23,17 @@ abstract class BaseFragment<Q : BaseViewModel>(clazz: KClass<Q>) : Fragment() {
         if (BuildConfig.DEBUG) {
             Log.d("className", this.javaClass.simpleName + "")
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        setViewStateId()
         observeLoadingState()
+    }
+
+    private fun setViewStateId() {
+        baseViewModel?.baseRepository?.classTag = classTag
     }
 
     private fun observeLoadingState() {
