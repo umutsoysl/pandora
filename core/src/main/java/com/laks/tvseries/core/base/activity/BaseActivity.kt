@@ -11,11 +11,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.BuildConfig
 import com.laks.tvseries.core.R
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
+import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
+import com.laks.tvseries.core.loading.MemoryCacheHelper
+import com.laks.tvseries.core.loading.LoadingEventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module
+import org.koin.java.KoinJavaComponent
 import kotlin.reflect.KClass
 
 @Suppress("NAME_SHADOWING")
@@ -23,8 +27,9 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
     val baseViewModel: Q by viewModel(clazz)
     abstract val modules: List<Module>
-
+    private val loadingStateObserver by lazy { LoadingEventObserver(supportFragmentManager) }
     private lateinit var binding: ActivityBaseBinding
+    private val classTag = this.javaClass.canonicalName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +37,9 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         if (BuildConfig.DEBUG) {
             Log.d("className", this.javaClass.simpleName + "")
         }
-        initStatusBar()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_base)
+        initStatusBar()
+        observeLoadingState()
     }
 
     private fun initStatusBar() {
@@ -59,8 +65,20 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         }
     }
 
+    private fun observeLoadingState() {
+        var viewModelState = MemoryCacheHelper.findLoadingCache(classTag)
+        if (viewModelState == null) {
+            val vms by KoinJavaComponent.inject(ViewModelState::class.java)
+            viewModelState = vms
+            MemoryCacheHelper.setLoadingCache(classTag, viewModelState)
+        }
+
+        loadingStateObserver.setup(viewModelState.loading, this, classTag)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         unloadKoinModules(modules)
+        MemoryCacheHelper.removeCache(classTag)
     }
 }

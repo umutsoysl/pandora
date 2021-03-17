@@ -1,6 +1,7 @@
 package com.laks.tvseries.core.base.service
 
 import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.core.loading.MemoryCacheHelper
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
@@ -44,7 +45,7 @@ class ServiceManager {
             if (isLoadingShown) {
                 return
             }
-            // LoadingErrorStateHelper.enableLoadingStateValue(viewStateId, url)
+             MemoryCacheHelper.enableLoadingStateValue(classTag, url)
         }
 
     }

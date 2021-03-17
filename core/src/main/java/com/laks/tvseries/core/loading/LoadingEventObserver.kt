@@ -15,7 +15,7 @@ class LoadingEventObserver(private val fm: FragmentManager) {
         stateId: String?
     ) {
         loadingState.observe(lifeCycleOwner) {
-            if (LoadingErrorStateHelper.aliveLoading(stateId)) {
+            if (MemoryCacheHelper.aliveLoading(stateId)) {
                 if (lifeCycleOwner is CoreActivity && !loadingFragment.isAdded) {
                     loadingFragment.show(lifeCycleOwner.supportFragmentManager, LoadingEventObserver::class.simpleName)
                 } else {
