@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bottom_navigation_bg_color">#050C13</color>
+    <color name="main_bg_color">#08131e</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#eb2737</color>
+    <color name="bottom_navigation_un_select_color">#838383</color>
+</resources>

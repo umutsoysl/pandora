@@ -16,7 +16,6 @@ ext.versions = [
         room_version                 : '2.2.5',
         installreferrer              : '2.1',
         material                     : '1.0.0',
-        materialMb                   : '1.1.0',
         securityCrypto               : '1.1.0-alpha02',
 
         // google
@@ -79,7 +78,6 @@ ext.libraries = [
         localbroadcastmanager      : 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0',
         installreferrer            : "com.android.installreferrer:installreferrer:$versions.installreferrer",
         material                   : "com.google.android.material:material:$versions.material",
-        materialMb                 : "com.google.android.material:material:$versions.materialMb",
 
         // google
         gson                       : "com.google.code.gson:gson:$versions.gson",
