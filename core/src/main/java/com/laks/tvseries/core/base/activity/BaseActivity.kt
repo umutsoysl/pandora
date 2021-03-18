@@ -15,9 +15,10 @@ import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import com.laks.tvseries.core.loading.LoadingEventObserver
+import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
+import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.java.KoinJavaComponent
 import kotlin.reflect.KClass
@@ -33,7 +34,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(modules)
+        setUp()
         if (BuildConfig.DEBUG) {
             Log.d("className", this.javaClass.simpleName + "")
         }
@@ -43,6 +44,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     }
 
     private fun initStatusBar() {
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val decor: View = window.decorView
             val flags = decor.systemUiVisibility
@@ -80,5 +82,12 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         super.onDestroy()
         unloadKoinModules(modules)
         MemoryCacheHelper.removeCache(classTag)
+    }
+
+    private fun setUp() {
+        org.koin.core.context.startKoin {
+            androidLogger(Level.DEBUG)
+            modules(modules)
+        }
     }
 }

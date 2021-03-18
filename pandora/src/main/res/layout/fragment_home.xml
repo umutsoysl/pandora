@@ -9,14 +9,22 @@
 
         <variable
             name="viewModel"
-            type="com.laks.tvseries.pandora.home.HomeViewModel" />
+            type="com.laks.tvseries.pandora.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-    </LinearLayout>
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOME FRAGMENT"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="24dp"/>
+
+    </RelativeLayout>
 
 </layout>

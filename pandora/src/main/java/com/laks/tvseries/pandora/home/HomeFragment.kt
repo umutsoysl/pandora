@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.laks.tvseries.core.base.fragment.BaseFragment
+import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentHomeBinding
 
-class HomeFragment: BaseFragment<HomeViewModel>(HomeViewModel::class) {
+class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
     private lateinit var binding: FragmentHomeBinding
 
