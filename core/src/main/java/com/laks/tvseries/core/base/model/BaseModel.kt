@@ -1,4 +1,4 @@
 package com.laks.tvseries.core.base.model
 
-class BaseModel {
+open class BaseModel {
 }
