@@ -19,7 +19,7 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        baseViewModel.scheduleUseCase?.repository?.classTag = (activity as MainActivity).javaClass.canonicalName
+        baseViewModel.repository?.classTag = (activity as MainActivity).javaClass.canonicalName
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,9 +32,7 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        baseViewModel.getScheduleFullList().observe(requireActivity(), Observer {
-            Log.d("response", "asfaf")
-        })
+        // baseViewModel.getScheduleFullList()
     }
 
     companion object {

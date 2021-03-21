@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.laks.tvseries.core.base.activity.BaseActivity
-import com.laks.tvseries.core.di.coreDIModule
 import com.laks.tvseries.core.di.scheduleDIModule
 import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.view.active
@@ -23,7 +22,7 @@ import org.koin.core.module.Module
 class MainActivity : BaseActivity<MainViewModel>(MainViewModel::class) {
 
     override val modules: List<Module>
-        get() = listOf(homeDIModule, coreDIModule, stateDIModule, scheduleDIModule)
+        get() = listOf(homeDIModule, stateDIModule, scheduleDIModule)
 
     private val KEY_POSITION = "keyPosition"
 

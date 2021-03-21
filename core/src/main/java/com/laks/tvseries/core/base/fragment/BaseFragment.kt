@@ -33,7 +33,7 @@ abstract class BaseFragment<Q : BaseViewModel>(clazz: KClass<Q>) : Fragment() {
     }
 
     private fun setViewStateId() {
-        baseViewModel?.useCase?.repository?.classTag = classTag
+        baseViewModel?.repository?.classTag = classTag
     }
 
     private fun observeLoadingState() {

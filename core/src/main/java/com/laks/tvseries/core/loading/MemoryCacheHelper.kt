@@ -22,13 +22,22 @@ object MemoryCacheHelper {
         return null
     }
 
-    fun enableLoadingStateValue(classTag: String?, url: String?) {
+    fun enableLoading(classTag: String?, url: String?) {
         classTag ?: return
         url ?: return
         val loadingState = findLoadingCache(classTag) ?: return
         loadingState.loading.value ?: return
 
         loadingState.loading.value!![url] = true
+        loadingState.loading.postValue(loadingState.loading.value)
+    }
+
+    fun disableLoading(classTag: String?, url: String) {
+        classTag ?: return
+        val loadingState = findLoadingCache(classTag) ?: return
+        loadingState.loading.value ?: return
+
+        loadingState.loading.value!![url] = false
         loadingState.loading.postValue(loadingState.loading.value)
     }
 

@@ -5,22 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.ScheduleRepository
-import com.laks.tvseries.core.data.ScheduleUseCase
 import com.laks.tvseries.core.data.model.ScheduleModelResponse
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainViewModel(var scheduleUseCase: ScheduleUseCase?) : BaseViewModel(scheduleUseCase) {
+class MainViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewModel(scheduleRepo) {
 
-    fun getScheduleFullList(): LiveData<ScheduleModelResponse> {
-        val result = MutableLiveData<ScheduleModelResponse>()
+    val allScheduleList = MutableLiveData<ScheduleModelResponse>()
+
+    fun getScheduleFullList() {
         viewModelScope.launch {
-            scheduleUseCase?.getScheduleFullList()?.collect { response ->
-                response?.let {
-                    result.postValue(response)
-                }
+            withContext(Dispatchers.IO) {
+                val response = scheduleRepo?.getScheduleFull() as ScheduleModelResponse
+                allScheduleList.postValue(response)
             }
         }
-        return result
     }
 }
