@@ -1,6 +1,5 @@
 package com.laks.tvseries.core.data.model
 
-import com.laks.tvseries.core.base.service.BaseResponse
 import kotlinx.serialization.SerialName
 
 open class ScheduleModelResponse(
@@ -20,7 +19,7 @@ open class ScheduleModelResponse(
         var links: Links? = null,
         @SerialName("_embedded")
         var embedded: EmbeddedModel? = null
-) : BaseResponse()
+)
 
 data class Schedule(
         val time: String?= null,

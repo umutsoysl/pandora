@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class ScheduleRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
 
     fun getScheduleFull(): Flow<ScheduleModelResponse?> {
-        return fetchData {
+        return fetchData() {
             api.getScheduleFull()
         }
     }

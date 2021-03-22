@@ -1,6 +1,6 @@
 package com.laks.tvseries.core.base.service
 
-import com.laks.tvseries.core.global.GlobalResponse
+import android.util.Log
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,9 +18,12 @@ abstract class BaseRepository<TServiceInterface>(clazz: Class<TServiceInterface>
     val api = ServiceManager.createApi(clazz, connectionManager)
 
     inline fun <reified T : Any> fetchData(isLoadingShown: Boolean? = false,
-                                           crossinline call: suspend (TServiceInterface) -> Response<GlobalResponse<T>>): Flow<T?> {
+                                           crossinline call: suspend (TServiceInterface) -> Response<T>): Flow<T?> {
 
         return flow {
+
+            ServiceManager.classTag = classTag ?: ""
+            ServiceManager.isLoadingShown = isLoadingShown!!
 
             try {
                 requestUrl = api.toString()
@@ -29,14 +32,19 @@ abstract class BaseRepository<TServiceInterface>(clazz: Class<TServiceInterface>
                 requestUrl = apiResponse.raw().request().url().toString()
 
                 if (apiResponse.isSuccessful) {
+                    if (!ServiceManager.rawBodyValue!!.isNullOrEmpty()) {
+                        emit(apiResponse.body())
+                    } else {
+                        // Error handler
+                    }
                     hideLoadingFragment(requestUrl)
-                    emit(apiResponse.body()?.content)
                 } else {
                     // Error handler
                 }
 
             } catch (e: Exception) {
                 // Error handler
+                Log.d("Call-response:", e.toString())
             }
 
         }

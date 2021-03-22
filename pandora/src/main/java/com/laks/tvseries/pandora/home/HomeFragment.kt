@@ -32,7 +32,7 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // baseViewModel.getScheduleFullList()
+        baseViewModel.getScheduleFullList()
     }
 
     companion object {
