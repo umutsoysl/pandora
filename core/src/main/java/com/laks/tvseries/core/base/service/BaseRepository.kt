@@ -46,7 +46,6 @@ abstract class BaseRepository<TServiceInterface>(clazz: Class<TServiceInterface>
                 // Error handler
                 Log.d("Call-response:", e.toString())
             }
-
         }
     }
 

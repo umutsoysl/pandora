@@ -11,5 +11,5 @@ data class Self (
 )
 
 data class Links (
-        val self: Self
+        val self: ArrayList<Self>
 )

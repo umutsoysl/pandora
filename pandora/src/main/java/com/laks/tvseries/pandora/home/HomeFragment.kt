@@ -26,13 +26,23 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
+
+        bindingViewModel()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        baseViewModel.getScheduleFullList()
+        baseViewModel.getSchedule()
+
+    }
+
+    private fun bindingViewModel() {
+        baseViewModel.scheduleList.observe(requireActivity(), Observer {
+           // todo response list
+        })
     }
 
     companion object {

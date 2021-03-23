@@ -15,6 +15,7 @@ import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import com.laks.tvseries.core.loading.LoadingEventObserver
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.unloadKoinModules
@@ -87,6 +88,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     private fun setUp() {
         org.koin.core.context.startKoin {
             androidLogger(Level.DEBUG)
+            androidContext(this@BaseActivity)
             modules(modules)
         }
     }
