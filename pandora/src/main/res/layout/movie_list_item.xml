@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="itemClickListener"
+            type="com.laks.tvseries.pandora.home.HomeMovieListItemOnClickListener" />
+
+        <variable
+            name="schedule"
+            type="com.laks.tvseries.core.data.model.TVShowModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="@{() -> itemClickListener.homeMovieListItemOnClickListener(schedule)}"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="5dp"
+            app:cardBackgroundColor="@color/dark_gray"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imageSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="170dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/rating_layout_bg_color"
+                android:visibility="@{schedule.show.rating.average == null ? View .GONE: View.VISIBLE}"
+                android:layout_gravity="right"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/labelRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_gray"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="@{schedule.show.rating.average.toString()}"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="-8dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="@{schedule.name}"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textColor="@color/white_gray"
+            android:text="@{schedule.airdate}"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+</layout>

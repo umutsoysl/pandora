@@ -57,8 +57,7 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.supportConstraint
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-
-
+    
     //Dependecy Injection
     implementation libraries.koin
     implementation libraries.koinViewmodel
@@ -71,4 +70,5 @@ dependencies {
     implementation libraries.kotlinxCoroutinesAndroid
     implementation libraries.flexbox
     implementation libraries.gson
+    implementation libraries.picasso
 }

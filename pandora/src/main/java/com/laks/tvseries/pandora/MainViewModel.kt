@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.ScheduleRepository
-import com.laks.tvseries.core.data.model.ScheduleAllListModelResponse
+import com.laks.tvseries.core.data.model.TVShowModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -12,9 +12,9 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewModel(scheduleRepo) {
 
-    val allScheduleList = MutableLiveData<ArrayList<ScheduleAllListModelResponse>>()
+    val allScheduleList = MutableLiveData<ArrayList<TVShowModel>>()
 
-    val scheduleList = MutableLiveData<ArrayList<ScheduleAllListModelResponse>>()
+    val scheduleList = MutableLiveData<ArrayList<TVShowModel>>()
 
     fun getScheduleFullList() {
         viewModelScope.launch {

@@ -13,17 +13,31 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/rootRelativeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HOME FRAGMENT"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="24dp"/>
+            android:layout_alignParentTop="true"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerScheduleList"
+                    android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/movie_list_item"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 
