@@ -4,7 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.ScheduleRepository
-import com.laks.tvseries.core.data.model.TVShowModel
+import com.laks.tvseries.core.data.model.DiscoverMovieListModel
+import com.laks.tvseries.core.data.model.MovieRequestModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -12,27 +13,21 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewModel(scheduleRepo) {
 
-    val allScheduleList = MutableLiveData<ArrayList<TVShowModel>>()
+    val discoverMovieList = MutableLiveData<DiscoverMovieListModel>()
 
-    val scheduleList = MutableLiveData<ArrayList<TVShowModel>>()
+    val shimmerVisible = MutableLiveData<Boolean>(true)
 
-    fun getScheduleFullList() {
+    fun getDiscoverMovieList(page: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getScheduleFull()?.collect { response ->
-                    allScheduleList.postValue(response)
+                var requestModel = MovieRequestModel()
+                requestModel.page = page
+                scheduleRepo?.getDiscoverMoviesList(requestModel)?.collect { response ->
+                    discoverMovieList.postValue(response)
+                    shimmerVisible.postValue(false)
                 }
             }
         }
     }
 
-    fun getSchedule() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                scheduleRepo?.getSchedule()?.collect { response ->
-                    scheduleList.postValue(response)
-                }
-            }
-        }
-    }
 }

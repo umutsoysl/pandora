@@ -71,4 +71,5 @@ dependencies {
     implementation libraries.flexbox
     implementation libraries.gson
     implementation libraries.picasso
+    implementation libraries.shimmer
 }

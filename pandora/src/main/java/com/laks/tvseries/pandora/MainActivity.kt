@@ -36,7 +36,6 @@ class MainActivity : BaseActivity<MainViewModel>(MainViewModel::class) {
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
 
-
         findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
             active(navPosition.position)
             setOnNavigationItemSelectedListener { item ->

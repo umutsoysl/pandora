@@ -15,7 +15,8 @@
     <RelativeLayout
         android:id="@+id/rootRelativeView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="60dp">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -31,12 +32,44 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerScheduleList"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
-                    tools:listitem="@layout/movie_list_item"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:layout_height="wrap_content" />
+                    tools:listitem="@layout/movie_list_item" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}">
+
+                        <include layout="@layout/shimmer_home_item" />
+
+                        <include layout="@layout/shimmer_home_item" />
+
+                        <include layout="@layout/shimmer_home_item" />
+
+                        <include layout="@layout/shimmer_home_item" />
+
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
 
             </LinearLayout>
+
         </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.laks.tvseries.pandora.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.fragment.BaseFragment
-import com.laks.tvseries.core.data.model.TVShowModel
+import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.pandora.MainActivity
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentHomeBinding
+
 
 class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class), HomeMovieListItemOnClickListener{
 
@@ -25,7 +25,11 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class), HomeMovie
         baseViewModel.repository?.classTag = (activity as MainActivity).javaClass.canonicalName
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
@@ -38,14 +42,12 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class), HomeMovie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        baseViewModel.getSchedule()
-
+        baseViewModel.getDiscoverMovieList(1)
     }
 
     private fun bindingViewModel() {
-        baseViewModel.scheduleList.observe(requireActivity(), Observer {
-            adapter.submitList(it)
+        baseViewModel.discoverMovieList.observe(requireActivity(), Observer {
+            adapter.submitList(it.results)
             adapter.notifyDataSetChanged()
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
@@ -66,7 +68,7 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class), HomeMovie
         fun newInstance() = HomeFragment()
     }
 
-    override fun homeMovieListItemOnClickListener(scheduleInfo: TVShowModel) {
+    override fun homeMovieListItemOnClickListener(scheduleInfo: MovieModel) {
         TODO("Not yet implemented")
     }
 }

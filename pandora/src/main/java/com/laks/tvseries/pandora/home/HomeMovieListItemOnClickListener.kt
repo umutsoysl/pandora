@@ -1,7 +1,7 @@
 package com.laks.tvseries.pandora.home
 
-import com.laks.tvseries.core.data.model.TVShowModel
+import com.laks.tvseries.core.data.model.MovieModel
 
 interface HomeMovieListItemOnClickListener {
-    fun homeMovieListItemOnClickListener(scheduleInfo: TVShowModel )
+    fun homeMovieListItemOnClickListener(scheduleInfo: MovieModel )
 }

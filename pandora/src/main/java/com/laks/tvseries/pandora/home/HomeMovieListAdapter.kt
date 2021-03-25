@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.laks.tvseries.core.data.model.TVShowModel
+import com.laks.tvseries.core.data.model.MovieModel
+import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.pandora.databinding.MovieListItemBinding
 import com.squareup.picasso.Picasso
 
-class HomeMovieListAdapter(private val context: Context, private val clickListener: HomeMovieListItemOnClickListener) : ListAdapter<TVShowModel, HomeMovieListAdapter.HomeMovieListViewHolder>(HomeMovieListItemModelDiffCallback()) {
+class HomeMovieListAdapter(private val context: Context, private val clickListener: HomeMovieListItemOnClickListener) : ListAdapter<MovieModel, HomeMovieListAdapter.HomeMovieListViewHolder>(HomeMovieListItemModelDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieListViewHolder {
@@ -24,10 +25,10 @@ class HomeMovieListAdapter(private val context: Context, private val clickListen
 
     class HomeMovieListViewHolder(private val binding: MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(context: Context, clickListener: HomeMovieListItemOnClickListener, itemData: TVShowModel) {
+        fun bind(context: Context, clickListener: HomeMovieListItemOnClickListener, itemData: MovieModel) {
             binding.itemClickListener = clickListener
             binding.schedule = itemData
-            itemData.image.let {Picasso.with(context).load(itemData.image?.medium).fit().into(binding.imageSchedule)}
+            itemData.posterPath.let {Picasso.with(context).load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}").fit().into(binding.imageSchedule)}
             binding.executePendingBindings()
         }
 
@@ -40,10 +41,10 @@ class HomeMovieListAdapter(private val context: Context, private val clickListen
         }
     }
 
-    class HomeMovieListItemModelDiffCallback : DiffUtil.ItemCallback<TVShowModel>() {
-        override fun areItemsTheSame(oldItem: TVShowModel, newItem: TVShowModel) = (oldItem.id == newItem.id)
+    class HomeMovieListItemModelDiffCallback : DiffUtil.ItemCallback<MovieModel>() {
+        override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel) = (oldItem.id == newItem.id)
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: TVShowModel, newItem: TVShowModel) = (oldItem == newItem)
+        override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel) = (oldItem == newItem)
     }
 }
