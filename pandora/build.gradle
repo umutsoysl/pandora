@@ -36,6 +36,7 @@ android {
     dataBinding {
         enabled = true
     }
+    dynamicFeatures = [':featurecategory']
 
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
 }

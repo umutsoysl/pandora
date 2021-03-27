@@ -2,8 +2,8 @@ package com.laks.tvseries.core.base.fragment
 
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.library.BuildConfig
 import androidx.fragment.app.Fragment
-import com.laks.tvseries.core.BuildConfig
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.loading.MemoryCacheHelper

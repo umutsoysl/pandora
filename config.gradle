@@ -42,7 +42,6 @@ ext.versions = [
         // 3rd
         picasso                      : '2.5.2',
         circleimageview              : '2.1.0',
-        imageCropper                 : '2.7.0',
         flexbox                      : '2.0.1',
         lottie                       : '3.4.0',
         shimmer                      : '0.5.0',

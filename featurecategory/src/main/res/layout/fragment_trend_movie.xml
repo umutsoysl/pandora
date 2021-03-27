@@ -1,0 +1,88 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featurecategory.category.trend.TrendCategoryViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootRelativeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_color"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/regular_margin">
+
+            <TextView
+                android:id="@+id/labelTitle"
+                style="@style/CategoryTypeTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trending" />
+
+            <TextView
+                android:id="@+id/labelSubTitle"
+                style="@style/CategoryTypeSubTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sub_title_margin"
+                android:layout_marginTop="@dimen/sub_title_top_margin"
+                android:layout_toRightOf="@+id/labelTitle"
+                android:text="@string/movies" />
+
+            <ImageView
+                android:id="@+id/buttonMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_baseline_read_more_24" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMediaList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/layout_media_list_item" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}"
+            tools:ignore="MissingClass">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}">
+
+                <include layout="@layout/shimmer_media_item" />
+
+                <include layout="@layout/shimmer_media_item" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </LinearLayout>
+
+</layout>

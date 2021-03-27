@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CategoryTypeTitleStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">21dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CategoryTypeSubTitleStyle">
+        <item name="android:fontFamily">@font/muli_bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+</resources>

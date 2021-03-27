@@ -1,4 +1,4 @@
-package com.laks.tvseries.core.data
+package com.laks.tvseries.core.data.main
 
 import com.laks.tvseries.core.base.service.BaseRepository
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel

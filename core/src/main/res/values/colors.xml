@@ -7,4 +7,7 @@
     <color name="red">#eb2737</color>
     <color name="bottom_navigation_un_select_color">#838383</color>
     <color name="rating_layout_bg_color">#79222222</color>
+    <color name="dark_gray">#222B33</color>
+    <color name="active_gray">#646C71</color>
+    <color name="white_gray">#D5D5D5</color>
 </resources>

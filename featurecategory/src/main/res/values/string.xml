@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="title">Module Feature Category</string>
+    <string name="trending">Trending</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="now_playing">Now playing</string>
+    <string name="popular">Popular</string>
+    <string name="popular_people">Popular people</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sub_title_margin">8dp</dimen>
+    <dimen name="sub_title_top_margin">6.5dp</dimen>
+</resources>

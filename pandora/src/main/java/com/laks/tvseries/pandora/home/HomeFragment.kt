@@ -5,70 +5,57 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.fragment.BaseFragment
-import com.laks.tvseries.core.data.model.MovieModel
+import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
+import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.view.AccessManagement
 import com.laks.tvseries.pandora.MainActivity
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentHomeBinding
 
 
-class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class), HomeMovieListItemOnClickListener{
+class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter: HomeMovieListAdapter
+    private lateinit var adapter: RecyclerFragmentAdapter
+    private var fragmentList: ArrayList<CategoryBaseFragment<*>> = ArrayList()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         baseViewModel.repository?.classTag = (activity as MainActivity).javaClass.canonicalName
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
-        setAdapter()
-        bindingViewModel()
-
+        initializeAdapter()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        baseViewModel.getDiscoverMovieList(1)
+        createCategoryList()
     }
 
-    private fun bindingViewModel() {
-        baseViewModel.discoverMovieList.observe(requireActivity(), Observer {
-            adapter.submitList(it.results)
-            adapter.notifyDataSetChanged()
-            binding.rootRelativeView.requestLayout()
-            binding.invalidateAll()
-            binding.executePendingBindings()
-        })
+    private fun initializeAdapter() {
+        adapter = RecyclerFragmentAdapter(fragmentList, requireActivity().supportFragmentManager)
+        binding.recyclerViewFragmentList.adapter = adapter
     }
 
-    private fun setAdapter() {
-        adapter = HomeMovieListAdapter(context = requireActivity(), clickListener = this)
-        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerScheduleList.layoutManager = layoutManager
-        binding.recyclerScheduleList.adapter = adapter
-
+    private fun createCategoryList() {
+        fragmentList.clear()
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.trendingMovieFragmentClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.trendingTVFragmentClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.nowPlayingMovieListFragmentClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.popularTvShowsFragmentClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.popularPeopleFragmentClassName)!!)
     }
 
     companion object {
         val TAG: String = HomeFragment::class.java.simpleName
         fun newInstance() = HomeFragment()
-    }
-
-    override fun homeMovieListItemOnClickListener(scheduleInfo: MovieModel) {
-        TODO("Not yet implemented")
     }
 }

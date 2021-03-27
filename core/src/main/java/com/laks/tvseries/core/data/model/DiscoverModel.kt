@@ -49,6 +49,7 @@ data class MovieModel(
         val status: String? = null,
         @SerializedName("tagline")
         val tagLine: String? = null,
+        @SerializedName("title", alternate = ["name"])
         val title: String? = null,
         val video: Boolean = false,
 

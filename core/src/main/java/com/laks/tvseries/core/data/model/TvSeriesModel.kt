@@ -21,7 +21,7 @@ data class TVModel(
         val id: Long? = 0,
 
         @SerializedName("known_for")
-        val knownFor: List<KnownFor>? = arrayListOf(),
+        val knownFor: ArrayList<KnownFor>? = arrayListOf(),
 
         @SerializedName("known_for_department")
         val knownForDepartment: String? = null,

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pandora</string>
+    <string name="title_featurecategory">Module Feature Category</string>
 </resources>

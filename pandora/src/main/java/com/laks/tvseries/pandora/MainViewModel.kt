@@ -3,7 +3,7 @@ package com.laks.tvseries.pandora
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
-import com.laks.tvseries.core.data.ScheduleRepository
+import com.laks.tvseries.core.data.main.ScheduleRepository
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
 import com.laks.tvseries.core.data.model.MovieRequestModel
 import kotlinx.coroutines.Dispatchers

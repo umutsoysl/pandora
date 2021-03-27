@@ -1,4 +1,4 @@
-package com.laks.tvseries.pandora.home
+package com.laks.tvseries.pandora.discover
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,7 +12,7 @@ import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.pandora.databinding.MovieListItemBinding
 import com.squareup.picasso.Picasso
 
-class HomeMovieListAdapter(private val context: Context, private val clickListener: HomeMovieListItemOnClickListener) : ListAdapter<MovieModel, HomeMovieListAdapter.HomeMovieListViewHolder>(HomeMovieListItemModelDiffCallback()) {
+class DiscoverMovieListAdapter(private val context: Context, private val clickListener: DiscoverMovieListItemOnClickListener) : ListAdapter<MovieModel, DiscoverMovieListAdapter.HomeMovieListViewHolder>(HomeMovieListItemModelDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieListViewHolder {
@@ -25,7 +25,7 @@ class HomeMovieListAdapter(private val context: Context, private val clickListen
 
     class HomeMovieListViewHolder(private val binding: MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(context: Context, clickListener: HomeMovieListItemOnClickListener, itemData: MovieModel) {
+        fun bind(context: Context, clickListener: DiscoverMovieListItemOnClickListener, itemData: MovieModel) {
             binding.itemClickListener = clickListener
             binding.schedule = itemData
             itemData.posterPath.let {Picasso.with(context).load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}").fit().into(binding.imageSchedule)}

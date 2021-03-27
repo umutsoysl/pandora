@@ -91,5 +91,7 @@ dependencies {
     implementation libraries.roomKtx
     kapt libraries.roomCompiler
 
+    implementation libraries.picasso
     implementation libraries.lottie
+    implementation libraries.circleimageview
 }
