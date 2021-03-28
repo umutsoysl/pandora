@@ -10,8 +10,8 @@ import com.laks.tvseries.core.data.model.Time.Companion.week
 
 
 data class MovieRequestModel(
-        var movieID: Int? = 0,
-        var apiKey: String?  = "apikey",
+        var movieID: String? = "0",
+        var apiKey: String?  = "api_key",
         var language: String? = "en-US",
         var page: Int? = 1,
         @Time var time: String? = null,

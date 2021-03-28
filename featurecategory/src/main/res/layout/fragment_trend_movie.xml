@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.laks.tvseries.featurecategory.category.trend.TrendCategoryViewModel" />
+            type="com.laks.tvseries.featurecategory.category.TrendCategoryViewModel" />
     </data>
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/regular_margin">
+            android:layout_marginBottom="@dimen/media_title_bottom_margin">
 
             <TextView
                 android:id="@+id/labelTitle"

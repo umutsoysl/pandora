@@ -22,4 +22,7 @@ interface CategoryApi {
     @GET("/3/person/popular")
     suspend fun getPopularPeople(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<PersonModel>
 
+    @GET("/3/movie/upcoming")
+    suspend fun getUpComingMovie(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+
 }

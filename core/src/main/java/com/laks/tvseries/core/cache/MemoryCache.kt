@@ -16,15 +16,19 @@ class MemoryCache {
         return map[cacheID] as U?
     }
 
+    fun findMemoryCacheValueAny(cacheID: String): Any? {
+        return  cache.map[cacheID]
+    }
+
     fun findMemoryCacheValue(cacheID: String): BaseModel? {
-        return map[cacheID] as? BaseModel
+        return  cache.map[cacheID] as? BaseModel
     }
 
     fun findTransferValue(transferId: String): BaseModel? {
         return transfer[transferId] as? BaseModel
     }
 
-    fun setMemoryCachevValue(cacheID: String, value: BaseModel) {
+    fun setMemoryCacheValue(cacheID: String, value: BaseModel) {
         cache.map[cacheID] = value
     }
 

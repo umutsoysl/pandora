@@ -10,4 +10,5 @@
     <color name="dark_gray">#222B33</color>
     <color name="active_gray">#646C71</color>
     <color name="white_gray">#D5D5D5</color>
+    <color name="transparent">#000000FF</color>
 </resources>

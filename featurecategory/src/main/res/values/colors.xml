@@ -3,4 +3,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_gray">#222B33</color>
     <color name="active_gray">#646C71</color>
+    <color name="gender_box">#090C10</color>
 </resources>

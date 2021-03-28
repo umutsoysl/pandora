@@ -15,4 +15,41 @@
         <item name="android:textColor">@color/active_gray</item>
     </style>
 
+    <style name="DetailTitleStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DetailDateStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+    <style name="DetailSubTitleStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DetailContentStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white_gray</item>
+    </style>
+
+    <style name="DetailTagLineStyle">
+        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white_gray</item>
+    </style>
+
+
+    <style name="GenreTextStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
 </resources>

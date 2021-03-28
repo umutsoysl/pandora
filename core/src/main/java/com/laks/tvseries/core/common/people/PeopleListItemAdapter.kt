@@ -30,7 +30,7 @@ class PeopleListItemAdapter(private val context: Context, private val clickListe
         fun bind(context: Context, clickListener: PeopleItemClickListener, itemData: PersonInfo) {
             binding.itemClickListener = clickListener
             binding.person = itemData
-            itemData.posterPath.let { Picasso.with(context).load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}").fit().into(binding.imagePerson)}
+            itemData.posterPath.let { Picasso.with(context).load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}").into(binding.imagePerson)}
             binding.executePendingBindings()
         }
 

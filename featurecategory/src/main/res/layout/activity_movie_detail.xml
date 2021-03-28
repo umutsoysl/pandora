@@ -1,0 +1,137 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featurecategory.detail.MovieDetailViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/rootRelativeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/main_bg_color">
+
+            <ImageView
+                android:id="@+id/imageBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="-50dp" />
+
+            <RelativeLayout
+                android:id="@+id/gradientView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="-50dp"
+                android:background="@drawable/poster_bottom_gradient" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="@dimen/media_layout_width"
+                android:layout_height="@dimen/detail_poster_height"
+                android:layout_below="@+id/gradientView"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/poster_image_top_margin"
+                app:cardBackgroundColor="@color/dark_gray"
+                app:cardCornerRadius="@dimen/media_card_radius"
+                app:cardElevation="3dp"
+                app:cardMaxElevation="3dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/imageSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/labelMovieTitle"
+                style="@style/DetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gradientView"
+                android:layout_marginHorizontal="@dimen/medium_margin"
+                android:layout_marginTop="-14dp"
+                android:layout_toRightOf="@+id/cardView"
+                android:text="@{viewModel.movieModel.title}" />
+
+            <TextView
+                android:id="@+id/labelDateTitle"
+                style="@style/DetailDateStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelMovieTitle"
+                android:layout_marginHorizontal="@dimen/medium_margin"
+                android:layout_toRightOf="@+id/cardView"
+                android:text="@{viewModel.movieModel.releaseDate}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView"
+                android:layout_margin="@dimen/medium_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DetailTagLineStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/labelMovieTitle"
+                    android:layout_marginBottom="@dimen/regular_margin"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:text="@{viewModel.movieModel.tagline}"
+                    android:visibility="@{viewModel.movieModel.tagline.length()>0? View.VISIBLE:View.GONE}" />
+
+                <TextView
+                    style="@style/DetailSubTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradientView"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:text="@string/about" />
+
+                <TextView
+                    style="@style/DetailContentStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/labelMovieTitle"
+                    android:layout_marginTop="@dimen/regular_margin"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:text="@{viewModel.movieModel.overview}" />
+
+
+                <TextView
+                    style="@style/DetailSubTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="@string/genre" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerGenreList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginTop="@dimen/regular_margin"
+                    android:layout_marginLeft="-3dp"
+                    tools:listitem="@layout/layout_genre_item" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

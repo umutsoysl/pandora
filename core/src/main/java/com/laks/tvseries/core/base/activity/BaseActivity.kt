@@ -18,6 +18,8 @@ import com.laks.tvseries.core.loading.LoadingEventObserver
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.stopKoin
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.logger.Level
 import org.koin.core.module.Module
@@ -35,6 +37,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        stopKoin()
         setUp()
         if (BuildConfig.DEBUG) {
             Log.d("className", this.javaClass.simpleName + "")

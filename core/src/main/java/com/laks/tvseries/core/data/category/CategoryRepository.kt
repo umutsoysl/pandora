@@ -33,4 +33,11 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
             api.getPopularPeople(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
         }
     }
+
+    fun getUpComingMovie(): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            var requestModel = MovieRequestModel()
+            api.getUpComingMovie(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+        }
+    }
 }

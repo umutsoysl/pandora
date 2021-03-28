@@ -6,4 +6,7 @@
     <string name="now_playing">Now playing</string>
     <string name="popular">Popular</string>
     <string name="popular_people">Popular people</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="about">Overview</string>
+    <string name="genre">Genres</string>
 </resources>
