@@ -9,4 +9,5 @@
     <string name="upcoming">Upcoming</string>
     <string name="about">Overview</string>
     <string name="genre">Genres</string>
+    <string name="run_time">● %1$s min</string>
 </resources>

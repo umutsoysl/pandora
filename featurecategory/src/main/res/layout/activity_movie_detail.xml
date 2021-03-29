@@ -25,14 +25,12 @@
             <ImageView
                 android:id="@+id/imageBackdrop"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="-50dp" />
+                android:layout_height="250dp" />
 
             <RelativeLayout
                 android:id="@+id/gradientView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="-50dp"
+                android:layout_height="250dp"
                 android:background="@drawable/poster_bottom_gradient" />
 
 
@@ -75,9 +73,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/labelMovieTitle"
-                android:layout_marginHorizontal="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
                 android:layout_toRightOf="@+id/cardView"
-                android:text="@{viewModel.movieModel.releaseDate}" />
+                android:text="@{viewModel.releaseDate}" />
+
+            <TextView
+                android:id="@+id/labelRuntime"
+                style="@style/DetailDateStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/labelMovieTitle"
+                android:layout_toRightOf="@+id/labelDateTitle" />
 
             <LinearLayout
                 android:layout_width="match_parent"

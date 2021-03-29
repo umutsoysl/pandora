@@ -36,8 +36,9 @@ data class MovieDetailModel(
         val releaseDate: String? = null,
 
         val revenue: Long = 0,
-        val runtime: Long = 0,
-
+        val runtime: String = "",
+        @SerializedName("episode_run_time")
+        val tvRuntime: ArrayList<String>? = arrayListOf(),
         val status: String? = null,
         val tagline: String? = null,
         @SerializedName("title", alternate = ["name"])

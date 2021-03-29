@@ -1,9 +1,12 @@
 package com.laks.tvseries.featurecategory.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.data.model.MediaType
@@ -24,6 +27,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
 
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var adapter: GenreListItemAdapter
+    private var type: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +35,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
 
-        getDetail()
         setAdapter()
+        getDetail()
         bindingViewModel()
     }
 
     private fun getDetail() {
         var movieID = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_ID).toString()
-        var type = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_TYPE).toString()
+        type = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_TYPE).toString()
 
         if(type == MediaType.movie) {
             baseViewModel.getMovieDetail(movieID = movieID)
@@ -47,13 +51,15 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun bindingViewModel() {
 
         baseViewModel.movieModel.observe(this, Observer { movie ->
-            movie.backdropPath.let { Picasso.with(this).load("${GlobalConstants.SERVER_IMAGE_URL}${it}").fit().into(binding.imageBackdrop) }
+            movie.backdropPath.let { Picasso.with(this).load("${GlobalConstants.SERVER_BACK_DROP_IMAGE_URL}${it}").centerCrop().fit().into(binding.imageBackdrop) }
             movie.posterPath.let { Picasso.with(this).load("${GlobalConstants.SERVER_IMAGE_URL}${it}").fit().into(binding.imageSchedule) }
             adapter.submitList(movie.genres)
             adapter.notifyDataSetChanged()
+            binding.labelRuntime.text = if (type == MediaType.movie) (resources.getString(R.string.run_time, movie.runtime)) else (resources.getString(R.string.run_time, movie.tvRuntime?.get(0)))
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
             binding.executePendingBindings()
@@ -62,7 +68,9 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
 
     private fun setAdapter() {
         adapter = GenreListItemAdapter(this@MovieDetailActivity)
-        var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = FlexboxLayoutManager(this@MovieDetailActivity)
+        layoutManager.flexDirection = FlexDirection.ROW
+        layoutManager.justifyContent = JustifyContent.FLEX_START
         binding.recyclerGenreList.layoutManager = layoutManager
         binding.recyclerGenreList.adapter = adapter
     }

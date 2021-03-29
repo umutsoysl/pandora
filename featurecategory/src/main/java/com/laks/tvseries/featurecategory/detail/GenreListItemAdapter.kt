@@ -1,6 +1,5 @@
 package com.laks.tvseries.featurecategory.detail
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -38,8 +37,6 @@ class GenreListItemAdapter(private val context: Context) : ListAdapter<Genre, Ge
 
     class GenreListItemModelDiffCallback : DiffUtil.ItemCallback<Genre>() {
         override fun areItemsTheSame(oldItem: Genre, newItem: Genre) = (oldItem.id == newItem.id)
-
-        @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: Genre, newItem: Genre) = (oldItem == newItem)
     }
 }
