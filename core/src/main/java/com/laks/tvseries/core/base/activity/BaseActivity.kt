@@ -15,6 +15,7 @@ import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import com.laks.tvseries.core.loading.LoadingEventObserver
+import com.laks.tvseries.core.view.FullyTransparentStatusBar
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,17 +44,19 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
             Log.d("className", this.javaClass.simpleName + "")
         }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_base)
+        setViewStateId()
         initStatusBar()
         observeLoadingState()
     }
 
+    private fun setViewStateId() {
+        baseViewModel?.repository?.classTag = classTag
+    }
+
     private fun initStatusBar() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val decor: View = window.decorView
-            val flags = decor.systemUiVisibility
-            decor.systemUiVisibility = flags or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
+        val fullyTransparentStatusBar = FullyTransparentStatusBar(this, window)
+        fullyTransparentStatusBar.setFullTransparentStatus()
     }
 
     fun openKeyboard(view: View) {

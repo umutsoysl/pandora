@@ -1,7 +1,6 @@
 package com.laks.tvseries.core.base.service
 
 import com.laks.tvseries.core.global.GlobalConstants
-import com.laks.tvseries.core.loading.LoadingEventObserver
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody

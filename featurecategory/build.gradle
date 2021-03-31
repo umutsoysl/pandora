@@ -57,4 +57,5 @@ dependencies {
     implementation libraries.gson
     implementation libraries.picasso
     implementation libraries.shimmer
+    implementation libraries.youtubePlayer
 }

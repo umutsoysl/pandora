@@ -1,5 +1,6 @@
 package com.laks.tvseries.featurecategory.detail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
@@ -17,6 +18,14 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
 
     var movieModel = MutableLiveData<MovieDetailModel>()
     var releaseDate = MutableLiveData<String>()
+    var loadingComplete = MutableLiveData<Boolean>(false)
+    private val _moreClickEvent = MutableLiveData<Unit>()
+    val moreButtonClickEvent: LiveData<Unit> = _moreClickEvent
+    var videoKey = MutableLiveData<String>()
+
+    fun moreButtonOnClickListener() {
+        _moreClickEvent.value = Unit
+    }
 
     fun getMovieDetail(movieID: String) {
         viewModelScope.launch {
@@ -24,8 +33,10 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                 var requestModel = MovieRequestModel()
                 requestModel.movieID = movieID
                 scheduleRepo?.getMovieDetail(requestModel)?.collect {
+                    loadingComplete.postValue(true)
                     movieModel.postValue(it)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
+                    getMovieVideo(requestModel)
                 }
             }
         }
@@ -37,8 +48,30 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                 var requestModel = MovieRequestModel()
                 requestModel.movieID = movieID
                 scheduleRepo?.getTVDetail(requestModel)?.collect {
+                    loadingComplete.postValue(true)
                     movieModel.postValue(it)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
+                    getTVVideo(requestModel)
+                }
+            }
+        }
+    }
+
+    private fun getMovieVideo(requestModel: MovieRequestModel) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                scheduleRepo?.getMovieVideo(requestModel)?.collect {
+                    videoKey.postValue(it?.let {it.results.first().key})
+                }
+            }
+        }
+    }
+
+    private fun getTVVideo(requestModel: MovieRequestModel) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                scheduleRepo?.getTvVideo(requestModel)?.collect {
+                    videoKey.postValue(it?.let {it.results.first().key})
                 }
             }
         }

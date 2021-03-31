@@ -10,4 +10,7 @@
     <string name="about">Overview</string>
     <string name="genre">Genres</string>
     <string name="run_time">● %1$s min</string>
+    <string name="more">Read more</string>
+    <string name="read_less">Read less</string>
+    <string name="trailer">Trailer</string>
 </resources>

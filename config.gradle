@@ -116,6 +116,7 @@ ext.libraries = [
         flexbox                    : "com.google.android:flexbox:$versions.flexbox",
         lottie                     : "com.airbnb.android:lottie:$versions.lottie",
         shimmer                    : "com.facebook.shimmer:shimmer:$versions.shimmer",
+        youtubePlayer              : "com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5",
 
         //di
         koin                       : "org.koin:koin-android:$versions.koin_version",

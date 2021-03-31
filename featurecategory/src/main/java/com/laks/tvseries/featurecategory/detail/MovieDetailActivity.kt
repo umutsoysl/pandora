@@ -16,6 +16,8 @@ import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.databinding.ActivityMovieDetailBinding
 import com.laks.tvseries.featurecategory.di.detailDIModule
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.squareup.picasso.Picasso
 import org.koin.core.module.Module
 
@@ -28,6 +30,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var adapter: GenreListItemAdapter
     private var type: String? = null
+    private var isMore = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +58,56 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private fun bindingViewModel() {
 
         baseViewModel.movieModel.observe(this, Observer { movie ->
-            movie.backdropPath.let { Picasso.with(this).load("${GlobalConstants.SERVER_BACK_DROP_IMAGE_URL}${it}").centerCrop().fit().into(binding.imageBackdrop) }
-            movie.posterPath.let { Picasso.with(this).load("${GlobalConstants.SERVER_IMAGE_URL}${it}").fit().into(binding.imageSchedule) }
+            movie.backdropPath.let {
+                Picasso.with(this).load("${GlobalConstants.SERVER_BACK_DROP_IMAGE_URL}${it}")
+                    .centerCrop().fit().into(
+                    binding.imageBackdrop
+                )
+            }
+            movie.posterPath.let {
+                Picasso.with(this).load("${GlobalConstants.SERVER_IMAGE_URL}${it}").fit().into(
+                    binding.imageSchedule
+                )
+            }
+            binding.labelOverView.text = baseViewModel.movieModel.value?.overview?.let {
+                if (it.length > 110) "${
+                    it.substring(
+                        0,
+                        110
+                    )
+                }..." else it
+            }
             adapter.submitList(movie.genres)
             adapter.notifyDataSetChanged()
-            binding.labelRuntime.text = if (type == MediaType.movie) (resources.getString(R.string.run_time, movie.runtime)) else (resources.getString(R.string.run_time, movie.tvRuntime?.get(0)))
+            binding.labelRuntime.text = if (type == MediaType.movie) (resources.getString(
+                R.string.run_time,
+                movie.runtime
+            )) else (resources.getString(R.string.run_time, movie.tvRuntime?.get(0)))
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
             binding.executePendingBindings()
+        })
+
+        baseViewModel.moreButtonClickEvent.observe(this, Observer {
+            if (isMore) {
+                binding.labelOverView.text = baseViewModel.movieModel.value?.overview
+                binding.labelMore.text = resources.getString(R.string.read_less)
+            } else {
+                binding.labelOverView.text = baseViewModel.movieModel.value?.overview?.let {
+                    if (it.length > 110) "${
+                        it.substring(
+                            0,
+                            110
+                        )
+                    }..." else it
+                }
+                binding.labelMore.text = resources.getString(R.string.more)
+            }
+            isMore = !isMore
+        })
+
+        baseViewModel.videoKey.observe(this, Observer {
+            playVideo(it)
         })
     }
 
@@ -73,5 +118,15 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         layoutManager.justifyContent = JustifyContent.FLEX_START
         binding.recyclerGenreList.layoutManager = layoutManager
         binding.recyclerGenreList.adapter = adapter
+    }
+
+    private fun playVideo(videoId: String?) {
+        lifecycle.addObserver(binding.youtubePlayerView)
+
+        binding.youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                videoId?.let { youTubePlayer.loadVideo(it, 0f) }
+            }
+        })
     }
 }
