@@ -13,4 +13,6 @@
     <string name="more">Read more</string>
     <string name="read_less">Read less</string>
     <string name="trailer">Trailer</string>
+    <string name="top_cast">Top Billed Cast</string>
+    <string name="recommendations">Recommendations</string>
 </resources>

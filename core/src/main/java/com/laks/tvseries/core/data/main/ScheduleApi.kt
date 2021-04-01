@@ -1,6 +1,7 @@
 package com.laks.tvseries.core.data.main
 
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
+import com.laks.tvseries.core.data.model.MovieCreditsModel
 import com.laks.tvseries.core.data.model.MovieDetailModel
 import com.laks.tvseries.core.data.model.VideoModel
 import retrofit2.Response
@@ -23,5 +24,17 @@ interface ScheduleApi {
 
     @GET("/3/tv/{tvID}/videos")
     suspend fun getTvVideo(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<VideoModel>
+
+    @GET("/3/movie/{movieID}/credits")
+    suspend fun getMovieCredit(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieCreditsModel>
+
+    @GET("/3/tv/{tvID}/credits")
+    suspend fun getTvCredit(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieCreditsModel>
+
+    @GET("/3/movie/{movieID}/recommendations")
+    suspend fun getMovieRecommendations(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+
+    @GET("/3/tv/{tvID}/recommendations")
+    suspend fun getTvRecommendations(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
 
 }

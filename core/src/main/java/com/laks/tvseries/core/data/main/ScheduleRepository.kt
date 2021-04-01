@@ -25,14 +25,38 @@ class ScheduleRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
     }
 
     fun getMovieVideo(requestModel: MovieRequestModel): Flow<VideoModel?> {
-        return fetchData {
+        return fetchData(isLoadingShown = true) {
             api.getMovieVideo(authToken = requestModel.apiKey!!, movieID = requestModel.movieID!!, language = requestModel.language!!)
         }
     }
 
     fun getTvVideo(requestModel: MovieRequestModel): Flow<VideoModel?> {
-        return fetchData {
+        return fetchData(isLoadingShown = true) {
             api.getTvVideo(authToken = requestModel.apiKey!!, tvID = requestModel.movieID!!, language = requestModel.language!!)
+        }
+    }
+
+    fun getMovieCredits(requestModel: MovieRequestModel): Flow<MovieCreditsModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getMovieCredit(authToken = requestModel.apiKey!!, movieID = requestModel.movieID!!, language = requestModel.language!!)
+        }
+    }
+
+    fun getTvCredits(requestModel: MovieRequestModel): Flow<MovieCreditsModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getTvCredit(authToken = requestModel.apiKey!!, tvID = requestModel.movieID!!, language = requestModel.language!!)
+        }
+    }
+
+    fun getMovieRecommendations(requestModel: MovieRequestModel): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getMovieRecommendations(authToken = requestModel.apiKey!!, movieID = requestModel.movieID!!, page = requestModel.page!!, language = requestModel.language!!)
+        }
+    }
+
+    fun getTvRecommendations(requestModel: MovieRequestModel): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getTvRecommendations(authToken = requestModel.apiKey!!, tvID = requestModel.movieID!!, page = requestModel.page!!, language = requestModel.language!!)
         }
     }
 }

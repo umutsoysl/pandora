@@ -9,9 +9,6 @@ data class MovieDetailModel(
         @SerializedName("backdrop_path")
         val backdropPath: String? = null,
 
-        @SerializedName("belongs_to_collection")
-        val belongsToCollection: JsonObject? = null,
-
         val budget: Long = 0,
         val genres: ArrayList<Genre>? = arrayListOf(),
         val homepage: String? = null,
