@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="season"
+            type="com.laks.tvseries.core.data.model.SeasonModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/regular_margin"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/season_poster_width"
+            android:layout_height="@dimen/season_poster_size"
+            app:cardBackgroundColor="@color/dark_gray"
+            app:cardCornerRadius="@dimen/media_card_radius"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="3dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imageSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/season_poster_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_margin"
+            android:layout_marginHorizontal="6dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/season_title_top_margin">
+
+                <TextView
+                    style="@style/SeasonTitleStyle"
+                    android:id="@+id/labelName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{season.name}" />
+
+                <TextView
+                    style="@style/SeasonDateStyle"
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/labelName"
+                    android:text=" ● " />
+
+                <TextView
+                    style="@style/SeasonDateStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:layout_toRightOf="@+id/temp"
+                    android:text="@{season.airDate}" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/labelOverView"
+                style="@style/SeasonContentStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{season.overview.length()>2? View.VISIBLE : View.GONE}"
+                android:layout_marginTop="2dp" />
+
+            <RelativeLayout
+                android:id="@+id/moreButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{season.overview.length()>70? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:id="@+id/labelAllSeasonText"
+                    style="@style/SeasonContentStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/more"
+                    android:textColor="@color/red" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/labelEpisode"
+                style="@style/SeasonEpisodesStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

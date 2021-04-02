@@ -15,4 +15,8 @@
     <string name="trailer">Trailer</string>
     <string name="top_cast">Top Billed Cast</string>
     <string name="recommendations">Recommendations</string>
+    <string name="season">Season</string>
+    <string name="episodes">episodes</string>
+    <string name="more_season">All seasons</string>
+    <string name="less_season">Less seasons</string>
 </resources>

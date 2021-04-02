@@ -19,14 +19,24 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
     var movieModel = MutableLiveData<MovieDetailModel>()
     var releaseDate = MutableLiveData<String>()
     var loadingComplete = MutableLiveData<Boolean>(false)
-    private val _moreClickEvent = MutableLiveData<Unit>()
-    val moreButtonClickEvent: LiveData<Unit> = _moreClickEvent
     var videoKey = MutableLiveData<String>()
     var castLoadingShimmer = MutableLiveData<Boolean>(true)
     var recommendationsListLoadingShimmer = MutableLiveData<Boolean>(true)
     var castListModel = MutableLiveData<ArrayList<PersonInfo>>()
 
     val recommendationsList = MutableLiveData<DiscoverMovieListModel>()
+
+    val seasonList = MutableLiveData<ArrayList<SeasonModel>>()
+
+    private val _moreClickEvent = MutableLiveData<Unit>()
+    val moreButtonClickEvent: LiveData<Unit> = _moreClickEvent
+
+    private val _allSeasonClickEvent = MutableLiveData<Unit>()
+    val allSeasonButtonOnClickEvent: LiveData<Unit> = _allSeasonClickEvent
+
+    fun allSeasonButtonOnClickListener() {
+        _allSeasonClickEvent.value = Unit
+    }
 
     fun moreButtonOnClickListener() {
         _moreClickEvent.value = Unit
@@ -57,6 +67,7 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                 scheduleRepo?.getTVDetail(requestModel)?.collect {
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
+                    seasonList.postValue(it?.seasons)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
                     getTVCredits(requestModel)
                     getTVVideo(requestModel)
@@ -148,6 +159,20 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                 }
             }
         }
+    }
+
+    fun createSeasonListModel(isLess: Boolean): ArrayList<SeasonModel> {
+        var seasons = ArrayList<SeasonModel>()
+
+        seasonList.value?.forEachIndexed { index, seasonModel ->
+            if (!seasonModel.airDate.isNullOrEmpty() && seasonModel.airDate.contains("-")) {
+                seasonModel.airDate = getFormatDate(seasonModel.airDate)
+            }
+            seasons.add(seasonModel)
+            if (isLess && index == 2) return seasons
+        }
+
+        return seasons
     }
 
     private fun getFormatDate(releaseDate: String): String {

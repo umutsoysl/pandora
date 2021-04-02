@@ -52,4 +52,28 @@
         <item name="android:textColor">@color/white_gray</item>
     </style>
 
+    <style name="SeasonTitleStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white_gray</item>
+    </style>
+
+    <style name="SeasonContentStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+    <style name="SeasonDateStyle">
+        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+    <style name="SeasonEpisodesStyle">
+        <item name="android:fontFamily">@font/muli_bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white_gray</item>
+    </style>
+
 </resources>

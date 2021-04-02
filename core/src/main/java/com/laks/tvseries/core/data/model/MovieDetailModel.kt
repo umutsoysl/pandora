@@ -14,6 +14,9 @@ data class MovieDetailModel(
         val homepage: String? = null,
         val id: Long = 0,
 
+        @SerializedName("created_by")
+        val createdBy: ArrayList<CreatedModel>? = arrayListOf(),
+
         @SerializedName("imdb_id")
         val imdbID: String? = null,
 
@@ -25,7 +28,7 @@ data class MovieDetailModel(
 
         val overview: String? = null,
         val popularity: Double? = 0.0,
-
+        val seasons: ArrayList<SeasonModel>? = arrayListOf(),
         @SerializedName("poster_path")
         val posterPath: String? = null,
 
@@ -47,4 +50,32 @@ data class MovieDetailModel(
 
         @SerializedName("vote_count")
         val voteCount: Long = 0
+)
+
+data class SeasonModel(
+        @SerializedName("air_date")
+        var airDate: String,
+
+        @SerializedName("episode_count")
+        var episodeCount: String? = "0",
+
+        val id: Long,
+        val name: String,
+        var overview: String,
+
+        @SerializedName("poster_path")
+        val posterPath: String,
+
+        @SerializedName("season_number")
+        val seasonNumber: Long
+)
+
+data class CreatedModel(
+        val id: Long,
+        @SerializedName("credit_id")
+        val creditID: String,
+        val name: String,
+        val gender: Long,
+        @SerializedName("profile_path")
+        val profilePath: String,
 )

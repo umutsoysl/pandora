@@ -24,6 +24,7 @@ import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.databinding.ActivityMovieDetailBinding
+import com.laks.tvseries.featurecategory.detail.season.SeasonListAdapter
 import com.laks.tvseries.featurecategory.di.detailDIModule
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -40,8 +41,10 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private lateinit var adapter: GenreListItemAdapter
     private var type: String? = null
     private var isMore = true
+    private var isAllSeason = true
     private lateinit var adapterCast: PeopleListItemAdapter
     private lateinit var adapterMedia: MediaListItemAdapter
+    private lateinit var adapterSeason: SeasonListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +55,11 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         setAdapter()
         setCastListAdapter()
         setMediaListAdapter()
+        setSeasonListAdapter()
         getDetail()
         bindingViewModel()
         backButtonClick()
+        createAdapterListObserver()
     }
 
     private fun getDetail() {
@@ -122,7 +127,22 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             playVideo(it)
         })
 
+        baseViewModel.allSeasonButtonOnClickEvent.observe(this, Observer {
+            if(isAllSeason) {
+                adapterSeason.submitList(baseViewModel.createSeasonListModel(false))
+                binding.labelAllSeasonText.text = resources.getString(R.string.less_season)
+            } else {
+                adapterSeason.submitList(baseViewModel.createSeasonListModel(true))
+                binding.labelAllSeasonText.text = resources.getString(R.string.more_season)
+            }
+            adapterSeason.notifyDataSetChanged()
+            requestLayout()
 
+            isAllSeason = !isAllSeason
+        })
+    }
+
+    private fun createAdapterListObserver() {
         baseViewModel.castListModel.observe(this, Observer {
             adapterCast.submitList(it)
             adapterCast.notifyDataSetChanged()
@@ -132,6 +152,12 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         baseViewModel.recommendationsList.observe(this, Observer {
             adapterMedia.submitList(it.results)
             adapterMedia.notifyDataSetChanged()
+            requestLayout()
+        })
+
+        baseViewModel.seasonList.observe(this, Observer {
+            adapterSeason.submitList(baseViewModel.createSeasonListModel(it.size > 2))
+            adapterSeason.notifyDataSetChanged()
             requestLayout()
         })
     }
@@ -158,6 +184,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerRecommendationsMovieList.layoutManager = layoutManager
         binding.recyclerRecommendationsMovieList.adapter = adapterMedia
+
+    }
+
+    private fun setSeasonListAdapter() {
+        adapterSeason = SeasonListAdapter(context = this@MovieDetailActivity)
+        var layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerSeasonList.layoutManager = layoutManager
+        binding.recyclerSeasonList.adapter = adapterSeason
 
     }
 

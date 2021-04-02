@@ -265,6 +265,49 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/layoutSeason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.seasonList.size()>0 ? View.VISIBLE: View.GONE}">
+
+                        <TextView
+                            style="@style/DetailSubTitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            android:text="@string/season" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerSeasonList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/regular_margin"
+                            android:nestedScrollingEnabled="false"
+                            tools:listitem="@layout/layout_season_item" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{() -> viewModel.allSeasonButtonOnClickListener()}"
+                            android:visibility="@{viewModel.movieModel.seasons.size()>2? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:id="@+id/labelAllSeasonText"
+                                style="@style/DetailTagLineStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="@dimen/regular_margin"
+                                android:text="@string/more_season"
+                                android:textColor="@color/red" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
