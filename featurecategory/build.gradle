@@ -58,4 +58,6 @@ dependencies {
     implementation libraries.picasso
     implementation libraries.shimmer
     implementation libraries.youtubePlayer
+    implementation libraries.imageSlider
+    implementation libraries.nineOldAndroids
 }

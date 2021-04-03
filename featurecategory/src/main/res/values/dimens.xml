@@ -6,4 +6,5 @@
     <dimen name="season_poster_size">100dp</dimen>
     <dimen name="season_poster_width">75dp</dimen>
     <dimen name="season_title_top_margin">-6dp</dimen>
+    <dimen name="slider_image_height">195dp</dimen>
 </resources>

@@ -19,4 +19,14 @@
     <string name="episodes">episodes</string>
     <string name="more_season">All seasons</string>
     <string name="less_season">Less seasons</string>
+    <string name="media">Media</string>
+    <string name="director">Director</string>
+    <string name="original_title">Original Title</string>
+    <string name="status">Status</string>
+    <string name="time">Runtime</string>
+    <string name="original_language">Language</string>
+    <string name="revenue">Revenue</string>
+    <string name="media_info">Media info</string>
+    <string name="screenplay">Screenplay, Story</string>
+    <string name="budget">Budget</string>
 </resources>

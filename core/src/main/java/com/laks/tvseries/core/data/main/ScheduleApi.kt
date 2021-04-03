@@ -1,9 +1,6 @@
 package com.laks.tvseries.core.data.main
 
-import com.laks.tvseries.core.data.model.DiscoverMovieListModel
-import com.laks.tvseries.core.data.model.MovieCreditsModel
-import com.laks.tvseries.core.data.model.MovieDetailModel
-import com.laks.tvseries.core.data.model.VideoModel
+import com.laks.tvseries.core.data.model.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -36,5 +33,11 @@ interface ScheduleApi {
 
     @GET("/3/tv/{tvID}/recommendations")
     suspend fun getTvRecommendations(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+
+    @GET("/3/movie/{movieID}/images")
+    suspend fun getMovieImage(@Path("movieID") movieID: String, @Query("api_key") authToken: String): Response<MediaImageModel>
+
+    @GET("/3/tv/{tvID}/images")
+    suspend fun getTvImage(@Path("tvID") tvID: String, @Query("api_key") authToken: String): Response<MediaImageModel>
 
 }

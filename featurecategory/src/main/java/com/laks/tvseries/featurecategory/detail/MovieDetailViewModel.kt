@@ -1,8 +1,10 @@
 package com.laks.tvseries.featurecategory.detail
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.main.ScheduleRepository
 import com.laks.tvseries.core.data.model.*
@@ -13,6 +15,7 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewModel(scheduleRepo) {
 
@@ -34,6 +37,12 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
     private val _allSeasonClickEvent = MutableLiveData<Unit>()
     val allSeasonButtonOnClickEvent: LiveData<Unit> = _allSeasonClickEvent
 
+    val mediaImageList = MutableLiveData<ArrayList<ImageObject>>()
+
+    val mediaDirector = MutableLiveData<String>()
+    val mediaWriting = MutableLiveData<String>()
+    val formatRunTime = MutableLiveData<String>()
+
     fun allSeasonButtonOnClickListener() {
         _allSeasonClickEvent.value = Unit
     }
@@ -51,8 +60,10 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
+                    createRunTime(it?.runtime!!)
                     getMovieCredits(requestModel)
                     getMovieVideo(requestModel)
+                    getMovieImages(requestModel)
                     getMovieRecommendations(requestModel)
                 }
             }
@@ -69,8 +80,10 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
                     movieModel.postValue(it)
                     seasonList.postValue(it?.seasons)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
+                    createRunTime(it?.tvRuntime?.get(0)!!)
                     getTVCredits(requestModel)
                     getTVVideo(requestModel)
+                    getTvImages(requestModel)
                     getTvRecommendations(requestModel)
                 }
             }
@@ -102,6 +115,8 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
             withContext(Dispatchers.IO) {
                 scheduleRepo?.getMovieCredits(requestModel)?.collect {
                     castToPersonModel(it!!)
+                    getFindDirector(it)
+                    getFindWriting(it)
                 }
             }
         }
@@ -112,6 +127,8 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
             withContext(Dispatchers.IO) {
                 scheduleRepo?.getTvCredits(requestModel)?.collect {
                     castToPersonModel(it!!)
+                    getFindDirector(it)
+                    getFindWriting(it)
                 }
             }
         }
@@ -138,6 +155,25 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         castLoadingShimmer.postValue(false)
     }
 
+    private fun getMovieImages(requestModel: MovieRequestModel) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                scheduleRepo?.getMovieImage(requestModel)?.collect {
+                    mediaImageList.postValue(it?.backdrops)
+                }
+            }
+        }
+    }
+
+    private fun getTvImages(requestModel: MovieRequestModel) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                scheduleRepo?.getTvImage(requestModel)?.collect {
+                    mediaImageList.postValue(it?.backdrops)
+                }
+            }
+        }
+    }
 
     private fun getMovieRecommendations(requestModel: MovieRequestModel) {
         viewModelScope.launch {
@@ -175,11 +211,44 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         return seasons
     }
 
+    private fun getFindDirector(model: MovieCreditsModel) {
+        var crewList = model.crew
+
+        crewList.forEach { crew ->
+            if(crew.knownForDepartment == Department.Directing.name && crew.department == Department.Directing.name) {
+                mediaDirector.postValue(crew.name)
+                return
+            }
+        }
+    }
+
+    private fun getFindWriting(model: MovieCreditsModel) {
+        var crewList = model.crew
+
+        crewList.forEach { crew ->
+            if(crew.job == Department.Screenplay.name && crew.department == Department.Writing.name) {
+                mediaWriting.postValue(crew.name)
+                return
+            }
+        }
+    }
+
     private fun getFormatDate(releaseDate: String): String {
         var format = SimpleDateFormat("yyyy-mm-dd")
         val newDate: Date = format.parse(releaseDate)
 
         format = SimpleDateFormat("MMM yyyy")
         return  format.format(newDate)
+    }
+
+    fun createRunTime(time: Int){
+        if (time > 60) {
+            var hour = time / 60
+            var minute = time % 60
+            formatRunTime.postValue("${hour} hrs ${minute} mins")
+        } else if (time > 0 && time < 60) {
+            var minute = time % 60
+            formatRunTime.postValue("${minute} mins")
+        }
     }
 }

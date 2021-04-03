@@ -3,10 +3,14 @@ package com.laks.tvseries.featurecategory.detail
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.daimajia.slider.library.Animations.DescriptionAnimation
+import com.daimajia.slider.library.SliderLayout
+import com.daimajia.slider.library.SliderTypes.BaseSliderView
+import com.daimajia.slider.library.SliderTypes.TextSliderView
+import com.daimajia.slider.library.Tricks.ViewPagerEx
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -32,7 +36,8 @@ import com.squareup.picasso.Picasso
 import org.koin.core.module.Module
 
 
-class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewModel::class), PeopleItemClickListener, MediaListItemOnClickListener {
+class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewModel::class), PeopleItemClickListener, MediaListItemOnClickListener,
+    BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
         get() = listOf(detailDIModule, stateDIModule, scheduleDIModule)
@@ -60,6 +65,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         bindingViewModel()
         backButtonClick()
         createAdapterListObserver()
+        createImageSlider()
     }
 
     private fun getDetail() {
@@ -80,8 +86,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             movie.backdropPath.let {
                 Picasso.with(this).load("${GlobalConstants.SERVER_BACK_DROP_IMAGE_URL}${it}")
                     .centerCrop().fit().into(
-                    binding.imageBackdrop
-                )
+                        binding.imageBackdrop
+                    )
             }
             movie.posterPath.let {
                 Picasso.with(this).load("${GlobalConstants.SERVER_IMAGE_URL}${it}").fit().into(
@@ -128,7 +134,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         })
 
         baseViewModel.allSeasonButtonOnClickEvent.observe(this, Observer {
-            if(isAllSeason) {
+            if (isAllSeason) {
                 adapterSeason.submitList(baseViewModel.createSeasonListModel(false))
                 binding.labelAllSeasonText.text = resources.getString(R.string.less_season)
             } else {
@@ -162,6 +168,28 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         })
     }
 
+    private fun createImageSlider() {
+        baseViewModel.mediaImageList.observe(this, Observer {
+            var sliderImages = it
+
+            for (slider in sliderImages) {
+                val textSliderView = TextSliderView(this)
+                textSliderView
+                    .image("${GlobalConstants.SERVER_BACK_DROP_IMAGE_URL}${slider.filePath}")
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this)
+                textSliderView.bundle(Bundle())
+                binding.sliderLayout.addSlider(textSliderView)
+            }
+
+            binding.sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion)
+            binding.sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom)
+            binding.sliderLayout.setCustomAnimation(DescriptionAnimation())
+            binding.sliderLayout.setDuration(4000)
+            binding.sliderLayout.addOnPageChangeListener(this)
+        })
+    }
+
     private fun setAdapter() {
         adapter = GenreListItemAdapter(this@MovieDetailActivity)
         val layoutManager = FlexboxLayoutManager(this@MovieDetailActivity)
@@ -172,7 +200,10 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun setCastListAdapter() {
-        adapterCast = PeopleListItemAdapter(context = this@MovieDetailActivity, clickListener = this)
+        adapterCast = PeopleListItemAdapter(
+            context = this@MovieDetailActivity,
+            clickListener = this
+        )
         var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerCastList.layoutManager = layoutManager
         binding.recyclerCastList.adapter = adapterCast
@@ -180,7 +211,10 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun setMediaListAdapter() {
-        adapterMedia = MediaListItemAdapter(context = this@MovieDetailActivity, clickListener = this)
+        adapterMedia = MediaListItemAdapter(
+            context = this@MovieDetailActivity,
+            clickListener = this
+        )
         var layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerRecommendationsMovieList.layoutManager = layoutManager
         binding.recyclerRecommendationsMovieList.adapter = adapterMedia
@@ -198,7 +232,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private fun playVideo(videoId: String?) {
         lifecycle.addObserver(binding.youtubePlayerView)
 
-        binding.youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+        binding.youtubePlayerView.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 videoId?.let { youTubePlayer.loadVideo(it, 0f) }
             }
@@ -222,9 +257,20 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     override fun mediaListItemOnClickListener(scheduleInfo: MovieModel) {
-        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, if(type == MediaType.movie) MediaType.movie else MediaType.tv)
+        MemoryCache.cache.setMemoryCacheValue(
+            GlobalConstants.MEDIA_DETAIL_TYPE,
+            if (type == MediaType.movie) MediaType.movie else MediaType.tv
+        )
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, scheduleInfo.id!!)
         var intent = Intent(this, MovieDetailActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onSliderClick(slider: BaseSliderView?) {}
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+
+    override fun onPageSelected(position: Int) {}
+
+    override fun onPageScrollStateChanged(state: Int) {}
 }

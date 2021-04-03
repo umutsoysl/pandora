@@ -20,3 +20,7 @@ data class PersonInfo(
     @SerializedName("profile_path")
     val posterPath: String? = null,
 )
+
+enum class Department {
+    Directing, Editing, Writing, Screenplay
+}

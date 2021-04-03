@@ -112,6 +112,8 @@ ext.libraries = [
         // 3rd
         picasso                    : "com.squareup.picasso:picasso:$versions.picasso",
         circleimageview            : "de.hdodenhof:circleimageview:$versions.circleimageview",
+        imageSlider                : "com.daimajia.slider:library:1.1.5@aar",
+        nineOldAndroids            : "com.nineoldandroids:library:2.4.0",
         photoView                  : "com.github.chrisbanes:PhotoView:$versions.photoView",
         flexbox                    : "com.google.android:flexbox:$versions.flexbox",
         lottie                     : "com.airbnb.android:lottie:$versions.lottie",

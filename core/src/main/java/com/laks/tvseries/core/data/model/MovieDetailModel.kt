@@ -9,7 +9,7 @@ data class MovieDetailModel(
         @SerializedName("backdrop_path")
         val backdropPath: String? = null,
 
-        val budget: Long = 0,
+        val budget: String = "-" ,
         val genres: ArrayList<Genre>? = arrayListOf(),
         val homepage: String? = null,
         val id: Long = 0,
@@ -35,10 +35,10 @@ data class MovieDetailModel(
         @SerializedName("release_date", alternate = ["first_air_date"])
         val releaseDate: String? = null,
 
-        val revenue: Long = 0,
-        val runtime: String = "",
+        val revenue: String = "-",
+        val runtime: Int = 0,
         @SerializedName("episode_run_time")
-        val tvRuntime: ArrayList<String>? = arrayListOf(),
+        val tvRuntime: ArrayList<Int>? = arrayListOf(),
         val status: String? = null,
         val tagline: String? = null,
         @SerializedName("title", alternate = ["name"])

@@ -59,4 +59,16 @@ class ScheduleRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
             api.getTvRecommendations(authToken = requestModel.apiKey!!, tvID = requestModel.movieID!!, page = requestModel.page!!, language = requestModel.language!!)
         }
     }
+
+    fun getMovieImage(requestModel: MovieRequestModel): Flow<MediaImageModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getMovieImage(authToken = requestModel.apiKey!!, movieID = requestModel.movieID!!)
+        }
+    }
+
+    fun getTvImage(requestModel: MovieRequestModel): Flow<MediaImageModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getTvImage(authToken = requestModel.apiKey!!, tvID = requestModel.movieID!!)
+        }
+    }
 }

@@ -266,6 +266,159 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DetailSubTitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/list_top_margin"
+                            android:text="@string/media_info" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/original_title"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/director"
+                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/screenplay"
+                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/status"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/time"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/original_language"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/budget"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/MediaInfoSubTitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/revenue"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.movieModel.title}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.mediaDirector}"
+                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.mediaWriting}"
+                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.movieModel.status}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.formatRunTime}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.movieModel.originalLanguage}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.movieModel.budget}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                                <TextView
+                                    style="@style/SeasonEpisodesStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.movieModel.revenue}"
+                                    android:layout_marginBottom="@dimen/medium_margin"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/layoutSeason"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -305,6 +458,34 @@
                                 android:textColor="@color/red" />
 
                         </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.mediaImageList.size()>0? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            style="@style/DetailSubTitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            android:text="@string/media" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/slider_image_height"
+                            app:cardCornerRadius="@dimen/media_card_radius"
+                            android:layout_marginTop="@dimen/medium_margin"
+                            app:cardBackgroundColor="@color/dark_gray"
+                            app:cardPreventCornerOverlap="true">
+                            <com.daimajia.slider.library.SliderLayout
+                                android:id="@+id/sliderLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/slider_image_height" />
+                        </androidx.cardview.widget.CardView>
 
                     </LinearLayout>
 
