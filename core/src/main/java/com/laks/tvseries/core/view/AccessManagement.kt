@@ -13,13 +13,5 @@ class AccessManagement {
                 null
             }
         }
-
-        fun instantiateActivity(className: String): BaseActivity<*>? {
-            return try {
-                Class.forName(className).newInstance() as BaseActivity<*>
-            } catch (e: Exception) {
-                null
-            }
-        }
     }
 }

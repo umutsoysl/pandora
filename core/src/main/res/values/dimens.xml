@@ -16,4 +16,5 @@
     <dimen name="poster_bottom_top_margin">-40dp</dimen>
     <dimen name="poster_image_top_margin">-85dp</dimen>
     <dimen name="detail_poster_height">160dp</dimen>
+    <dimen name="actor_poster_top_margin">-75dp</dimen>
 </resources>

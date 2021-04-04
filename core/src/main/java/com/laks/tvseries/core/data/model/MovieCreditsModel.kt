@@ -12,6 +12,12 @@ data class CastObject(
         val adult: Boolean? = false,
         val gender: Long? = 0,
         val id: Long? = 0,
+        var isMovie: Boolean? = true,
+        @SerializedName("backdrop_path")
+        val backdropPath: String? = null,
+
+        @SerializedName("poster_path")
+        val posterPath: String? = null,
 
         @SerializedName("known_for_department")
         val knownForDepartment: String? = null,
@@ -29,6 +35,10 @@ data class CastObject(
         @SerializedName("cast_id")
         val castID: Long? = 0,
 
+        @SerializedName("vote_average")
+        val voteAverage: String? = "9.0",
+
+        val title: String? = null,
         val character: String? = null,
 
         @SerializedName("credit_id")

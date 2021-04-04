@@ -23,7 +23,7 @@ import com.laks.tvseries.core.common.people.PeopleListItemAdapter
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.PersonInfo
-import com.laks.tvseries.core.di.scheduleDIModule
+import com.laks.tvseries.core.di.mediaDIModule
 import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
@@ -40,7 +40,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
-        get() = listOf(detailDIModule, stateDIModule, scheduleDIModule)
+        get() = listOf(detailDIModule, stateDIModule, mediaDIModule)
 
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var adapter: GenreListItemAdapter

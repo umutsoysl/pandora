@@ -1,0 +1,361 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featureactor.detail.ActorDetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootRelativeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_color">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/main_bg_color">
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/sliderLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_backdrop_size" />
+
+                <RelativeLayout
+                    android:id="@+id/gradientView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gradient_backdrop_size"
+                    android:background="@drawable/poster_bottom_gradient" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/gradientView"
+                    android:background="@color/main_bg_color" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/regular_margin"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:clickable="true"
+                    app:backgroundTint="@color/transparent"
+                    app:borderWidth="0dp"
+                    app:elevation="0dp"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="@dimen/media_layout_width"
+                    android:layout_height="@dimen/detail_poster_height"
+                    android:layout_below="@+id/gradientView"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/actor_poster_top_margin"
+                    app:cardBackgroundColor="@color/dark_gray"
+                    app:cardCornerRadius="@dimen/media_card_radius"
+                    app:cardElevation="3dp"
+                    app:cardMaxElevation="3dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/imageSchedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/labelMovieTitle"
+                    style="@style/DetailTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradientView"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_marginTop="-14dp"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:text="@{viewModel.actorDetailModel.name}" />
+
+                <TextView
+                    android:id="@+id/labelDateTitle"
+                    style="@style/DetailDateStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/labelMovieTitle"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:text="@{viewModel.actorDetailModel.knownForDepartment}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cardView"
+                    android:layout_margin="@dimen/medium_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/DetailSubTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about" />
+
+                    <TextView
+                        android:id="@+id/labelOverView"
+                        style="@style/DetailContentStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/regular_margin" />
+
+                    <RelativeLayout
+                        android:id="@+id/moreOverviewButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.moreButtonOnClickListener()}"
+                        android:visibility="@{viewModel.actorDetailModel.biography.length()>110? View.VISIBLE:View.GONE}">
+
+                        <TextView
+                            android:id="@+id/labelMore"
+                            style="@style/DetailTagLineStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/regular_margin"
+                            android:text="@string/more"
+                            android:textColor="@color/red" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/DetailSubTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium_margin"
+                        android:text="@string/personal_info" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/medium_margin"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/MediaInfoSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium_margin"
+                                android:text="@string/name" />
+
+                            <TextView
+                                style="@style/MediaInfoSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium_margin"
+                                android:text="@string/known_for" />
+
+                            <TextView
+                                style="@style/MediaInfoSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium_margin"
+                                android:text="@string/birthday" />
+
+                            <TextView
+                                style="@style/MediaInfoSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium_margin"
+                                android:text="@string/place_of_birth" />v
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                            style="@style/SeasonEpisodesStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.actorDetailModel.name}"
+                            android:layout_marginBottom="@dimen/medium_margin"/>
+
+                            <TextView
+                                style="@style/SeasonEpisodesStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.actorDetailModel.knownForDepartment}"
+                                android:layout_marginBottom="@dimen/medium_margin"/>
+
+                            <TextView
+                                style="@style/SeasonEpisodesStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.actorDetailModel.birthday}"
+                                android:layout_marginBottom="@dimen/medium_margin"/>
+
+                            <TextView
+                                style="@style/SeasonEpisodesStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.actorDetailModel.placeOfBirth}"
+                                android:layout_marginBottom="@dimen/medium_margin"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/list_top_margin"
+                        android:visibility="@{viewModel.movieCreditsModel.size()>0 ? View.VISIBLE: View.GONE}"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/media_title_bottom_margin">
+
+                            <TextView
+                                style="@style/DetailSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/movies" />
+
+                            <ImageView
+                                android:id="@+id/buttonMoreMovies"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/ic_baseline_read_more_24" />
+
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerMovieList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="@{viewModel.movieCreditsShimmer? View.GONE: View.VISIBLE}"
+                            android:layout_marginTop="@dimen/regular_margin"
+                            android:nestedScrollingEnabled="false"
+                            tools:listitem="@layout/layout_cast_list_item" />
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.movieCreditsShimmer? View.VISIBLE: View.GONE}"
+                            tools:ignore="MissingClass">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility="@{viewModel.movieCreditsShimmer? View.VISIBLE: View.GONE}">
+
+                                <include layout="@layout/shimmer_media_item" />
+
+                                <include layout="@layout/shimmer_media_item" />
+
+                            </LinearLayout>
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/list_top_margin"
+                        android:visibility="@{viewModel.tvCreditsModel.size()>0 ? View.VISIBLE: View.GONE}"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/media_title_bottom_margin">
+
+                            <TextView
+                                style="@style/DetailSubTitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tv_series" />
+
+                            <ImageView
+                                android:id="@+id/buttonMoreTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/ic_baseline_read_more_24" />
+
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerTvList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="@{viewModel.tvCreditsShimmer? View.GONE: View.VISIBLE}"
+                            android:layout_marginTop="@dimen/regular_margin"
+                            android:nestedScrollingEnabled="false"
+                            tools:listitem="@layout/layout_cast_list_item" />
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.tvCreditsShimmer? View.VISIBLE: View.GONE}"
+                            tools:ignore="MissingClass">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility="@{viewModel.tvCreditsShimmer? View.VISIBLE: View.GONE}">
+
+                                <include layout="@layout/shimmer_media_item" />
+
+                                <include layout="@layout/shimmer_media_item" />
+
+                            </LinearLayout>
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

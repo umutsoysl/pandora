@@ -1,5 +1,6 @@
 package com.laks.tvseries.featurecategory.category.people
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +9,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
+import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
+import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.PersonInfo
+import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.core.view.AccessManagement
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
 import com.laks.tvseries.featurecategory.category.tv.PopularTvShowFragment
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
+import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
 import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
 import org.koin.core.module.Module
 
@@ -68,6 +75,8 @@ class PopularPeopleFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
     }
 
     override fun personClickListener(person: PersonInfo) {
-        TODO("Not yet implemented")
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ACTOR_DETAIL_ID, person.id!!)
+        var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.actorDetailActivityClassName)
+        startActivity(intent)
     }
 }

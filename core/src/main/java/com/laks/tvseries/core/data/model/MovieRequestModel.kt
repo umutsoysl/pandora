@@ -11,7 +11,8 @@ import com.laks.tvseries.core.data.model.Time.Companion.week
 
 data class MovieRequestModel(
         var movieID: String? = "0",
-        var apiKey: String?  = "api_key",
+        var actorID: String? = "0",
+        var apiKey: String?  = "d9f2f7f0f3215b25a68386eb9f7ae480",
         var language: String? = "en-US",
         var page: Int? = 1,
         @Time var time: String? = null,
