@@ -20,6 +20,7 @@ import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.PersonInfo
@@ -253,7 +254,9 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     override fun personClickListener(person: PersonInfo) {
-        TODO("Not yet implemented")
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ACTOR_DETAIL_ID, person.id!!)
+        var intent = Intent(Intent.ACTION_VIEW).setClassName(this, PandoraActivities.actorDetailActivityClassName)
+        startActivity(intent)
     }
 
     override fun mediaListItemOnClickListener(scheduleInfo: MovieModel) {

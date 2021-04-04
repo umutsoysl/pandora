@@ -59,6 +59,9 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 actorRepository?.getActorMovies(requestModel)?.collect {
+                    it?.cast?.forEach { cast ->
+                        cast.isMovie = true
+                    }
                     movieCreditsModel.postValue(it?.cast!!)
                     movieCreditsShimmer.postValue(false)
                 }
