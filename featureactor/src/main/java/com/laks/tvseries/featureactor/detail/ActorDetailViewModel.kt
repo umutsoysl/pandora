@@ -23,6 +23,20 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
     var movieCreditsShimmer = MutableLiveData<Boolean>(true)
     var tvCreditsShimmer = MutableLiveData<Boolean>(true)
 
+    private val _allMovieClickEvent = MutableLiveData<Unit>()
+    val allMovieClickEvent: LiveData<Unit> = _allMovieClickEvent
+
+    fun allMovieButtonOnClickListener() {
+        _allMovieClickEvent.value = Unit
+    }
+
+    private val _allTvShowClickEvent = MutableLiveData<Unit>()
+    val allTvShowClickEvent: LiveData<Unit> = _allTvShowClickEvent
+
+    fun allTvShowButtonOnClickListener() {
+        _allTvShowClickEvent.value = Unit
+    }
+
     private val _moreClickEvent = MutableLiveData<Unit>()
     val moreButtonClickEvent: LiveData<Unit> = _moreClickEvent
 

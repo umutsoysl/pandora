@@ -9,5 +9,6 @@ class GlobalConstants {
         const val MEDIA_DETAIL_ID = "media_detail_id"
         const val MEDIA_DETAIL_TYPE = "media_detail_type"
         const val ACTOR_DETAIL_ID = "actor_detail_id"
+        const val KEY_ACTOR_MEDIA_LIST = "KEY_ACTOR_MEDIA_LIST"
     }
 }

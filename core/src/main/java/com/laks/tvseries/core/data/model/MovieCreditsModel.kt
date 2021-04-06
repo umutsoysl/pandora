@@ -1,6 +1,7 @@
 package com.laks.tvseries.core.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.laks.tvseries.core.base.model.BaseModel
 
 data class MovieCreditsModel(
         val id: Long? = 0,
@@ -47,4 +48,4 @@ data class CastObject(
         val order: Long? = null,
         val department: String? = null,
         val job: String? = null,
-)
+): BaseModel()

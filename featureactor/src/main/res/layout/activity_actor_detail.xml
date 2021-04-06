@@ -252,6 +252,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerHorizontal="true"
+                                android:onClick="@{() -> viewModel.allMovieButtonOnClickListener()}"
                                 android:background="@drawable/ic_baseline_read_more_24" />
 
                         </RelativeLayout>
@@ -313,6 +314,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerHorizontal="true"
+                                android:onClick="@{() -> viewModel.allTvShowButtonOnClickListener()}"
                                 android:background="@drawable/ic_baseline_read_more_24" />
 
                         </RelativeLayout>
@@ -350,6 +352,9 @@
 
                     </LinearLayout>
 
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp" />
 
                 </LinearLayout>
 

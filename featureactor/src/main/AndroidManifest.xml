@@ -15,6 +15,7 @@
 
     <application>
         <activity android:name=".detail.ActorDetailActivity"></activity>
+        <activity android:name=".list.ActorMovieTvShowListActivity"></activity>
     </application>
 
 </manifest>

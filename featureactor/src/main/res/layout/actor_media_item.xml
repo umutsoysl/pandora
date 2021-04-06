@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="itemClickListener"
+            type="com.laks.tvseries.core.common.media.CastListItemOnClickListener" />
+
+        <variable
+            name="schedule"
+            type="com.laks.tvseries.core.data.model.CastObject" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> itemClickListener.castListItemOnClickListener(schedule)}"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actor_media_height"
+            app:cardCornerRadius="@dimen/media_card_radius"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="3dp"
+            app:cardBackgroundColor="@color/dark_gray"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imageSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actor_media_height" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/rating_layout_bg_color"
+                android:visibility="@{schedule.voteAverage == null ? View .GONE: View.VISIBLE}"
+                android:layout_gravity="right"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/labelRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_gray"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="@{schedule.voteAverage.toString()}"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/regular_margin"
+            android:layout_marginBottom="@dimen/five_margin"
+            android:layout_marginTop="-3dp"
+            android:maxLines="2"
+            android:layout_gravity="left"
+            android:textColor="@color/white"
+            android:text="@{schedule.title}"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</layout>

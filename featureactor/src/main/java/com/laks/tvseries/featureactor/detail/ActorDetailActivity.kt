@@ -22,6 +22,7 @@ import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featureactor.R
 import com.laks.tvseries.featureactor.databinding.ActivityActorDetailBinding
 import com.laks.tvseries.featureactor.di.actorDetailDIModule
+import com.laks.tvseries.featureactor.list.ActorMovieTvShowListActivity
 import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
 import com.squareup.picasso.Picasso
 import org.koin.core.module.Module
@@ -83,6 +84,23 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
             adapterTv.notifyDataSetChanged()
             requestLayout()
         })
+
+        baseViewModel.allMovieClickEvent.observe(this, Observer {
+            setTransferMediaList(isMovie = true)
+        })
+
+        baseViewModel.allTvShowClickEvent.observe(this, Observer {
+            setTransferMediaList(isMovie = false)
+        })
+    }
+
+    private fun setTransferMediaList(isMovie: Boolean) {
+        if (isMovie) {
+            baseViewModel.movieCreditsModel.value?.let { MemoryCache.cache.setMemoryCacheValue(GlobalConstants.KEY_ACTOR_MEDIA_LIST, it) }
+        } else {
+            baseViewModel.tvCreditsModel.value?.let { MemoryCache.cache.setMemoryCacheValue(GlobalConstants.KEY_ACTOR_MEDIA_LIST, it) }
+        }
+        startActivity(Intent(this, ActorMovieTvShowListActivity::class.java))
     }
 
     private fun moreButtonAction() {
