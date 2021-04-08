@@ -28,9 +28,10 @@ class ActorMovieTvShowListActivity : BaseActivity<ActorDetailViewModel>(ActorDet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_actor_media_list)
+        binding = inflate(R.layout.activity_actor_media_list)
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
+        setToolbarTitle(resources.getString(R.string.all_media))
 
         setAdapter()
         getActorMediaList()

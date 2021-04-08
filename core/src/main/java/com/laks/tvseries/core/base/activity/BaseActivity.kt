@@ -7,8 +7,12 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.BuildConfig
+import com.google.android.material.appbar.AppBarLayout
 import com.laks.tvseries.core.R
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
@@ -35,6 +39,8 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     private val loadingStateObserver by lazy { LoadingEventObserver(supportFragmentManager) }
     private lateinit var binding: ActivityBaseBinding
     private val classTag = this.javaClass.canonicalName
+    var qnbAppBarLayout: AppBarLayout? = null
+    private var qnbNestedScrollView: NestedScrollView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +53,32 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         setViewStateId()
         initStatusBar()
         observeLoadingState()
+        onClickHeaderBackButton()
+    }
+
+    fun <T : ViewDataBinding> inflate(layoutResId: Int): T {
+        return DataBindingUtil.inflate(layoutInflater, layoutResId,
+                binding.contentLayout, true)
+    }
+
+    private fun onClickHeaderBackButton() {
+        binding.buttonBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    @JvmName("setToolbarTitle")
+    fun setToolbarTitle(title: String) {
+        binding.labelTitle.text = title
+    }
+
+    @JvmName("setToolbarVisible")
+    fun setToolbarVisible(isVisible: Boolean) {
+        binding.constraintLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
     private fun setViewStateId() {
-        baseViewModel?.repository?.classTag = classTag
+        baseViewModel.repository?.classTag = classTag
     }
 
     private fun initStatusBar() {
