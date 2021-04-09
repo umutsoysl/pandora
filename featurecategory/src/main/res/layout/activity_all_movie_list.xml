@@ -1,0 +1,81 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featurecategory.category.TrendCategoryViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootRelativeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_color">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerMovieList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/regular_margin"
+                    android:nestedScrollingEnabled="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.shimmerVisible ? View.VISIBLE : View.GONE}"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimmer_media_item"/>
+                    <include layout="@layout/shimmer_media_item"/>
+                    <include layout="@layout/shimmer_media_item"/>
+                    <include layout="@layout/shimmer_media_item"/>
+                    <include layout="@layout/shimmer_media_item"/>
+                    <include layout="@layout/shimmer_media_item"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/buttonMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints"
+                    android:background="@color/bottom_navigation_bg_color"
+                    android:visibility="@{viewModel.shimmerVisible ? View.GONE : View.VISIBLE}"
+                    android:paddingVertical="@dimen/regular_margin">
+
+                    <TextView
+                        style="@style/GenreTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/more_load"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/red"/>
+
+                </RelativeLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

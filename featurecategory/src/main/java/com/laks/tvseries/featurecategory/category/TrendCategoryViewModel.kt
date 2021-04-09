@@ -13,8 +13,6 @@ import kotlinx.coroutines.withContext
 class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(categoryRepo) {
 
     val trendingMovieList = MutableLiveData<DiscoverMovieListModel>()
-    val nowPlayingMovieList = MutableLiveData<DiscoverMovieListModel>()
-    val upComingMovieList = MutableLiveData<DiscoverMovieListModel>()
 
     val trendingTvList = MutableLiveData<DiscoverMovieListModel>()
     val popularTvShowList = MutableLiveData<DiscoverMovieListModel>()
@@ -22,6 +20,8 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     val popularPeopleList = MutableLiveData<PersonModel>()
 
     val shimmerVisible = MutableLiveData<Boolean>(true)
+
+    val allMovieList = MutableLiveData<DiscoverMovieListModel>()
 
     fun getTrendingList(type: String) {
         viewModelScope.launch {
@@ -40,13 +40,27 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
         }
     }
 
-
-    fun getNowPlayingMovieList() {
+    fun getPopularMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 var requestModel = MovieRequestModel()
+                requestModel.page = page
+                categoryRepo?.getMoviePopular(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+
+    fun getNowPlayingMovieList(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                var requestModel = MovieRequestModel()
+                requestModel.page = page
                 categoryRepo?.getNowPlaying(requestModel)?.collect {
-                    nowPlayingMovieList.postValue(it)
+                    allMovieList.postValue(it)
                     shimmerVisible.postValue(false)
                 }
             }
@@ -76,11 +90,13 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
         }
     }
 
-    fun getUpComingMovieList() {
+    fun getUpComingMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                categoryRepo?.getUpComingMovie()?.collect {
-                    upComingMovieList.postValue(it)
+                var requestModel = MovieRequestModel()
+                requestModel.page = page
+                categoryRepo?.getUpComingMovie(requestModel)?.collect {
+                    allMovieList.postValue(it)
                     shimmerVisible.postValue(false)
                 }
             }

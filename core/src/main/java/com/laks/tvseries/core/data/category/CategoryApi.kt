@@ -25,4 +25,7 @@ interface CategoryApi {
     @GET("/3/movie/upcoming")
     suspend fun getUpComingMovie(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
 
+    @GET("/3/movie/popular")
+    suspend fun getPopularMovie(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+
 }

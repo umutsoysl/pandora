@@ -49,8 +49,25 @@
                     style="@style/HeaderTitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_toLeftOf="@+id/buttonSearch"
+                    android:layout_toRightOf="@+id/buttonBack"
                     android:layout_centerVertical="true" />
+
+                <RelativeLayout
+                    android:id="@+id/buttonSearch"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_baseline_search_24" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
         </RelativeLayout>

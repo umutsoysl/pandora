@@ -14,6 +14,7 @@ import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
+import com.laks.tvseries.core.data.model.MovieType
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
@@ -51,13 +52,20 @@ class NowPlayingMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(Tren
     }
 
     private fun bindingViewModel() {
-        baseViewModel.nowPlayingMovieList.observe(requireActivity(), Observer {
+        baseViewModel.allMovieList.observe(requireActivity(), Observer {
             adapter.submitList(it.results)
             adapter.notifyDataSetChanged()
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
             binding.executePendingBindings()
         })
+
+        binding.buttonMore.setOnClickListener {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_TYPE, MovieType.nowPlaying)
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ALL_MOVIE_TITLE, binding.labelTitle.text)
+            var intent = Intent(requireActivity(), AllMovieListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setAdapter() {

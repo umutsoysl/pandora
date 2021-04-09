@@ -34,10 +34,15 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
         }
     }
 
-    fun getUpComingMovie(): Flow<DiscoverMovieListModel?> {
+    fun getUpComingMovie(requestModel: MovieRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            var requestModel = MovieRequestModel()
             api.getUpComingMovie(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+        }
+    }
+
+    fun getMoviePopular(requestModel: MovieRequestModel): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getPopularMovie(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
         }
     }
 }

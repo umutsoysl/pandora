@@ -17,5 +17,7 @@
     <application>
         <activity
             android:name=".detail.MovieDetailActivity" />
+        <activity
+            android:name=".category.movie.AllMovieListActivity" />
     </application>
 </manifest>
