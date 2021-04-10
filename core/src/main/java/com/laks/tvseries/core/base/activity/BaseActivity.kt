@@ -1,6 +1,7 @@
 package com.laks.tvseries.core.base.activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.laks.tvseries.core.R
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import com.laks.tvseries.core.loading.LoadingEventObserver
@@ -54,6 +56,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         initStatusBar()
         observeLoadingState()
         onClickHeaderBackButton()
+        onClickHeaderSearchButton()
     }
 
     fun <T : ViewDataBinding> inflate(layoutResId: Int): T {
@@ -63,7 +66,14 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
     private fun onClickHeaderBackButton() {
         binding.buttonBack.setOnClickListener {
-            onBackPressed()
+            super.onBackPressed()
+        }
+    }
+
+    private fun onClickHeaderSearchButton() {
+        binding.buttonSearch.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW).setClassName(this, PandoraActivities.searchActivityClassName)
+            startActivity(intent)
         }
     }
 

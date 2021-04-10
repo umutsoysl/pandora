@@ -36,7 +36,7 @@ android {
     dataBinding {
         enabled = true
     }
-    dynamicFeatures = [':featurecategory', ':featureactor']
+    dynamicFeatures = [':featurecategory', ':featureactor', ':featuresearch']
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'

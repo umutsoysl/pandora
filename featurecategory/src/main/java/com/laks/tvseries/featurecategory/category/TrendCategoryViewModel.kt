@@ -14,9 +14,6 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
 
     val trendingMovieList = MutableLiveData<DiscoverMovieListModel>()
 
-    val trendingTvList = MutableLiveData<DiscoverMovieListModel>()
-    val popularTvShowList = MutableLiveData<DiscoverMovieListModel>()
-
     val popularPeopleList = MutableLiveData<PersonModel>()
 
     val shimmerVisible = MutableLiveData<Boolean>(true)
@@ -32,7 +29,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
                categoryRepo?.getTrending(requestModel)?.collect {
                    when(type) {
                        MediaType.movie -> trendingMovieList.postValue(it)
-                       MediaType.tv -> trendingTvList.postValue(it)
+                       MediaType.tv -> allMovieList.postValue(it)
                    }
                    shimmerVisible.postValue(false)
                }
@@ -67,22 +64,25 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
         }
     }
 
-    fun getPopularTvShowList() {
+    fun getPopularTvShowList(page: Int? = 1)  {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 var requestModel = MovieRequestModel()
+                requestModel.page = page
                 categoryRepo?.getTvPopularShows(requestModel)?.collect {
-                    popularTvShowList.postValue(it)
+                    allMovieList.postValue(it)
                     shimmerVisible.postValue(false)
                 }
             }
         }
     }
 
-    fun getPopularPeopleList() {
+    fun getPopularPeopleList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                categoryRepo?.getPopularPeople()?.collect {
+                var requestModel = MovieRequestModel()
+                requestModel.page = page
+                categoryRepo?.getPopularPeople(requestModel)?.collect {
                     popularPeopleList.postValue(it)
                     shimmerVisible.postValue(false)
                 }

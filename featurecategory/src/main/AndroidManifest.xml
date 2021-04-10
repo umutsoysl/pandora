@@ -18,6 +18,8 @@
         <activity
             android:name=".detail.MovieDetailActivity" />
         <activity
-            android:name=".category.movie.AllMovieListActivity" />
+            android:name=".list.AllMovieListActivity" />
+        <activity
+            android:name=".list.AllPeopleListActivity" />
     </application>
 </manifest>

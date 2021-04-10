@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/transitionMain"
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="1000">
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:onTouchUp="decelerate"
+            app:touchAnchorId="@id/scr"
+            app:touchAnchorSide="bottom" />
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="79"
+                app:motionTarget="@id/toolBgLayout" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="79"
+                app:motionTarget="@id/buttonSearch" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="79"
+                app:motionTarget="@id/similarTitle" />
+
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="99"
+                app:motionTarget="@id/toolBgLayout" />
+
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="99"
+                app:motionTarget="@id/buttonSearch" />
+
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="99"
+                app:motionTarget="@id/similarTitle" />
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@+id/toolBgLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bg_toolbar"
+            android:alpha="0"
+            android:background="@color/bottom_navigation_bg_color"/>
+
+        <Constraint
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"/>
+
+        <Constraint
+            android:id="@+id/similarTitle"
+            android:layout_width="match_parent"
+            android:alpha="0"
+            android:layout_height="wrap_content" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/toolBgLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bg_toolbar"
+            android:background="@color/bottom_navigation_bg_color"/>
+
+        <Constraint
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Constraint
+            android:id="@+id/similarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ConstraintSet>
+
+</MotionScene>

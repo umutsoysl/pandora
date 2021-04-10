@@ -14,12 +14,14 @@ import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
+import com.laks.tvseries.core.data.model.MovieType
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
 import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
 import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.list.AllMovieListActivity
 import org.koin.core.module.Module
 
 class PopularTvShowFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCategoryViewModel::class),
@@ -52,13 +54,20 @@ class PopularTvShowFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
     }
 
     private fun bindingViewModel() {
-        baseViewModel.popularTvShowList.observe(requireActivity(), Observer {
+        baseViewModel.allMovieList.observe(requireActivity(), Observer {
             adapter.submitList(it.results)
             adapter.notifyDataSetChanged()
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
             binding.executePendingBindings()
         })
+
+        binding.buttonMore.setOnClickListener {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_TYPE, MovieType.popularTV)
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ALL_MOVIE_TITLE, "${binding.labelTitle.text} ${binding.labelSubTitle.text}")
+            var intent = Intent(requireActivity(), AllMovieListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setAdapter() {

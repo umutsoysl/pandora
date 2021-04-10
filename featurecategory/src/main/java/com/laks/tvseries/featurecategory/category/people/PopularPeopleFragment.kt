@@ -13,16 +13,14 @@ import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
 import com.laks.tvseries.core.data.PandoraActivities
-import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.global.GlobalConstants
-import com.laks.tvseries.core.view.AccessManagement
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
 import com.laks.tvseries.featurecategory.category.tv.PopularTvShowFragment
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
-import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
 import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.list.AllPeopleListActivity
 import org.koin.core.module.Module
 
 class PopularPeopleFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCategoryViewModel::class), PeopleItemClickListener {
@@ -61,6 +59,12 @@ class PopularPeopleFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
             binding.invalidateAll()
             binding.executePendingBindings()
         })
+
+        binding.buttonMore.setOnClickListener {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ALL_MOVIE_TITLE, "${binding.labelTitle.text} ${binding.labelSubTitle.text}")
+            var intent = Intent(requireActivity(), AllPeopleListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setAdapter() {

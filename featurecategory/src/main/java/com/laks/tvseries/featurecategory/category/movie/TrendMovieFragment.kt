@@ -21,6 +21,7 @@ import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
 import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
 import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.list.AllMovieListActivity
 import org.koin.core.module.Module
 
 class TrendMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCategoryViewModel::class),
@@ -61,7 +62,7 @@ class TrendMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCate
 
         binding.buttonMore.setOnClickListener {
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_TYPE, MovieType.trend)
-            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ALL_MOVIE_TITLE, binding.labelTitle.text)
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.ALL_MOVIE_TITLE, "${binding.labelTitle.text} ${binding.labelSubTitle.text}")
             var intent = Intent(requireActivity(), AllMovieListActivity::class.java)
             startActivity(intent)
         }

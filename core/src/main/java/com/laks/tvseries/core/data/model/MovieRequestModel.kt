@@ -14,6 +14,7 @@ data class MovieRequestModel(
         var actorID: String? = "0",
         var apiKey: String?  = "api_key",
         var language: String? = "en-US",
+        var query: String? = null,
         var page: Int? = 1,
         @Time var time: String? = null,
         @MediaType var type: String? = null,

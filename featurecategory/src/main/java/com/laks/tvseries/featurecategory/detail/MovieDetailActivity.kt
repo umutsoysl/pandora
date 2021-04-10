@@ -248,7 +248,6 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun requestLayout() {
-        binding.rootRelativeView.requestLayout()
         binding.invalidateAll()
         binding.executePendingBindings()
     }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="itemClickListener"
+            type="com.laks.tvseries.core.common.people.PeopleItemClickListener" />
+
+        <variable
+            name="people"
+            type="com.laks.tvseries.core.data.model.PersonInfo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> itemClickListener.personClickListener(people)}"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/media_height"
+            app:cardCornerRadius="@dimen/media_card_radius"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="3dp"
+            app:cardBackgroundColor="@color/dark_gray"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imageSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/media_height" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/regular_margin"
+            android:layout_marginBottom="@dimen/five_margin"
+            android:layout_marginTop="-3dp"
+            android:maxLines="2"
+            android:layout_gravity="left"
+            android:textColor="@color/white"
+            android:text="@{people.name}"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</layout>

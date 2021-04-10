@@ -1,4 +1,4 @@
-package com.laks.tvseries.featurecategory.category.movie.adapter
+package com.laks.tvseries.featuresearch.tabs.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.global.GlobalConstants
-import com.laks.tvseries.featurecategory.databinding.LayoutAllMovieItemBinding
+import com.laks.tvseries.featuresearch.databinding.LayoutSearchMovieItemBinding
 import com.squareup.picasso.Picasso
 
-class AllMovieListAdapter(private val context: Context, private val clickListener: MediaListItemOnClickListener) : ListAdapter<MovieModel, AllMovieListAdapter.AllMovieListViewHolder>(AllMovieListItemModelDiffCallback()) {
+class SearchMovieListAdapter(private val context: Context, private val clickListener: MediaListItemOnClickListener) : ListAdapter<MovieModel, SearchMovieListAdapter.AllMovieListViewHolder>(AllMovieListItemModelDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllMovieListViewHolder {
         return AllMovieListViewHolder.from(parent)
@@ -23,7 +23,7 @@ class AllMovieListAdapter(private val context: Context, private val clickListene
         holder.bind(context, clickListener, getItem(position))
     }
 
-    class AllMovieListViewHolder(private val binding: LayoutAllMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AllMovieListViewHolder(private val binding: LayoutSearchMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(context: Context, clickListener: MediaListItemOnClickListener, itemData: MovieModel) {
             binding.itemClickListener = clickListener
@@ -35,7 +35,7 @@ class AllMovieListAdapter(private val context: Context, private val clickListene
         companion object {
             fun from(parent: ViewGroup): AllMovieListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = LayoutAllMovieItemBinding.inflate(layoutInflater, parent, false)
+                val binding = LayoutSearchMovieItemBinding.inflate(layoutInflater, parent, false)
                 return AllMovieListViewHolder(binding)
             }
         }

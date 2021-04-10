@@ -27,9 +27,8 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
         }
     }
 
-    fun getPopularPeople(): Flow<PersonModel?> {
+    fun getPopularPeople(requestModel: MovieRequestModel): Flow<PersonModel?> {
         return fetchData(isLoadingShown = true) {
-            var requestModel = MovieRequestModel()
             api.getPopularPeople(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
         }
     }

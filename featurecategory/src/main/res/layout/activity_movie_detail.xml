@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,13 +12,15 @@
             type="com.laks.tvseries.featurecategory.detail.MovieDetailViewModel" />
     </data>
 
-    <RelativeLayout
-        android:id="@+id/rootRelativeView"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_bg_color">
+        app:layoutDescription="@xml/activity_movie_detail_motion_scene_collapsible">
+
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true">
@@ -37,21 +40,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/image_backdrop_size"
                     android:background="@drawable/poster_bottom_gradient" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/backButton"
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/large_margin"
-                    android:layout_marginLeft="@dimen/regular_margin"
-                    app:backgroundTint="@color/transparent"
-                    app:tint="@color/white"
-                    android:clickable="true"
-                    app:borderWidth="0dp"
-                    app:elevation="0dp"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/ic_baseline_arrow_back_24"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
@@ -212,9 +200,9 @@
                             android:id="@+id/recyclerCastList"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="@{viewModel.castLoadingShimmer? View.GONE: View.VISIBLE}"
                             android:layout_marginTop="@dimen/regular_margin"
                             android:nestedScrollingEnabled="false"
+                            android:visibility="@{viewModel.castLoadingShimmer? View.GONE: View.VISIBLE}"
                             tools:listitem="@layout/layout_person_item" />
 
                         <com.facebook.shimmer.ShimmerFrameLayout
@@ -293,59 +281,59 @@
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/original_title"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/original_title" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/medium_margin"
                                     android:text="@string/director"
-                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/medium_margin"
                                     android:text="@string/screenplay"
-                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/status"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/status" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/time"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/time" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/original_language"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/original_language" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/budget"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/budget" />
 
                                 <TextView
                                     style="@style/MediaInfoSubTitleStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/revenue"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@string/revenue" />
 
                             </LinearLayout>
 
@@ -359,59 +347,59 @@
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.movieModel.title}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.movieModel.title}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/medium_margin"
                                     android:text="@{viewModel.mediaDirector}"
-                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/medium_margin"
                                     android:text="@{viewModel.mediaWriting}"
-                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.movieModel.status}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.movieModel.status}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.formatRunTime}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.formatRunTime}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.movieModel.originalLanguage}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.movieModel.originalLanguage}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.movieModel.budget}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.movieModel.budget}" />
 
                                 <TextView
                                     style="@style/SeasonEpisodesStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{viewModel.movieModel.revenue}"
-                                    android:layout_marginBottom="@dimen/medium_margin"/>
+                                    android:layout_marginBottom="@dimen/medium_margin"
+                                    android:text="@{viewModel.movieModel.revenue}" />
 
                             </LinearLayout>
 
@@ -477,10 +465,11 @@
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/slider_image_height"
-                            app:cardCornerRadius="@dimen/media_card_radius"
                             android:layout_marginTop="@dimen/medium_margin"
                             app:cardBackgroundColor="@color/dark_gray"
+                            app:cardCornerRadius="@dimen/media_card_radius"
                             app:cardPreventCornerOverlap="true">
+
                             <com.daimajia.slider.library.SliderLayout
                                 android:id="@+id/sliderLayout"
                                 android:layout_width="match_parent"
@@ -494,8 +483,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/list_top_margin"
-                        android:visibility="@{viewModel.recommendationsList.results.size()>0 ? View.VISIBLE: View.GONE}"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.recommendationsList.results.size()>0 ? View.VISIBLE: View.GONE}">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -522,9 +511,9 @@
                             android:id="@+id/recyclerRecommendationsMovieList"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="@{viewModel.recommendationsListLoadingShimmer? View.GONE: View.VISIBLE}"
                             android:layout_marginTop="@dimen/regular_margin"
                             android:nestedScrollingEnabled="false"
+                            android:visibility="@{viewModel.recommendationsListLoadingShimmer? View.GONE: View.VISIBLE}"
                             tools:listitem="@layout/layout_person_item" />
 
                         <com.facebook.shimmer.ShimmerFrameLayout
@@ -560,5 +549,64 @@
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
-    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/toolBgLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bg_toolbar"
+            android:layout_alignParentTop="true"
+            android:alpha="0"
+            android:background="@color/bottom_navigation_bg_color" />
+
+            <RelativeLayout
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_size"
+                android:layout_alignParentBottom="true"
+                android:paddingHorizontal="@dimen/regular_margin"
+                android:tag="toolBar">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    app:backgroundTint="@color/transparent"
+                    app:borderWidth="0dp"
+                    app:elevation="0dp"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/similarTitle"
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/buttonSearch"
+                    android:layout_toRightOf="@+id/backButton"
+                    android:alpha="0"
+                    android:gravity="center"
+                    android:text="@{viewModel.movieModel.title}" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:alpha="0"
+                    android:clickable="true"
+                    app:backgroundTint="@color/transparent"
+                    app:borderWidth="0dp"
+                    app:elevation="0dp"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/ic_baseline_search_24"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

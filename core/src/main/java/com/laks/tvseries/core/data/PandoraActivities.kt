@@ -9,6 +9,7 @@ object PandoraActivities {
     private const val CATEGORY = "category"
     private const val FEATURE_ACTOR = "featureactor"
     private const val DETAIL = "detail"
+    private const val FEATURE_SEARCH = "featuresearch"
 
     val trendingMovieFragmentClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.movie.TrendMovieFragment"
@@ -30,4 +31,10 @@ object PandoraActivities {
 
     val actorDetailActivityClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_ACTOR.$DETAIL.ActorDetailActivity"
+
+    val searchActivityClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SEARCH.SearchActivity"
+
+    val movieDetailActivityClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$DETAIL.MovieDetailActivity"
 }

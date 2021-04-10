@@ -6,6 +6,7 @@ import com.laks.tvseries.core.data.main.ScheduleRepository
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.TvSeriesListModel
+import com.laks.tvseries.core.data.search.SearchRepository
 import org.koin.dsl.module
 
 val mediaDIModule = module {
@@ -15,4 +16,5 @@ val mediaDIModule = module {
     single { ScheduleRepository() }
     single { CategoryRepository() }
     single { ActorRepository() }
+    single { SearchRepository() }
 }

@@ -14,5 +14,6 @@ annotation class MovieType {
         const val nowPlaying = "nowPlaying"
         const val upComing = "upComing"
         const val popular = "popular"
+        const val popularTV = "popularTV"
     }
 }
