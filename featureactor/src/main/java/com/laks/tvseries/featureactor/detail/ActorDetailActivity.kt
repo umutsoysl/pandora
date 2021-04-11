@@ -107,7 +107,7 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
         baseViewModel.moreButtonClickEvent.observe(this, Observer {
             if (isMore) {
                 binding.labelOverView.text = baseViewModel.actorDetailModel.value?.biography
-                binding.labelMore.text = resources.getString(com.laks.tvseries.featurecategory.R.string.read_less)
+                binding.labelMore.text = resources.getString(com.laks.tvseries.core.R.string.read_less)
             } else {
                 binding.labelOverView.text = baseViewModel.actorDetailModel.value?.biography?.let {
                     if (it.length > 110) "${
@@ -117,7 +117,7 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
                         )
                     }..." else it
                 }
-                binding.labelMore.text = resources.getString(com.laks.tvseries.featurecategory.R.string.more)
+                binding.labelMore.text = resources.getString(com.laks.tvseries.core.R.string.more)
             }
             isMore = !isMore
         })

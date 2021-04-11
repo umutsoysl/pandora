@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/featureactor/Pandora.featureactor.iml" filepath="$PROJECT_DIR$/.idea/modules/featureactor/Pandora.featureactor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/featurecategory/Pandora.featurecategory.iml" filepath="$PROJECT_DIR$/.idea/modules/featurecategory/Pandora.featurecategory.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresearch/Pandora.featuresearch.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresearch/Pandora.featuresearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresettings/Pandora.featuresettings.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresettings/Pandora.featuresettings.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/pandora/Pandora.pandora.iml" filepath="$PROJECT_DIR$/.idea/modules/pandora/Pandora.pandora.iml" />
     </modules>
   </component>

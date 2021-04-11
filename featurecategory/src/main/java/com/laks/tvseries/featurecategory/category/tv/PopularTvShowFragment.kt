@@ -38,8 +38,8 @@ class PopularTvShowFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
-        binding.labelTitle.text = requireActivity().resources.getString(R.string.popular)
-        binding.labelSubTitle.text = requireActivity().resources.getString(R.string.tv_shows)
+        binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.popular)
+        binding.labelSubTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.tv_shows)
         setAdapter()
 
         return binding.root

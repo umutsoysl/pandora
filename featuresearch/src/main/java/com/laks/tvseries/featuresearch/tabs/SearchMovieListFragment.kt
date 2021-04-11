@@ -26,6 +26,7 @@ class SearchMovieListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
     private lateinit var movieAdapter: SearchMovieListAdapter
     private var movieList: ArrayList<MovieModel> = arrayListOf()
     private var page = 1
+    private var isAdd = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_media_list, container, false)
@@ -40,8 +41,13 @@ class SearchMovieListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
 
     private fun bindingViewModel() {
         baseViewModel.responseMovieList.observe(requireActivity(), Observer {
-            it.results?.let { it1 -> movieList.addAll(it1) }
-            movieAdapter.submitList(movieList)
+            if(isAdd) {
+                it.results?.let { it1 -> movieList.addAll(it1) }
+                movieAdapter.submitList(movieList)
+            } else {
+                movieList = it.results!!
+                movieAdapter.submitList(it.results)
+            }
             movieAdapter.notifyDataSetChanged()
             requestLayout()
             binding.buttonMore.visibility = if (it.results?.size!!>0 && it.results?.size!!%20 == 0) View.VISIBLE else View.GONE
@@ -50,7 +56,14 @@ class SearchMovieListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
         binding.buttonMore.setOnClickListener {
             page = page + 1
             baseViewModel.searchMovie(page)
+            isAdd = true
         }
+
+        baseViewModel.clearSearch.observe(requireActivity(), Observer {
+            movieList.clear()
+            page = 1
+            isAdd = false
+        })
     }
 
     private fun requestLayout() {

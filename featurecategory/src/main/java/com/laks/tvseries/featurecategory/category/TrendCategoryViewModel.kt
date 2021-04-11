@@ -23,7 +23,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getTrendingList(type: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.type = type
                 requestModel.time = Time.day
                categoryRepo?.getTrending(requestModel)?.collect {
@@ -40,7 +40,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getPopularMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getMoviePopular(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -54,7 +54,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getNowPlayingMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getNowPlaying(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -67,7 +67,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getPopularTvShowList(page: Int? = 1)  {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getTvPopularShows(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -80,7 +80,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getPopularPeopleList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getPopularPeople(requestModel)?.collect {
                     popularPeopleList.postValue(it)
@@ -93,7 +93,7 @@ class TrendCategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewMo
     fun getUpComingMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getUpComingMovie(requestModel)?.collect {
                     allMovieList.postValue(it)

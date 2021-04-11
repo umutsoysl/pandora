@@ -26,6 +26,7 @@ class SearchTvListFragment: BaseFragment<SearchViewModel>(SearchViewModel::class
     private lateinit var tvAdapter: SearchTvListAdapter
     private var tvSeriesList: ArrayList<MovieModel> = arrayListOf()
     private var page = 1
+    private var isAdd = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tv_series_list, container, false)
@@ -40,17 +41,29 @@ class SearchTvListFragment: BaseFragment<SearchViewModel>(SearchViewModel::class
 
     private fun bindingViewModel() {
         baseViewModel.responseTvList.observe(requireActivity(), Observer {
-            it.results?.let { it1 -> tvSeriesList.addAll(it1) }
-            tvAdapter.submitList(tvSeriesList)
+            if (isAdd) {
+                it.results?.let { it1 -> tvSeriesList.addAll(it1) }
+                tvAdapter.submitList(tvSeriesList)
+            } else {
+                tvSeriesList = it.results!!
+                tvAdapter.submitList(it.results)
+            }
             tvAdapter.notifyDataSetChanged()
             requestLayout()
-            binding.buttonMore.visibility =  if (it.results?.size!!>0 && it.results?.size!!%20 == 0) View.VISIBLE else View.GONE
+            binding.buttonMore.visibility = if (it.results?.size!! > 0 && it.results?.size!! % 20 == 0) View.VISIBLE else View.GONE
         })
 
         binding.buttonMore.setOnClickListener {
             page = page + 1
             baseViewModel.searchTvSeries(page)
+            isAdd = true
         }
+
+        baseViewModel.clearSearch.observe(requireActivity(), Observer {
+            tvSeriesList.clear()
+            page = 1
+            isAdd = false
+        })
     }
 
     private fun requestLayout() {

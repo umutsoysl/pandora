@@ -10,6 +10,9 @@ interface ScheduleApi {
     @GET("/3/discover/movie")
     suspend fun getDiscoverMoviesList(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
 
+    @GET("/3/discover/tv")
+    suspend fun getDiscoverTvList(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+
     @GET("/3/movie/{movieID}")
     suspend fun getMovieDetail(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieDetailModel>
 

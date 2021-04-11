@@ -4,7 +4,6 @@
     <style name="CategoryTypeTitleStyle">
         <item name="android:fontFamily">@font/muli_extra_bold</item>
         <item name="android:textSize">21dp</item>
-        <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -88,5 +87,23 @@
         <item name="android:textColor">@color/active_gray</item>
     </style>
 
+    <style name="BigHeaderStyle">
+        <item name="android:fontFamily">@font/muli_extra_bold</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DiscoverSearchHintTextStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+    <style name="SubTitleStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/active_gray</item>
+    </style>
 
 </resources>

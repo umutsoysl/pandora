@@ -1,3 +1,4 @@
+include ':featuresettings'
 include ':featuresearch'
 include ':featureactor'
 include ':featurecategory'

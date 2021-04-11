@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
-import com.laks.tvseries.core.data.model.MovieRequestModel
+import com.laks.tvseries.core.data.model.GlobalRequestModel
 import com.laks.tvseries.core.data.model.PersonModel
 import com.laks.tvseries.core.data.search.SearchRepository
 import kotlinx.coroutines.Dispatchers
@@ -18,13 +18,14 @@ class SearchViewModel(var searchRepository: SearchRepository?) : BaseViewModel(s
     var responseTvList = MutableLiveData<DiscoverMovieListModel>()
     var responseActorList = MutableLiveData<PersonModel>()
     var progressBarVisible = MutableLiveData<Boolean>()
+    var clearSearch = MutableLiveData<Boolean>()
 
     var searchQuery = MutableLiveData<String>()
 
     fun searchMovie(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 requestModel.query = searchQuery.value
                 searchRepository?.searchMovie(requestModel)?.collect {
@@ -39,7 +40,7 @@ class SearchViewModel(var searchRepository: SearchRepository?) : BaseViewModel(s
     fun searchTvSeries(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 requestModel.query = searchQuery.value
                 searchRepository?.searchTv(requestModel)?.collect {
@@ -54,7 +55,7 @@ class SearchViewModel(var searchRepository: SearchRepository?) : BaseViewModel(s
     fun searchActor(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.page = page
                 requestModel.query = searchQuery.value
                 searchRepository?.searchActor(requestModel)?.collect {

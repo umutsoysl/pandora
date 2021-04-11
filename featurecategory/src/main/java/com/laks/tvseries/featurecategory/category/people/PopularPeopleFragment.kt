@@ -36,7 +36,7 @@ class PopularPeopleFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
-        binding.labelTitle.text = requireActivity().resources.getString(R.string.popular_people)
+        binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.popular_people)
         binding.labelSubTitle.visibility = View.GONE
         setAdapter()
 

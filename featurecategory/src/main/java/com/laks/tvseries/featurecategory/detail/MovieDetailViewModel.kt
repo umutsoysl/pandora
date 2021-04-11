@@ -1,12 +1,10 @@
 package com.laks.tvseries.featurecategory.detail
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
-import com.laks.tvseries.core.data.main.ScheduleRepository
+import com.laks.tvseries.core.data.main.MediaRepository
 import com.laks.tvseries.core.data.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -15,9 +13,8 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
-class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewModel(scheduleRepo) {
+class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) {
 
     var movieModel = MutableLiveData<MovieDetailModel>()
     var releaseDate = MutableLiveData<String>()
@@ -54,9 +51,9 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
     fun getMovieDetail(movieID: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.movieID = movieID
-                scheduleRepo?.getMovieDetail(requestModel)?.collect {
+                mediaRepo?.getMovieDetail(requestModel)?.collect {
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
@@ -73,9 +70,9 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
     fun getTVDetail(movieID: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.movieID = movieID
-                scheduleRepo?.getTVDetail(requestModel)?.collect {
+                mediaRepo?.getTVDetail(requestModel)?.collect {
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
                     seasonList.postValue(it?.seasons)
@@ -90,30 +87,30 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         }
     }
 
-    private fun getMovieVideo(requestModel: MovieRequestModel) {
+    private fun getMovieVideo(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getMovieVideo(requestModel)?.collect {
+                mediaRepo?.getMovieVideo(requestModel)?.collect {
                     videoKey.postValue(it?.let {it.results.first().key})
                 }
             }
         }
     }
 
-    private fun getTVVideo(requestModel: MovieRequestModel) {
+    private fun getTVVideo(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getTvVideo(requestModel)?.collect {
+                mediaRepo?.getTvVideo(requestModel)?.collect {
                     videoKey.postValue(it?.let {it.results.first().key})
                 }
             }
         }
     }
 
-    private fun getMovieCredits(requestModel: MovieRequestModel) {
+    private fun getMovieCredits(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getMovieCredits(requestModel)?.collect {
+                mediaRepo?.getMovieCredits(requestModel)?.collect {
                     castToPersonModel(it!!)
                     getFindDirector(it)
                     getFindWriting(it)
@@ -122,10 +119,10 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         }
     }
 
-    private fun getTVCredits(requestModel: MovieRequestModel) {
+    private fun getTVCredits(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getTvCredits(requestModel)?.collect {
+                mediaRepo?.getTvCredits(requestModel)?.collect {
                     castToPersonModel(it!!)
                     getFindDirector(it)
                     getFindWriting(it)
@@ -155,30 +152,30 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         castLoadingShimmer.postValue(false)
     }
 
-    private fun getMovieImages(requestModel: MovieRequestModel) {
+    private fun getMovieImages(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getMovieImage(requestModel)?.collect {
+                mediaRepo?.getMovieImage(requestModel)?.collect {
                     mediaImageList.postValue(it?.backdrops)
                 }
             }
         }
     }
 
-    private fun getTvImages(requestModel: MovieRequestModel) {
+    private fun getTvImages(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getTvImage(requestModel)?.collect {
+                mediaRepo?.getTvImage(requestModel)?.collect {
                     mediaImageList.postValue(it?.backdrops)
                 }
             }
         }
     }
 
-    private fun getMovieRecommendations(requestModel: MovieRequestModel) {
+    private fun getMovieRecommendations(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getMovieRecommendations(requestModel)?.collect {
+                mediaRepo?.getMovieRecommendations(requestModel)?.collect {
                     recommendationsList.postValue(it)
                     recommendationsListLoadingShimmer.postValue(false)
                 }
@@ -186,10 +183,10 @@ class MovieDetailViewModel(var scheduleRepo: ScheduleRepository?) : BaseViewMode
         }
     }
 
-    private fun getTvRecommendations(requestModel: MovieRequestModel) {
+    private fun getTvRecommendations(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                scheduleRepo?.getTvRecommendations(requestModel)?.collect {
+                mediaRepo?.getTvRecommendations(requestModel)?.collect {
                     recommendationsList.postValue(it)
                     recommendationsListLoadingShimmer.postValue(false)
                 }

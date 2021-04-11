@@ -31,13 +31,9 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
+        createCategoryList()
         initializeAdapter()
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        createCategoryList()
     }
 
     private fun initializeAdapter() {

@@ -6,8 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.data.actor.ActorRepository
 import com.laks.tvseries.core.data.model.CastObject
-import com.laks.tvseries.core.data.model.MovieCreditsModel
-import com.laks.tvseries.core.data.model.MovieRequestModel
+import com.laks.tvseries.core.data.model.GlobalRequestModel
 import com.laks.tvseries.core.data.model.actor.ActorDetailModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -47,7 +46,7 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
     fun getActorDetail(actorID: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = MovieRequestModel()
+                var requestModel = GlobalRequestModel()
                 requestModel.actorID = actorID
                 actorRepository?.getActorDetail(requestModel)?.collect {
                     actorDetailModel.postValue(it)
@@ -59,7 +58,7 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
         }
     }
 
-    private fun getActorBackDropImages(requestModel: MovieRequestModel) {
+    private fun getActorBackDropImages(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 actorRepository?.getActorBackDropImage(requestModel)?.collect {
@@ -69,7 +68,7 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
         }
     }
 
-    private fun getActorMovies(requestModel: MovieRequestModel) {
+    private fun getActorMovies(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 actorRepository?.getActorMovies(requestModel)?.collect {
@@ -83,7 +82,7 @@ class ActorDetailViewModel(var actorRepository: ActorRepository?) : BaseViewMode
         }
     }
 
-    private fun getActorTv(requestModel: MovieRequestModel) {
+    private fun getActorTv(requestModel: GlobalRequestModel) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 actorRepository?.getActorTv(requestModel)?.collect {

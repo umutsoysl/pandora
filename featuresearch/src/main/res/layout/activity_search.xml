@@ -66,7 +66,7 @@
                     app:elevation="0dp"
                     app:fabSize="mini"
                     app:srcCompat="@drawable/ic_baseline_close_24"
-                    app:tint="@color/white" />
+                    app:tint="@color/active_gray" />
             </RelativeLayout>
         </RelativeLayout>
 

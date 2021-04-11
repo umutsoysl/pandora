@@ -42,7 +42,7 @@ class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.isNotEmpty() && s.length>2) {
+                if (s.isNotEmpty()) {
                     baseViewModel.searchQuery.postValue(s.toString())
                     baseViewModel.progressBarVisible.postValue(true)
                     binding.closeButton.visibility = View.VISIBLE
@@ -50,6 +50,7 @@ class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
                 } else {
                     baseViewModel.progressBarVisible.postValue(false)
                     binding.closeButton.visibility = View.GONE
+                    baseViewModel.clearSearch.postValue(true)
                 }
             }
         })
@@ -62,9 +63,9 @@ class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
 
     private fun setupTabLayout() {
         adapter = TabViewPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(SearchMovieListFragment(), resources.getString(R.string.movie))
-        adapter?.addFragment(SearchTvListFragment(), resources.getString(R.string.tv_series))
-        adapter?.addFragment(SearchActorListFragment(), resources.getString(R.string.people))
+        adapter?.addFragment(SearchMovieListFragment(), resources.getString(com.laks.tvseries.core.R.string.movie))
+        adapter?.addFragment(SearchTvListFragment(), resources.getString(com.laks.tvseries.core.R.string.tv_series))
+        adapter?.addFragment(SearchActorListFragment(), resources.getString(com.laks.tvseries.core.R.string.people))
         binding.viewPager.adapter = adapter
         binding.viewPager.setSwipe(false)
         binding.tabs.setupWithViewPager(binding.viewPager)

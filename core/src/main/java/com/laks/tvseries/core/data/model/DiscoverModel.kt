@@ -17,7 +17,7 @@ data class DiscoverMovieListModel(
 
 data class MovieModel(
         val adult: Boolean = false,
-
+        var isMovie: Boolean = true,
         @SerializedName("backdrop_path")
         val backdropPath: String? = null,
 

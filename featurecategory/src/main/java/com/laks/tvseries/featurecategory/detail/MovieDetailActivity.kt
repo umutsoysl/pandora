@@ -106,16 +106,16 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             adapter.submitList(movie.genres)
             adapter.notifyDataSetChanged()
             binding.labelRuntime.text = if (type == MediaType.movie) (resources.getString(
-                R.string.run_time,
+                    com.laks.tvseries.core.R.string.run_time,
                 movie.runtime
-            )) else (resources.getString(R.string.run_time, movie.tvRuntime?.get(0)))
+            )) else (resources.getString(com.laks.tvseries.core.R.string.run_time, movie.tvRuntime?.get(0)))
             requestLayout()
         })
 
         baseViewModel.moreButtonClickEvent.observe(this, Observer {
             if (isMore) {
                 binding.labelOverView.text = baseViewModel.movieModel.value?.overview
-                binding.labelMore.text = resources.getString(R.string.read_less)
+                binding.labelMore.text = resources.getString(com.laks.tvseries.core.R.string.read_less)
             } else {
                 binding.labelOverView.text = baseViewModel.movieModel.value?.overview?.let {
                     if (it.length > 110) "${
@@ -125,7 +125,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                         )
                     }..." else it
                 }
-                binding.labelMore.text = resources.getString(R.string.more)
+                binding.labelMore.text = resources.getString(com.laks.tvseries.core.R.string.more)
             }
             isMore = !isMore
         })
@@ -137,10 +137,10 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         baseViewModel.allSeasonButtonOnClickEvent.observe(this, Observer {
             if (isAllSeason) {
                 adapterSeason.submitList(baseViewModel.createSeasonListModel(false))
-                binding.labelAllSeasonText.text = resources.getString(R.string.less_season)
+                binding.labelAllSeasonText.text = resources.getString(com.laks.tvseries.core.R.string.less_season)
             } else {
                 adapterSeason.submitList(baseViewModel.createSeasonListModel(true))
-                binding.labelAllSeasonText.text = resources.getString(R.string.more_season)
+                binding.labelAllSeasonText.text = resources.getString(com.laks.tvseries.core.R.string.more_season)
             }
             adapterSeason.notifyDataSetChanged()
             requestLayout()

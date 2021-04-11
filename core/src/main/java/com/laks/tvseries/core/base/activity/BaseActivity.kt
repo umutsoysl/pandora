@@ -2,13 +2,12 @@ package com.laks.tvseries.core.base.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -19,22 +18,25 @@ import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
+import com.laks.tvseries.core.language.LocalizationLanguageManager
+import com.laks.tvseries.core.language.OnLocaleLanguageChangedListener
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import com.laks.tvseries.core.loading.LoadingEventObserver
 import com.laks.tvseries.core.view.FullyTransparentStatusBar
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
 import org.koin.core.context.stopKoin
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.java.KoinJavaComponent
+import java.util.*
 import kotlin.reflect.KClass
 
 @Suppress("NAME_SHADOWING")
-abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActivity() {
+abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActivity(),
+    OnLocaleLanguageChangedListener {
 
     val baseViewModel: Q by viewModel(clazz)
     abstract val modules: List<Module>
@@ -44,7 +46,11 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     var qnbAppBarLayout: AppBarLayout? = null
     private var qnbNestedScrollView: NestedScrollView? = null
 
+    private val localizationManager = LocalizationLanguageManager(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        localizationManager.addOnLocaleChangedListener(this)
+        localizationManager.onCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
         stopKoin()
         setUp()
@@ -122,6 +128,48 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
         loadingStateObserver.setup(viewModelState.loading, this, classTag)
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(localizationManager.attachBaseContext(newBase!!))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        localizationManager.onResume(this)
+    }
+
+    override fun getApplicationContext(): Context {
+        return localizationManager.getApplicationContext(super.getApplicationContext())
+    }
+
+    override fun getResources(): Resources {
+        return localizationManager.getResources(super.getResources())
+    }
+
+    fun setLanguage(language: String, country: String) {
+        localizationManager.setLanguage(this, language, country)
+    }
+
+    fun setLanguage(language: String) {
+        localizationManager.setLanguage(this, language)
+    }
+
+    fun setDefaultLanguage(language: String, country: String) {
+        localizationManager.setDefaultLanguage(language, country)
+    }
+
+    fun setDefaultLanguage(language: String) {
+        localizationManager.setDefaultLanguage(language)
+    }
+
+    fun getCurrentLanguage(): Locale {
+        return localizationManager.getLanguage(this)
+    }
+
+    override fun onBeforeLocaleChanged() {}
+
+    override fun onAfterLocaleChanged() {}
+
 
     override fun onDestroy() {
         super.onDestroy()

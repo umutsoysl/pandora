@@ -31,7 +31,7 @@ class ActorMovieTvShowListActivity : BaseActivity<ActorDetailViewModel>(ActorDet
         binding = inflate(R.layout.activity_actor_media_list)
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
-        setToolbarTitle(resources.getString(R.string.all_media))
+        setToolbarTitle(resources.getString(com.laks.tvseries.core.R.string.all_media))
 
         setAdapter()
         getActorMediaList()

@@ -16,6 +16,7 @@
         android:id="@+id/rootRelativeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_bg_color"
         android:paddingTop="60dp">
 
         <androidx.core.widget.NestedScrollView
@@ -27,15 +28,86 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/medium_margin"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/labelTitle"
+                    style="@style/BigHeaderStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/discover" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/large_margin"
+                    android:layout_marginTop="@dimen/list_top_margin"
+                    app:cardCornerRadius="@dimen/search_box_radius"
+                    app:cardElevation="3dp"
+                    app:cardMaxElevation="3dp"
+                    app:cardBackgroundColor="@color/bottom_navigation_bg_color"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="false">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/medium_margin">
+
+                        <ImageView
+                            android:id="@+id/searchIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_baseline_search_24"
+                            android:layout_marginRight="@dimen/medium_margin"
+                            android:backgroundTint="@color/active_gray"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            style="@style/DiscoverSearchHintTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/searchIcon"
+                            android:layout_marginRight="@dimen/medium_margin"
+                            android:maxLines="1"
+                            android:text="@string/discover_search_hint"/>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:id="@+id/buttonMoreMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="@dimen/media_title_bottom_margin">
+
+                    <TextView
+                        style="@style/CategoryTypeTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/movie" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_baseline_read_more_24" />
+
+                </RelativeLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerScheduleList"
+                    android:id="@+id/recyclerDiscoverMovieList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/movie_list_item" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/shimmerFrameLayout"
@@ -43,22 +115,70 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:orientation="vertical"
-                    android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}"
+                    android:visibility="@{viewModel.shimmerMovieVisible? View.VISIBLE: View.GONE}"
                     tools:ignore="MissingClass">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}">
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.shimmerMovieVisible? View.VISIBLE: View.GONE}">
 
-                        <include layout="@layout/shimmer_home_item" />
+                        <include layout="@layout/shimmer_media_item" />
 
-                        <include layout="@layout/shimmer_home_item" />
+                        <include layout="@layout/shimmer_media_item" />
 
-                        <include layout="@layout/shimmer_home_item" />
+                    </LinearLayout>
 
-                        <include layout="@layout/shimmer_home_item" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <RelativeLayout
+                    android:id="@+id/buttonMoreTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="@dimen/list_top_margin"
+                    android:layout_marginBottom="@dimen/media_title_bottom_margin">
+
+                    <TextView
+                        style="@style/CategoryTypeTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_shows" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_baseline_read_more_24" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerDiscoverTvList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.shimmerTVVisible? View.VISIBLE: View.GONE}"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.shimmerTVVisible? View.VISIBLE: View.GONE}">
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
 
                     </LinearLayout>
 

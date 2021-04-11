@@ -37,7 +37,7 @@ class NowPlayingMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(Tren
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_trend_movie, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
-        binding.labelTitle.text = requireActivity().resources.getString(R.string.now_playing)
+        binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.now_playing)
 
         setAdapter()
 

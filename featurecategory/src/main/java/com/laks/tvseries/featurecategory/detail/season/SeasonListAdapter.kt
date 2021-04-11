@@ -27,7 +27,7 @@ class SeasonListAdapter(private val context: Context) : ListAdapter<SeasonModel,
     class SeasonListViewHolder(private val binding: LayoutSeasonItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(context: Context, itemData: SeasonModel) {
-            var episode = "0/${itemData.episodeCount} ${context.resources.getString(R.string.episodes)}"
+            var episode = "0/${itemData.episodeCount} ${context.resources.getString(com.laks.tvseries.core.R.string.episodes)}"
             var overView = if(itemData.overview.length>70) {
                 itemData.overview.substring(0, 71) + "..."
             } else {

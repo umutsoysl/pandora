@@ -9,7 +9,7 @@ import com.laks.tvseries.core.data.model.Time.Companion.day
 import com.laks.tvseries.core.data.model.Time.Companion.week
 
 
-data class MovieRequestModel(
+data class GlobalRequestModel(
         var movieID: String? = "0",
         var actorID: String? = "0",
         var apiKey: String?  = "api_key",

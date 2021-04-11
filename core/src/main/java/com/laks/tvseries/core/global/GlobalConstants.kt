@@ -12,5 +12,8 @@ class GlobalConstants {
         const val KEY_ACTOR_MEDIA_LIST = "KEY_ACTOR_MEDIA_LIST"
         const val MOVIE_TYPE = "MOVIE_TYPE"
         const val ALL_MOVIE_TITLE = "ALL_MOVIE_TITLE"
+        const val SHARED_LANGUAGE = "SHARED_LANGUAGE"
+        const val SHARED_LANGUAGE_CODE = "SHARED_LANGUAGE_CODE"
+        const val SHARED_LANGUAGE_COUNTRY = "SHARED_LANGUAGE_COUNTRY"
     }
 }

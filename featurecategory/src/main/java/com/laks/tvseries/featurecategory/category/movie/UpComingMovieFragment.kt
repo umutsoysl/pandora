@@ -37,7 +37,7 @@ class UpComingMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendC
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_trend_movie, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
-        binding.labelTitle.text = requireActivity().resources.getString(R.string.upcoming)
+        binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.upcoming)
 
         setAdapter()
 

@@ -39,7 +39,7 @@ class TrendTvShowFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCat
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
-        binding.labelSubTitle.text = requireActivity().resources.getString(R.string.tv_shows)
+        binding.labelSubTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.tv_shows)
         setAdapter()
 
         return binding.root

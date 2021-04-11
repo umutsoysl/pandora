@@ -1,22 +1,31 @@
 package com.laks.tvseries.pandora.discover
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.fragment.BaseFragment
+import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.common.media.MediaListItemAdapter
+import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
+import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
+import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.databinding.FragmentDiscoverBinding
 
-class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), DiscoverMovieListItemOnClickListener {
+class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener {
 
     private lateinit var binding: FragmentDiscoverBinding
-    private lateinit var adapter: DiscoverMovieListAdapter
+    private lateinit var adapterMovie: MediaListItemAdapter
+    private lateinit var adapterTV: MediaListItemAdapter
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -27,42 +36,67 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Disco
         binding.lifecycleOwner = this
         binding.viewModel = baseViewModel
 
-        setAdapter()
+        setAdapterMovie()
+        setAdapterTV()
+        goSearchScreen()
+
         bindingViewModel()
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        baseViewModel.getDiscoverMovieList(1)
-    }
-
     private fun bindingViewModel() {
         baseViewModel.discoverMovieList.observe(requireActivity(), Observer {
-            adapter.submitList(it.results)
-            adapter.notifyDataSetChanged()
+            adapterMovie.submitList(it.results)
+            adapterMovie.notifyDataSetChanged()
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
-            binding.executePendingBindings()
+        })
+
+        baseViewModel.discoverTVList.observe(requireActivity(), Observer {
+            adapterTV.submitList(it.results)
+            adapterTV.notifyDataSetChanged()
+            binding.rootRelativeView.requestLayout()
+            binding.invalidateAll()
         })
     }
 
-    private fun setAdapter() {
-        adapter = DiscoverMovieListAdapter(context = requireActivity(), clickListener = this)
-        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerScheduleList.layoutManager = layoutManager
-        binding.recyclerScheduleList.adapter = adapter
-
+    private fun goSearchScreen() {
+        binding.searchBox.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.searchActivityClassName)
+            startActivity(intent)
+        }
     }
 
+    private fun setAdapterMovie() {
+        adapterMovie = MediaListItemAdapter(context = requireActivity(), clickListener = this)
+        var layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerDiscoverMovieList.layoutManager = layoutManager
+        binding.recyclerDiscoverMovieList.adapter = adapterMovie
+    }
+
+    private fun setAdapterTV() {
+        adapterTV = MediaListItemAdapter(context = requireActivity(), clickListener = this)
+        var layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerDiscoverTvList.layoutManager = layoutManager
+        binding.recyclerDiscoverTvList.adapter = adapterTV
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        baseViewModel.getDiscoverMovieList(1)
+        baseViewModel.getDiscoverTVList(1)
+    }
 
     companion object {
         val TAG: String = DiscoverFragment::class.java.simpleName
         fun newInstance() = DiscoverFragment()
     }
 
-    override fun discoverMovieListItemOnClickListener(scheduleInfo: MovieModel) {
-        TODO("Not yet implemented")
+    override fun mediaListItemOnClickListener(scheduleInfo: MovieModel) {
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, if(scheduleInfo.isMovie) MediaType.movie else MediaType.tv)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, scheduleInfo.id!!)
+        var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.movieDetailActivityClassName)
+        startActivity(intent)
     }
 }

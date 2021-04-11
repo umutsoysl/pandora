@@ -25,6 +25,7 @@ class SearchActorListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
     private lateinit var actorAdapter: SearchPeopleListAdapter
     private var actorList: ArrayList<PersonInfo> = arrayListOf()
     private var page = 1
+    private var isAdd = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_actor_list, container, false)
@@ -39,8 +40,13 @@ class SearchActorListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
 
     private fun bindingViewModel() {
         baseViewModel.responseActorList.observe(requireActivity(), Observer {
-            it.results?.let { it1 -> actorList.addAll(it1) }
-            actorAdapter.submitList(actorList)
+            if(isAdd) {
+                it.results?.let { it1 -> actorList.addAll(it1) }
+                actorAdapter.submitList(actorList)
+            } else {
+                actorList = it.results!!
+                actorAdapter.submitList(it.results)
+            }
             actorAdapter.notifyDataSetChanged()
             binding.buttonMore.visibility =  if (it.results?.size!!>0 && it.results?.size!!%20 == 0) View.VISIBLE else View.GONE
             requestLayout()
@@ -49,7 +55,14 @@ class SearchActorListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
         binding.buttonMore.setOnClickListener {
             page = page + 1
             baseViewModel.searchActor(page)
+            isAdd = true
         }
+
+        baseViewModel.clearSearch.observe(requireActivity(), Observer {
+            actorList.clear()
+            page = 1
+            isAdd = false
+        })
     }
 
     private fun requestLayout() {

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="search_hint" tools:ignore="ExtraTranslation">Search...</string>
-    <string name="movie">Movie</string>
-    <string name="tv_series">Tv Series</string>
-    <string name="people">Actor</string>
-    <string name="more_load">More load</string>
-</resources>
