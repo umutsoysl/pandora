@@ -15,8 +15,10 @@ abstract class CategoryBaseFragment<QVIEWMODEL : BaseViewModel>(clazz: KClass<QV
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        unloadKoinModules(modules)
-        loadKoinModules(modules)
+        try {
+            unloadKoinModules(modules)
+            loadKoinModules(modules)
+        }catch (ex: Exception) { }
     }
 
     override fun onDestroy() {

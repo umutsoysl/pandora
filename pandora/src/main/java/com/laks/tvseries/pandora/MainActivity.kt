@@ -22,7 +22,7 @@ import org.koin.core.module.Module
 class MainActivity : BaseActivity<MainViewModel>(MainViewModel::class) {
 
     override val modules: List<Module>
-        get() = listOf(homeDIModule, stateDIModule, mediaDIModule)
+        get() = listOf(homeDIModule, mediaDIModule)
 
     private val KEY_POSITION = "keyPosition"
 

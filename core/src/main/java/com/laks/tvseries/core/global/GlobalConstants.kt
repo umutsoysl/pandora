@@ -15,5 +15,7 @@ class GlobalConstants {
         const val SHARED_LANGUAGE = "SHARED_LANGUAGE"
         const val SHARED_LANGUAGE_CODE = "SHARED_LANGUAGE_CODE"
         const val SHARED_LANGUAGE_COUNTRY = "SHARED_LANGUAGE_COUNTRY"
+        const val SHARED_LANGUAGE_WITH_CODE_COUNTRY = "SHARED_LANGUAGE_WITH_CODE_COUNTRY"
+        const val SHARED_NAME = "pandora_shared"
     }
 }

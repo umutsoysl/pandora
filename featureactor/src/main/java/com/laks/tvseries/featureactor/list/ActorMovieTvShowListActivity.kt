@@ -2,7 +2,6 @@ package com.laks.tvseries.featureactor.list
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.cache.MemoryCache
@@ -10,7 +9,6 @@ import com.laks.tvseries.core.common.media.CastListItemOnClickListener
 import com.laks.tvseries.core.data.model.CastObject
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.di.mediaDIModule
-import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featureactor.R
 import com.laks.tvseries.featureactor.databinding.ActivityActorMediaListBinding
@@ -22,7 +20,7 @@ import org.koin.core.module.Module
 class ActorMovieTvShowListActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewModel::class), CastListItemOnClickListener {
 
     override val modules: List<Module>
-        get() = listOf(actorDetailDIModule, stateDIModule, mediaDIModule)
+        get() = listOf(actorDetailDIModule, mediaDIModule)
     private lateinit var binding: ActivityActorMediaListBinding
     private lateinit var adapter: ActorMediaListAdapter
 

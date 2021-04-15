@@ -41,7 +41,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
-        get() = listOf(detailDIModule, stateDIModule, mediaDIModule)
+        get() = listOf(detailDIModule, mediaDIModule)
 
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var adapter: GenreListItemAdapter

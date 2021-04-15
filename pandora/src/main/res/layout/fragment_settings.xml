@@ -64,6 +64,7 @@
                     android:text="@string/language"/>
 
                 <TextView
+                    android:id="@+id/labelLanguage"
                     style="@style/SubTitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

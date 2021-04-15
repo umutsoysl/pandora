@@ -24,7 +24,7 @@ import org.koin.core.module.Module
 class AllMovieListActivity: BaseActivity<TrendCategoryViewModel>(TrendCategoryViewModel::class), MediaListItemOnClickListener {
 
     override val modules: List<Module>
-        get() = listOf(trendCategoryDIModule, stateDIModule, mediaDIModule)
+        get() = listOf(trendCategoryDIModule, mediaDIModule)
     private lateinit var binding: ActivityAllMovieListBinding
     private lateinit var adapter: AllMovieListAdapter
     private var page = 1

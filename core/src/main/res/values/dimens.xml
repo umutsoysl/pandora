@@ -26,4 +26,5 @@
     <dimen name="tab_indicator_size">4dp</dimen>
     <dimen name="search_box_radius">10dp</dimen>
     <dimen name="settings_item_left_margin">40dp</dimen>
+    <dimen name="splash_app_name_size">40dp</dimen>
 </resources>

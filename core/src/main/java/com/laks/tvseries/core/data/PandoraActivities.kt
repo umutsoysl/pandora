@@ -40,5 +40,5 @@ object PandoraActivities {
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$DETAIL.MovieDetailActivity"
 
     val languageActivityClassName: String
-        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SETTINGS.LanguageActivity"
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SETTINGS.language.LanguageActivity"
 }
