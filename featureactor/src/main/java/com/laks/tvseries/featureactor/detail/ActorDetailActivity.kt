@@ -16,7 +16,6 @@ import com.laks.tvseries.core.common.media.CastListItemAdapter
 import com.laks.tvseries.core.common.media.CastListItemOnClickListener
 import com.laks.tvseries.core.data.model.CastObject
 import com.laks.tvseries.core.data.model.MediaType
-import com.laks.tvseries.core.di.mediaDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featureactor.R
 import com.laks.tvseries.featureactor.databinding.ActivityActorDetailBinding
@@ -30,7 +29,7 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
         BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
-        get() = listOf(actorDetailDIModule, mediaDIModule)
+        get() = listOf(actorDetailDIModule)
 
     private lateinit var binding: ActivityActorDetailBinding
     private lateinit var adapterMovie: CastListItemAdapter

@@ -24,8 +24,6 @@ import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.PersonInfo
-import com.laks.tvseries.core.di.mediaDIModule
-import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.databinding.ActivityMovieDetailBinding
@@ -41,7 +39,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
-        get() = listOf(detailDIModule, mediaDIModule)
+        get() = listOf(detailDIModule)
 
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var adapter: GenreListItemAdapter
@@ -51,6 +49,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private lateinit var adapterCast: PeopleListItemAdapter
     private lateinit var adapterMedia: MediaListItemAdapter
     private lateinit var adapterSeason: SeasonListAdapter
+
+    private var isFavoriteClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +64,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         setSeasonListAdapter()
         getDetail()
         bindingViewModel()
+        favoriteButtonClick()
         backButtonClick()
         createAdapterListObserver()
         createImageSlider()
@@ -244,6 +245,17 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private fun backButtonClick() {
         binding.backButton.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun favoriteButtonClick() {
+        binding.favoriteButton.setOnClickListener {
+            if(!isFavoriteClick) {
+                binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+            } else {
+                binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            }
+            isFavoriteClick = !isFavoriteClick
         }
     }
 

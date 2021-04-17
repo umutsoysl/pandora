@@ -7,13 +7,26 @@
     android:background="@color/main_bg_color"
     tools:context=".SplashActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        style="@style/SplashScreenTextStyle"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/splash_app_name"
+            android:layout_marginTop="@dimen/splash_name_top_margin"
+            android:layout_centerHorizontal="true"
+            style="@style/SplashScreenTextStyle"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_centerVertical="true"
+            android:background="@color/main_bg_color"/>
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -10,37 +10,37 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
 
     fun getTrending(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getTrending(authToken = requestModel.apiKey!!, type = requestModel.type!!, time = requestModel.time!!)
+            api.getTrending(type = requestModel.type!!, time = requestModel.time!!)
         }
     }
 
     fun getNowPlaying(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getNowPlaying(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+            api.getNowPlaying( page = requestModel.page!!)
         }
     }
 
     fun getTvPopularShows(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getPopularTVShows(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+            api.getPopularTVShows(page = requestModel.page!!)
         }
     }
 
     fun getPopularPeople(requestModel: GlobalRequestModel): Flow<PersonModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getPopularPeople(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+            api.getPopularPeople(page = requestModel.page!!)
         }
     }
 
     fun getUpComingMovie(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getUpComingMovie(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+            api.getUpComingMovie(page = requestModel.page!!)
         }
     }
 
     fun getMoviePopular(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getPopularMovie(authToken = requestModel.apiKey!!, page = requestModel.page!!, language = requestModel.language!!)
+            api.getPopularMovie(page = requestModel.page!!)
         }
     }
 }

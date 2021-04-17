@@ -10,19 +10,19 @@ class SearchRepository: BaseRepository<SearchApi>(SearchApi::class.java) {
 
     fun searchMovie(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.searchMovie(query = requestModel.query!!, page = requestModel.page!!, authToken = requestModel.apiKey!!, language = requestModel.language!!)
+            api.searchMovie(query = requestModel.query!!, page = requestModel.page!!)
         }
     }
 
     fun searchTv(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.searchTv(query = requestModel.query!!, page = requestModel.page!!, authToken = requestModel.apiKey!!, language = requestModel.language!!)
+            api.searchTv(query = requestModel.query!!, page = requestModel.page!!)
         }
     }
 
     fun searchActor(requestModel: GlobalRequestModel): Flow<PersonModel?> {
         return fetchData(isLoadingShown = true) {
-            api.searchActor(query = requestModel.query!!, page = requestModel.page!!, authToken = requestModel.apiKey!!, language = requestModel.language!!)
+            api.searchActor(query = requestModel.query!!, page = requestModel.page!!)
         }
     }
 }

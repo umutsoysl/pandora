@@ -8,9 +8,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.component.TabViewPagerAdapter
-import com.laks.tvseries.core.data.model.MediaType
-import com.laks.tvseries.core.di.mediaDIModule
-import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.featuresearch.databinding.ActivitySearchBinding
 import com.laks.tvseries.featuresearch.di.searchDIModule
 import com.laks.tvseries.featuresearch.tabs.SearchActorListFragment
@@ -21,7 +18,7 @@ import org.koin.core.module.Module
 class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
 
     override val modules: List<Module>
-        get() = listOf(searchDIModule, stateDIModule, mediaDIModule)
+        get() = listOf(searchDIModule)
 
     private lateinit var binding: ActivitySearchBinding
     private var adapter: TabViewPagerAdapter? = null

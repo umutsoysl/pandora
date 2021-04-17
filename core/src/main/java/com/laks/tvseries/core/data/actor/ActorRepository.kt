@@ -10,25 +10,25 @@ class ActorRepository: BaseRepository<ActorApi>(ActorApi::class.java) {
 
     fun getActorDetail(requestModel: GlobalRequestModel): Flow<ActorDetailModel?> {
         return fetchData {
-            api.getActorDetail(authToken = requestModel.apiKey!!, personID = requestModel.actorID!!, language = requestModel.language!!)
+            api.getActorDetail(personID = requestModel.actorID!!)
         }
     }
 
     fun getActorBackDropImage(requestModel: GlobalRequestModel): Flow<MovieCreditsModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getActorBackDropImage(authToken = requestModel.apiKey!!, personID = requestModel.actorID!!, language = requestModel.language!!)
+            api.getActorBackDropImage(personID = requestModel.actorID!!)
         }
     }
 
     fun getActorMovies(requestModel: GlobalRequestModel): Flow<MovieCreditsModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getActorMovies(authToken = requestModel.apiKey!!, personID = requestModel.actorID!!, language = requestModel.language!!)
+            api.getActorMovies(personID = requestModel.actorID!!)
         }
     }
 
     fun getActorTv(requestModel: GlobalRequestModel): Flow<MovieCreditsModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getActorTv(authToken = requestModel.apiKey!!, personID = requestModel.actorID!!, language = requestModel.language!!)
+            api.getActorTv(personID = requestModel.actorID!!)
         }
     }
 }

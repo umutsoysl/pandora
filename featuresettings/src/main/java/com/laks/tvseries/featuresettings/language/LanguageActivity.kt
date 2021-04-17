@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.common.language.LanguageOnItemClickListener
-import com.laks.tvseries.core.di.mediaDIModule
-import com.laks.tvseries.core.di.stateDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
 import com.laks.tvseries.core.language.LanguageModel
@@ -19,7 +17,7 @@ import org.koin.core.module.Module
 class LanguageActivity : BaseActivity<SettingsViewModel>(SettingsViewModel::class), LanguageOnItemClickListener {
 
     override val modules: List<Module>
-        get() = listOf(settingsDIModule, mediaDIModule)
+        get() = listOf(settingsDIModule)
     private lateinit var binding: ActivityLanguageBinding
     private var adapter: LanguageListViewAdapter? = null
     private var languageList: ArrayList<LanguageModel>? = ArrayList()

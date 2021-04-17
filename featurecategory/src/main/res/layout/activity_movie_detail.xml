@@ -12,12 +12,9 @@
             type="com.laks.tvseries.featurecategory.detail.MovieDetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/motionLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutDescription="@xml/activity_movie_detail_motion_scene_collapsible">
-
+        android:layout_height="wrap_content">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scr"
@@ -550,63 +547,36 @@
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <RelativeLayout
-            android:id="@+id/toolBgLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bg_toolbar"
-            android:layout_alignParentTop="true"
-            android:alpha="0"
-            android:background="@color/bottom_navigation_bg_color" />
 
-            <RelativeLayout
-                android:id="@+id/toolBar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/toolbar_size"
-                android:layout_alignParentBottom="true"
-                android:paddingHorizontal="@dimen/regular_margin"
-                android:tag="toolBar">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:clickable="true"
+        android:layout_marginTop="@dimen/status_bar_size"
+        android:layout_marginLeft="@dimen/regular_margin"
+        app:backgroundTint="@color/transparent"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        app:tint="@color/white" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/backButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="true"
-                    app:backgroundTint="@color/transparent"
-                    app:borderWidth="0dp"
-                    app:elevation="0dp"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-                    app:tint="@color/white" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favoriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:layout_marginRight="@dimen/regular_margin"
+            android:layout_marginTop="@dimen/status_bar_size"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+            app:tint="@color/white" />
 
-                <TextView
-                    android:id="@+id/similarTitle"
-                    style="@style/HeaderTitleStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/buttonSearch"
-                    android:layout_toRightOf="@+id/backButton"
-                    android:alpha="0"
-                    android:gravity="center"
-                    android:text="@{viewModel.movieModel.title}" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:alpha="0"
-                    android:clickable="true"
-                    app:backgroundTint="@color/transparent"
-                    app:borderWidth="0dp"
-                    app:elevation="0dp"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/ic_baseline_search_24"
-                    app:tint="@color/white" />
-            </RelativeLayout>
-
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+    </RelativeLayout>
 </layout>

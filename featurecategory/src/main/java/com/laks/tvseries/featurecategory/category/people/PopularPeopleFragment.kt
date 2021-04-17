@@ -16,17 +16,17 @@ import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
-import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
+import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.category.tv.PopularTvShowFragment
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
-import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.di.categoryDIModule
 import com.laks.tvseries.featurecategory.list.AllPeopleListActivity
 import org.koin.core.module.Module
 
-class PopularPeopleFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCategoryViewModel::class), PeopleItemClickListener {
+class PopularPeopleFragment: CategoryBaseFragment<CategoryViewModel>(CategoryViewModel::class), PeopleItemClickListener {
 
     override val modules: List<Module>
-        get() = arrayListOf(trendCategoryDIModule)
+        get() = arrayListOf(categoryDIModule)
 
     private lateinit var binding: FragmentTrendMovieBinding
     private lateinit var adapter: PeopleListItemAdapter

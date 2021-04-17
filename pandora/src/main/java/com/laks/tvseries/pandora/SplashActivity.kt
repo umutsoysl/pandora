@@ -18,12 +18,9 @@ class SplashActivity : CoreActivity() {
 
             try{
                 initTimer()
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
             }catch (e:Exception){
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
-                finish()
             }
         }
     }
@@ -41,11 +38,11 @@ class SplashActivity : CoreActivity() {
         waitTimer = Timer()
         waitTimer!!.schedule(object : TimerTask() {
             override fun run() {
-                this@SplashActivity.runOnUiThread(Runnable {   val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
-                    finish() })
+                this@SplashActivity.runOnUiThread(Runnable {
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent) })
             }
-        }, 5000)
+        }, 1000)
     }
 
     public override fun onDestroy() {

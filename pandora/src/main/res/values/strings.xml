@@ -4,4 +4,5 @@
     <string name="title_featureactor">Module Actor</string>
     <string name="title_featuresearch">Module Search</string>
     <string name="title_featuresettings">Module Settings</string>
+    <string name="splash_app_name">pandora</string>
 </resources>

@@ -2,7 +2,9 @@ package com.laks.tvseries.core.base.service
 
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.loading.MemoryCacheHelper
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,7 +20,7 @@ class ServiceManager {
         fun interceptOkHttpClient(): OkHttpClient {
             val okHttpClientBuilder = OkHttpClient.Builder()
             okHttpClientBuilder.addInterceptor { chain ->
-                val original = chain.request()
+                val original = requestBuilder(chain.request())
                 enableLoading(original.url().toString())
                 chain.proceed(original).also {
                     val responseBodyCopy: ResponseBody = it.peekBody(Long.MAX_VALUE)
@@ -30,6 +32,19 @@ class ServiceManager {
             return okHttpClientBuilder.build()
         }
 
+        private fun requestBuilder(request: Request): Request {
+            val originalHttpUrl: HttpUrl = request.url()
+
+            val url = originalHttpUrl.newBuilder()
+                    .addQueryParameter("api_key", "api_key")
+                    .addQueryParameter("language", "en-US")
+                    .build()
+
+            val requestBuilder: Request.Builder = request.newBuilder()
+                    .url(url)
+
+            return requestBuilder.build()
+        }
 
         fun <T> createApi(clazz: Class<T>, okHttpClient: OkHttpClient): T {
 

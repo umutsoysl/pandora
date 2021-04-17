@@ -9,19 +9,18 @@ import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.PersonInfo
-import com.laks.tvseries.core.di.mediaDIModule
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
-import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
+import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.databinding.ActivityAllMovieListBinding
-import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.di.categoryDIModule
 import com.laks.tvseries.featurecategory.list.adapter.AllPeopleListAdapter
 import org.koin.core.module.Module
 
-class AllPeopleListActivity: BaseActivity<TrendCategoryViewModel>(TrendCategoryViewModel::class), PeopleItemClickListener {
+class AllPeopleListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::class), PeopleItemClickListener {
 
     override val modules: List<Module>
-        get() = listOf(trendCategoryDIModule, mediaDIModule)
+        get() = listOf(categoryDIModule)
     private lateinit var binding: ActivityAllMovieListBinding
     private lateinit var adapter: AllPeopleListAdapter
     private var page = 1

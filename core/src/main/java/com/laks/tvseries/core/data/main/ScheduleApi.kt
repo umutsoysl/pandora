@@ -8,39 +8,39 @@ import retrofit2.http.Query
 
 interface ScheduleApi {
     @GET("/3/discover/movie")
-    suspend fun getDiscoverMoviesList(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverMoviesList(@Query("page") page: Int): Response<DiscoverMovieListModel>
 
     @GET("/3/discover/tv")
-    suspend fun getDiscoverTvList(@Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverTvList(@Query("page") page: Int): Response<DiscoverMovieListModel>
 
     @GET("/3/movie/{movieID}")
-    suspend fun getMovieDetail(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieDetailModel>
+    suspend fun getMovieDetail(@Path("movieID") movieID: String): Response<MovieDetailModel>
 
     @GET("/3/tv/{tvID}")
-    suspend fun getTvDetail(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieDetailModel>
+    suspend fun getTvDetail(@Path("tvID") tvID: String): Response<MovieDetailModel>
 
     @GET("/3/movie/{movieID}/videos")
-    suspend fun getMovieVideo(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<VideoModel>
+    suspend fun getMovieVideo(@Path("movieID") movieID: String): Response<VideoModel>
 
     @GET("/3/tv/{tvID}/videos")
-    suspend fun getTvVideo(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<VideoModel>
+    suspend fun getTvVideo(@Path("tvID") tvID: String): Response<VideoModel>
 
     @GET("/3/movie/{movieID}/credits")
-    suspend fun getMovieCredit(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieCreditsModel>
+    suspend fun getMovieCredit(@Path("movieID") movieID: String): Response<MovieCreditsModel>
 
     @GET("/3/tv/{tvID}/credits")
-    suspend fun getTvCredit(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("language") language: String): Response<MovieCreditsModel>
+    suspend fun getTvCredit(@Path("tvID") tvID: String): Response<MovieCreditsModel>
 
     @GET("/3/movie/{movieID}/recommendations")
-    suspend fun getMovieRecommendations(@Path("movieID") movieID: String, @Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+    suspend fun getMovieRecommendations(@Path("movieID") movieID: String, @Query("page") page: Int): Response<DiscoverMovieListModel>
 
     @GET("/3/tv/{tvID}/recommendations")
-    suspend fun getTvRecommendations(@Path("tvID") tvID: String, @Query("api_key") authToken: String, @Query("page") page: Int, @Query("language") language: String): Response<DiscoverMovieListModel>
+    suspend fun getTvRecommendations(@Path("tvID") tvID: String, @Query("page") page: Int): Response<DiscoverMovieListModel>
 
     @GET("/3/movie/{movieID}/images")
-    suspend fun getMovieImage(@Path("movieID") movieID: String, @Query("api_key") authToken: String): Response<MediaImageModel>
+    suspend fun getMovieImage(@Path("movieID") movieID: String): Response<MediaImageModel>
 
     @GET("/3/tv/{tvID}/images")
-    suspend fun getTvImage(@Path("tvID") tvID: String, @Query("api_key") authToken: String): Response<MediaImageModel>
+    suspend fun getTvImage(@Path("tvID") tvID: String): Response<MediaImageModel>
 
 }

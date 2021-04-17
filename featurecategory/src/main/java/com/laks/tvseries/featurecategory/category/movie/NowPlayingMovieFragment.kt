@@ -17,18 +17,18 @@ import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.MovieType
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
-import com.laks.tvseries.featurecategory.category.TrendCategoryViewModel
+import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
 import com.laks.tvseries.featurecategory.detail.MovieDetailActivity
-import com.laks.tvseries.featurecategory.di.trendCategoryDIModule
+import com.laks.tvseries.featurecategory.di.categoryDIModule
 import com.laks.tvseries.featurecategory.list.AllMovieListActivity
 import org.koin.core.module.Module
 
-class NowPlayingMovieFragment: CategoryBaseFragment<TrendCategoryViewModel>(TrendCategoryViewModel::class),
+class NowPlayingMovieFragment: CategoryBaseFragment<CategoryViewModel>(CategoryViewModel::class),
     MediaListItemOnClickListener {
 
     override val modules: List<Module>
-        get() = arrayListOf(trendCategoryDIModule)
+        get() = arrayListOf(categoryDIModule)
 
     private lateinit var binding: FragmentTrendMovieBinding
     private lateinit var adapter: MediaListItemAdapter
