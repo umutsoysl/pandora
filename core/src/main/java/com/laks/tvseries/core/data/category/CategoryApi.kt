@@ -28,4 +28,6 @@ interface CategoryApi {
     @GET("/3/movie/popular")
     suspend fun getPopularMovie(@Query("page") page: Int): Response<DiscoverMovieListModel>
 
+    @GET("/3/movie/top_rated")
+    suspend fun getMovieTopRated(@Query("page") page: Int): Response<DiscoverMovieListModel>
 }

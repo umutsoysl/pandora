@@ -31,6 +31,7 @@ class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
 
         setupTabLayout()
         prepareTabItems()
+        backButtonClick()
         search()
     }
 
@@ -76,5 +77,11 @@ class SearchActivity : BaseActivity<SearchViewModel>(SearchViewModel::class) {
 
             override fun onTabSelected(tab: TabLayout.Tab) {}
         })
+    }
+
+    private fun backButtonClick() {
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 }

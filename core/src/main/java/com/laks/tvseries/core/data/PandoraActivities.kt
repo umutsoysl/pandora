@@ -30,6 +30,9 @@ object PandoraActivities {
     val upComingMovieFragmentClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.movie.UpComingMovieFragment"
 
+    val topRatedMovieFragmentClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.movie.TopRatedMovieFragment"
+
     val actorDetailActivityClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_ACTOR.$DETAIL.ActorDetailActivity"
 

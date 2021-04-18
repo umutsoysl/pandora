@@ -45,6 +45,7 @@
     <string name="discover_search_hint">Movie, TV Show or Actor</string>
     <string name="language">Language</string>
     <string name="settings">Settings</string>
+    <string name="top_rated">Top rated</string>
 
     <!--Language-->
     <string name="english_en">English</string>

@@ -49,7 +49,6 @@ class SearchActorListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
             }
             actorAdapter.notifyDataSetChanged()
             binding.buttonMore.visibility =  if (it.results?.size!!>0 && it.results?.size!!%20 == 0) View.VISIBLE else View.GONE
-            requestLayout()
         })
 
         binding.buttonMore.setOnClickListener {
@@ -63,12 +62,6 @@ class SearchActorListFragment: BaseFragment<SearchViewModel>(SearchViewModel::cl
             page = 1
             isAdd = false
         })
-    }
-
-    private fun requestLayout() {
-        binding.rootRelativeView.requestLayout()
-        binding.executePendingBindings()
-        binding.invalidateAll()
     }
 
     private fun setAdapter() {

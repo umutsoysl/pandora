@@ -43,4 +43,10 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
             api.getPopularMovie(page = requestModel.page!!)
         }
     }
+
+    fun getMovieTopRated(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getMovieTopRated(page = requestModel.page!!)
+        }
+    }
 }

@@ -102,4 +102,17 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
             }
         }
     }
+
+    fun getTopRatedMovieList(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                var requestModel = GlobalRequestModel()
+                requestModel.page = page
+                categoryRepo?.getMovieTopRated(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
 }

@@ -45,6 +45,7 @@
     <string name="discover_search_hint">Film, TV Şow ve Aktör</string>
     <string name="language">Dil</string>
     <string name="settings">Ayarlar</string>
+    <string name="top_rated">En çok oy alan</string>
 
     <!--Language-->
     <string name="english_en">English</string>

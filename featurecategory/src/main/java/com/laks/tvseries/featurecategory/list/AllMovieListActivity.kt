@@ -49,8 +49,13 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
             MovieType.nowPlaying -> getNowPlayingMovieList(page)
             MovieType.upComing -> getUpComingMovieList(page)
             MovieType.popularTV -> getUpPopularTVList(page)
+            MovieType.topRated -> getTopRatedMovieList(page)
             else -> getPopularMovieList(page)
         }
+    }
+
+    private fun getTopRatedMovieList(page: Int) {
+        baseViewModel.getTopRatedMovieList(page = page)
     }
 
     private fun getUpPopularTVList(page: Int) {
