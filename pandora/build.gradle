@@ -70,7 +70,12 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.supportConstraint
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    
+
+    //Room
+    implementation libraries.roomRuntime
+    implementation libraries.roomKtx
+    kapt libraries.roomCompiler
+
     //Dependecy Injection
     implementation libraries.koin
     implementation libraries.koinViewmodel

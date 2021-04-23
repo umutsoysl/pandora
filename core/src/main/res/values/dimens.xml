@@ -28,4 +28,5 @@
     <dimen name="settings_item_left_margin">40dp</dimen>
     <dimen name="splash_app_name_size">65dp</dimen>
     <dimen name="splash_name_top_margin">-18dp</dimen>
+    <dimen name="media_height">170dp</dimen>
 </resources>

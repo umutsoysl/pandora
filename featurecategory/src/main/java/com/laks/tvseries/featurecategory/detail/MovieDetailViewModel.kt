@@ -1,11 +1,18 @@
 package com.laks.tvseries.featurecategory.detail
 
+import android.content.Context
+import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
+import com.laks.tvseries.core.dao.MediaDao
+import com.laks.tvseries.core.data.db.DBMediaEntity
 import com.laks.tvseries.core.data.main.MediaRepository
 import com.laks.tvseries.core.data.model.*
+import com.laks.tvseries.core.db.PandoraDatabase
+import com.laks.tvseries.core.util.getDate
+import com.laks.tvseries.core.util.getProcessDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -27,6 +34,8 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
     val recommendationsList = MutableLiveData<DiscoverMovieListModel>()
 
     val seasonList = MutableLiveData<ArrayList<SeasonModel>>()
+
+    var mediaDBMediaEntity = MutableLiveData<DBMediaEntity>()
 
     private val _moreClickEvent = MutableLiveData<Unit>()
     val moreButtonClickEvent: LiveData<Unit> = _moreClickEvent
@@ -56,6 +65,7 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
                 mediaRepo?.getMovieDetail(requestModel)?.collect {
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
+                    createDBEntity(movieModel = it!!, true)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
                     createRunTime(it?.runtime!!)
                     getMovieCredits(requestModel)
@@ -75,6 +85,7 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
                 mediaRepo?.getTVDetail(requestModel)?.collect {
                     loadingComplete.postValue(true)
                     movieModel.postValue(it)
+                    createDBEntity(movieModel = it!!, false)
                     seasonList.postValue(it?.seasons)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
                     createRunTime(it?.tvRuntime?.get(0)!!)
@@ -85,6 +96,34 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
                 }
             }
         }
+    }
+
+    fun findDBEntity(context: Context, id: Long) {
+        val mediaDao: MediaDao? = PandoraDatabase.getDatabase(context)?.mediaDao()
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                PandoraDatabase.execute.execute {
+                    mediaDao?.findMedia(mediaID = id)?.let {
+                        if (it.id > 0) {
+                            mediaDBMediaEntity.postValue(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun createDBEntity(movieModel: MovieDetailModel, isMovie: Boolean) {
+        var entity = DBMediaEntity()
+        entity.image = movieModel.posterPath!!
+        entity.title = movieModel.title!!
+        entity.rating = movieModel.voteAverage
+        entity.id = movieModel.id
+        entity.isMovie = isMovie
+        entity.processDate = getProcessDate()
+        entity.insertDate = getDate()
+
+        mediaDBMediaEntity.postValue(entity)
     }
 
     private fun getMovieVideo(requestModel: GlobalRequestModel) {
@@ -238,14 +277,14 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
         return  format.format(newDate)
     }
 
-    fun createRunTime(time: Int){
+    private fun createRunTime(time: Int){
         if (time > 60) {
             var hour = time / 60
             var minute = time % 60
-            formatRunTime.postValue("${hour} hrs ${minute} mins")
-        } else if (time > 0 && time < 60) {
+            formatRunTime.postValue("$hour hrs $minute mins")
+        } else if (time in 1..59) {
             var minute = time % 60
-            formatRunTime.postValue("${minute} mins")
+            formatRunTime.postValue("$minute mins")
         }
     }
 }

@@ -20,10 +20,12 @@ import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
+import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.PersonInfo
+import com.laks.tvseries.core.db.PandoraDatabase
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.databinding.ActivityMovieDetailBinding
@@ -110,6 +112,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                     com.laks.tvseries.core.R.string.run_time,
                 movie.runtime
             )) else (resources.getString(com.laks.tvseries.core.R.string.run_time, movie.tvRuntime?.get(0)))
+            baseViewModel.findDBEntity(applicationContext, movie.id)
             requestLayout()
         })
 
@@ -147,6 +150,17 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             requestLayout()
 
             isAllSeason = !isAllSeason
+        })
+
+        baseViewModel.mediaDBMediaEntity.observe(this, Observer {
+            if (it.id > 0) {
+                if(it.isFavorite) {
+                    binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                } else {
+                    binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                }
+                isFavoriteClick = !it.isFavorite
+            }
         })
     }
 
@@ -255,7 +269,16 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             } else {
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
             }
+            addFavoriteDatabase(!isFavoriteClick)
             isFavoriteClick = !isFavoriteClick
+        }
+    }
+
+    private fun addFavoriteDatabase(isFavorite: Boolean) {
+        val mediaDao: MediaDao? = PandoraDatabase.getDatabase(applicationContext)?.mediaDao()
+        baseViewModel.mediaDBMediaEntity.value?.isFavorite = isFavorite
+        PandoraDatabase.execute.execute {
+            mediaDao?.insert(baseViewModel.mediaDBMediaEntity.value)
         }
     }
 

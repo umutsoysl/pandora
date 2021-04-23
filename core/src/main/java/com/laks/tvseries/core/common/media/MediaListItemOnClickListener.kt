@@ -1,5 +1,6 @@
 package com.laks.tvseries.core.common.media
 
+import com.laks.tvseries.core.data.db.DBMediaEntity
 import com.laks.tvseries.core.data.model.CastObject
 import com.laks.tvseries.core.data.model.MovieModel
 
@@ -9,4 +10,8 @@ interface MediaListItemOnClickListener {
 
 interface CastListItemOnClickListener {
     fun castListItemOnClickListener(cast: CastObject)
+}
+
+interface DBFavoriteListItemClickListener {
+    fun mediaListItemOnClickListener(cast: DBMediaEntity)
 }

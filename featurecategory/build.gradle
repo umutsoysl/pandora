@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 android {
     compileSdkVersion 30
@@ -14,6 +15,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
     }
 
     buildTypes {
@@ -42,6 +52,10 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.supportConstraint
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation libraries.roomRuntime
+    implementation libraries.roomKtx
+    kapt libraries.roomCompiler
 
     //Dependecy Injection
     implementation libraries.koin

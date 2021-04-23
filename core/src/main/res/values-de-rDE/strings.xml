@@ -46,6 +46,11 @@
     <string name="language">Dil</string>
     <string name="settings">Ayarlar</string>
     <string name="top_rated">Top rated</string>
+    <string name="watch_list">Watchlist</string>
+    <string name="movie_remove_watch_list">Clear Movie Watchlist</string>
+    <string name="movie_remove_watch_list_dsc">All delete movie watch list</string>
+    <string name="tv_remove_watch_list">Clear Tv Shows Watchlist</string>
+    <string name="tv_remove_watch_list_dsc">All delete tv shows watch list</string>
 
     <!--Language-->
     <string name="english_en">English</string>

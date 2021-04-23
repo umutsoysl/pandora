@@ -46,6 +46,11 @@
     <string name="language">Dil</string>
     <string name="settings">Ayarlar</string>
     <string name="top_rated">En çok oy alan</string>
+    <string name="watch_list">İzleme Listesi</string>
+    <string name="movie_remove_watch_list">Film İzleme Listesini Temizle</string>
+    <string name="movie_remove_watch_list_dsc">Tüm film izleme listesi silinir</string>
+    <string name="tv_remove_watch_list">Tv İzleme Listesini Temizle</string>
+    <string name="tv_remove_watch_list_dsc">Tüm tv programı izleme listesi silinir</string>
 
     <!--Language-->
     <string name="english_en">English</string>

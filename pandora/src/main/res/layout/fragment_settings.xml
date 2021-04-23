@@ -56,6 +56,7 @@
 
                 <TextView
                     style="@style/HeaderTitleStyle"
+                    android:textSize="@dimen/medium_margin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/medium_margin"
@@ -77,10 +78,99 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
+                android:layout_height="0.05dp"
                 android:layout_marginTop="@dimen/regular_margin"
                 android:layout_marginLeft="@dimen/settings_item_left_margin"
-                android:background="@color/red"/>
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:id="@+id/removeMovieList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/lmTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_remove_from_queue_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/lmTitle"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/movie_remove_watch_list"/>
+
+                <TextView
+                    style="@style/SubTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/lmTitle"
+                    android:layout_below="@+id/lmTitle"
+                    android:text="@string/movie_remove_watch_list_dsc"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:id="@+id/removeTvList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/lvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_remove_from_queue_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/lvTitle"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/tv_remove_watch_list"/>
+
+                <TextView
+                    style="@style/SubTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/lvTitle"
+                    android:layout_below="@+id/lvTitle"
+                    android:text="@string/tv_remove_watch_list_dsc"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
 
         </LinearLayout>
 

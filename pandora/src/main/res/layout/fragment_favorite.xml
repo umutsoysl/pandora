@@ -12,19 +12,36 @@
             type="com.laks.tvseries.pandora.MainViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/main_bg_color"
+        android:paddingTop="60dp">
 
         <TextView
-            android:layout_centerVertical="true"
+            android:id="@+id/labelTitle"
+            style="@style/BigHeaderStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FAVORITE FRAGMENT"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="24dp"/>
+            android:layout_marginLeft="2dp"
+            android:paddingHorizontal="@dimen/medium_margin"
+            android:text="@string/watch_list" />
 
-    </RelativeLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            style="@style/pandoraTabLayoutTheme"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_layout_size"
+            app:tabIndicatorColor="@color/red"
+            android:background="@color/main_bg_color"
+            app:tabIndicatorHeight="@dimen/tab_indicator_size" />
+
+        <com.laks.tvseries.core.view.PandoraTabViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 </layout>

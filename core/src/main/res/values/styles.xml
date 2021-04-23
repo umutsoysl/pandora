@@ -108,7 +108,7 @@
 
     <style name="SubTitleStyle">
         <item name="android:fontFamily">@font/muli_regular</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/active_gray</item>
     </style>
 
@@ -122,6 +122,23 @@
         <item name="android:fontFamily">@font/muli_regular</item>
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/active_gray</item>
+    </style>
+
+    <style name="pandoraTabLayoutTheme">
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+        <item name="android:textSize">14dp</item>
+        <item name="fontFamily">@font/muli_regular</item>
+        <item name="tabRippleColor">@null</item>
+        <item name="tabTextColor">@color/active_gray</item>
+        <item name="tabSelectedTextColor">@color/red</item>
+        <item name="tabTextAppearance">@style/tabTextStyle</item>
+    </style>
+
+    <style name="tabTextStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
 </resources>
