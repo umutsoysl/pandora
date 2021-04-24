@@ -578,5 +578,21 @@
             app:srcCompat="@drawable/ic_baseline_favorite_border_24"
             app:tint="@color/white" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/favoriteButton"
+            android:clickable="true"
+            android:layout_marginRight="@dimen/regular_margin"
+            android:layout_marginTop="@dimen/status_bar_size"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_baseline_add_to_queue_24"
+            app:tint="@color/white" />
+
+
     </RelativeLayout>
 </layout>

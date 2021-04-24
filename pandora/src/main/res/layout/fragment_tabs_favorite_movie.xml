@@ -25,6 +25,31 @@
             android:layout_marginTop="@dimen/regular_margin"
             android:nestedScrollingEnabled="false" />
 
+        <LinearLayout
+            android:visibility="@{viewModel.movieWatchList.size()>0 ? View.GONE: View.VISIBLE}"
+            android:id="@+id/emptyStateLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/media_layout_width"
+                android:layout_height="@dimen/media_layout_width"
+                android:background="@drawable/empty_list"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/active_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No entries in list Watchlist."
+                android:textSize="@dimen/medium_margin"
+                android:textColor="@color/active_gray"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 </layout>

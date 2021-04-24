@@ -19,7 +19,7 @@ data class DBMediaEntity (
         @ColumnInfo(name = "is_favorite")
         var isFavorite: Boolean = false,
         @ColumnInfo(name = "is_watched")
-        var isWatched: Boolean = true,
+        var isWatched: Boolean = false,
         @ColumnInfo(name = "process_date")
         var processDate: Long = 20210100,
         @ColumnInfo(name = "insert_date")

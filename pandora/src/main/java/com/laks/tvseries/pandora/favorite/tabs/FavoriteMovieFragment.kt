@@ -1,5 +1,6 @@
 package com.laks.tvseries.pandora.favorite.tabs
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.fragment.BaseFragment
+import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.DBFavoriteListItemClickListener
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.db.DBMediaEntity
+import com.laks.tvseries.core.data.model.MediaType
+import com.laks.tvseries.core.data.model.MovieType
+import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentTabsFavoriteMovieBinding
@@ -51,6 +57,9 @@ class FavoriteMovieFragment: BaseFragment<MainViewModel>(MainViewModel::class), 
     }
 
     override fun mediaListItemOnClickListener(cast: DBMediaEntity) {
-        TODO("Not yet implemented")
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, cast.id)
+        var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.movieDetailActivityClassName)
+        startActivity(intent)
     }
 }

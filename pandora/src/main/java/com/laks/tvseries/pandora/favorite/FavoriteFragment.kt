@@ -31,7 +31,7 @@ class FavoriteFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
     }
 
     private fun setupTabLayout() {
-        adapter = TabViewPagerAdapter(requireActivity().supportFragmentManager)
+        adapter = TabViewPagerAdapter(childFragmentManager)
         adapter?.addFragment(FavoriteMovieFragment(), resources.getString(com.laks.tvseries.core.R.string.movie))
         adapter?.addFragment(FavoriteTvShowsFragment(), resources.getString(com.laks.tvseries.core.R.string.tv_series))
         binding.viewPager.adapter = adapter

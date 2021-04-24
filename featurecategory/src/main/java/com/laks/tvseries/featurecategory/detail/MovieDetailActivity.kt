@@ -3,6 +3,7 @@ package com.laks.tvseries.featurecategory.detail
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,6 +54,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private lateinit var adapterSeason: SeasonListAdapter
 
     private var isFavoriteClick = false
+    private var isAddListClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +67,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         setMediaListAdapter()
         setSeasonListAdapter()
         getDetail()
+        addListButtonClick()
         bindingViewModel()
         favoriteButtonClick()
         backButtonClick()
@@ -156,10 +159,21 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             if (it.id > 0) {
                 if(it.isFavorite) {
                     binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
                 } else {
                     binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
                 }
                 isFavoriteClick = !it.isFavorite
+
+                if(it.isWatched) {
+                    binding.addButton.setImageResource(R.drawable.ic_baseline_remove_from_queue_24)
+                    binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
+                } else {
+                    binding.addButton.setImageResource(R.drawable.ic_baseline_add_to_queue_24)
+                    binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
+                }
+                isAddListClick = !it.isWatched
             }
         })
     }
@@ -266,11 +280,39 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         binding.favoriteButton.setOnClickListener {
             if(!isFavoriteClick) {
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
             } else {
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
             }
             addFavoriteDatabase(!isFavoriteClick)
             isFavoriteClick = !isFavoriteClick
+        }
+    }
+
+    private fun addListButtonClick() {
+        binding.addButton.setOnClickListener {
+            if(!isAddListClick) {
+                binding.addButton.setImageResource(R.drawable.ic_baseline_remove_from_queue_24)
+                binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
+            } else {
+                binding.addButton.setImageResource(R.drawable.ic_baseline_add_to_queue_24)
+                binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
+            }
+            addWatchListDatabase(!isAddListClick)
+            isAddListClick = !isAddListClick
+        }
+    }
+
+    private fun addWatchListDatabase(isAddListClick: Boolean) {
+        val mediaDao: MediaDao? = PandoraDatabase.getDatabase(applicationContext)?.mediaDao()
+        baseViewModel.mediaDBMediaEntity.value?.isWatched = isAddListClick
+        PandoraDatabase.execute.execute {
+            if(isAddListClick) {
+                mediaDao?.insert(baseViewModel.mediaDBMediaEntity.value)
+            } else {
+                baseViewModel.mediaDBMediaEntity.value?.let { mediaDao?.deleteData(it) }
+            }
         }
     }
 
