@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="search_hint">Rechercher...</string>
+    <string name="movie">Film</string>
+    <string name="tv_series">Séries tv</string>
+    <string name="people">Acteur</string>
+    <string name="more_load">Plus de charge</string>
+    <string name="trending">Tendance</string>
+    <string name="movies">Films</string>
+    <string name="tv_shows">Émissions de tv</string>
+    <string name="now_playing">Lecture en cours</string>
+    <string name="popular">Populaire</string>
+    <string name="popular_people">c populaire</string>
+    <string name="upcoming">A venir</string>
+    <string name="about">Aperçu</string>
+    <string name="genre">Genres</string>
+    <string name="run_time">● %1$s min</string>
+    <string name="more">Lire la suite</string>
+    <string name="read_less">Lire moins</string>
+    <string name="trailer">Fragment</string>
+    <string name="top_cast">Top Billed Cast</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="season">Saison</string>
+    <string name="episodes">épisodes</string>
+    <string name="more_season">Toutes les saisons</string>
+    <string name="less_season">Moins de saisons</string>
+    <string name="media">Médias</string>
+    <string name="director">Réalisateur</string>
+    <string name="original_title">Titre original</string>
+    <string name="status">Statut</string>
+    <string name="time">Durée</string>
+    <string name="original_language">Langue</string>
+    <string name="revenue">Revenue</string>
+    <string name="media_info">Infos médias</string>
+    <string name="screenplay">Scénario,histoire</string>
+    <string name="budget">Budget</string>
+    <string name="personal_info">Acteur info</string>
+    <string name="name">Nom</string>
+    <string name="known_for">Connu pour</string>
+    <string name="birthday">Date d\'anniversaire</string>
+    <string name="gender">Genre</string>
+    <string name="place_of_birth">Lieu de naissance</string>
+    <string name="all_media">Médias</string>
+    <string name="discover">Découvrir</string>
+    <string name="discover_search_hint">Film, tv ou acteur</string>
+    <string name="language">Langue</string>
+    <string name="settings">Paramètres</string>
+    <string name="top_rated">Les mieux notés</string>
+    <string name="watch_list">Liste de tracé</string>
+    <string name="movie_remove_watch_list">Effacer la liste de surveillance des films</string>
+    <string name="movie_remove_watch_list_dsc">Tout supprimer la liste des films à regarder</string>
+    <string name="tv_remove_watch_list">Effacer la liste de surveillance des émissions de tv</string>
+    <string name="tv_remove_watch_list_dsc">Tout supprimer la liste des tv à regarder</string>
+    <string name="no_entries_list">Aucune entrée dans la liste de surveillance.</string>
+
+    <!--Language-->
+    <string name="english_en">English</string>
+    <string name="turkish_en">Turkish</string>
+    <string name="french_en">French</string>
+    <string name="russian_en">Russian</string>
+    <string name="hindi_en">Hindi</string>
+    <string name="china_en">China</string>
+    <string name="german_en">German</string>
+    <string name="arabic_en">Arabic</string>
+    <string name="italian_en">Italian</string>
+    <string name="portuguese_en">Portuguese</string>
+    <string name="spanish_en">Spanish</string>
+    <string name="japanese_en">Japanese</string>
+
+    <string name="english">Anglais</string>
+    <string name="turkish">Turque</string>
+    <string name="french">Français</string>
+    <string name="russian">Russe</string>
+    <string name="hindi">Hindi</string>
+    <string name="china">Chine</string>
+    <string name="german">Allemande</string>
+    <string name="arabic">Arabe</string>
+    <string name="italian">Italien</string>
+    <string name="portuguese">Portugais</string>
+    <string name="spanish">Espagnol</string>
+    <string name="japanese">Japonais</string>
+    <!--Language-->
+
+</resources>

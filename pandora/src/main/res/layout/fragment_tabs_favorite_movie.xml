@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No entries in list Watchlist."
+                android:text="@string/no_entries_list"
                 android:textSize="@dimen/medium_margin"
                 android:textColor="@color/active_gray"/>
 

@@ -7,8 +7,9 @@
     <TextView
         android:id="@+id/labelTitle"
         style="@style/DefaultSubTitleStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_marginLeft="@dimen/large_margin"
         android:layout_marginTop="@dimen/large_margin"
         android:layout_marginRight="@dimen/large_margin" />
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/labelTitle"
+        android:layout_alignParentLeft="true"
         android:layout_marginLeft="@dimen/large_margin"
         android:layout_marginRight="@dimen/large_margin" />
 
@@ -26,7 +28,7 @@
         android:id="@+id/radioSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true" />
 
 </RelativeLayout>

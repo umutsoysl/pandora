@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.laks.tvseries.core.CoreActivity
+import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.core.global.StoreShared
 import java.util.*
 
 class SplashActivity : CoreActivity() {
@@ -15,9 +18,8 @@ class SplashActivity : CoreActivity() {
 
     private val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
-
             try{
-                initTimer()
+                getLocaleLanguage()
             }catch (e:Exception){
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
@@ -42,10 +44,16 @@ class SplashActivity : CoreActivity() {
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent) })
             }
-        }, 1000)
+        }, 900)
     }
 
-    public override fun onDestroy() {
+    private fun getLocaleLanguage() {
+        val languageCode = StoreShared(this).getStringValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY, if (languageCode.isNullOrEmpty()) "en-US" else languageCode)
+        initTimer()
+    }
+
+    override fun onDestroy() {
 
         if (mDelayHandler != null) {
             mDelayHandler!!.removeCallbacks(mRunnable)

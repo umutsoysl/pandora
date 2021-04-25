@@ -51,6 +51,7 @@
     <string name="movie_remove_watch_list_dsc">All delete movie watch list</string>
     <string name="tv_remove_watch_list">Clear Tv Shows Watchlist</string>
     <string name="tv_remove_watch_list_dsc">All delete tv shows watch list</string>
+    <string name="no_entries_list">No entries in list Watchlist.</string>
 
     <!--Language-->
     <string name="english_en">English</string>

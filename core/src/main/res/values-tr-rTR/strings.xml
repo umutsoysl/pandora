@@ -51,6 +51,7 @@
     <string name="movie_remove_watch_list_dsc">Tüm film izleme listesi silinir</string>
     <string name="tv_remove_watch_list">Tv İzleme Listesini Temizle</string>
     <string name="tv_remove_watch_list_dsc">Tüm tv programı izleme listesi silinir</string>
+    <string name="no_entries_list">İzleme listesi boş.</string>
 
     <!--Language-->
     <string name="english_en">English</string>

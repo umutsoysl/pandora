@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="search_hint">يبحث...</string>
+    <string name="movie">فيلم</string>
+    <string name="tv_series">مسلسل تلفزيوني</string>
+    <string name="people">الممثل</string>
+    <string name="more_load">المزيد من الحمل</string>
+    <string name="trending">الشائع</string>
+    <string name="movies">أفلام</string>
+    <string name="tv_shows">عرض تلفزيوني</string>
+    <string name="now_playing">الان العب</string>
+    <string name="popular">شائع</string>
+    <string name="popular_people">شعب شعبي</string>
+    <string name="upcoming">القادمة</string>
+    <string name="about">ملخص</string>
+    <string name="genre">الأنواع</string>
+    <string name="run_time">● %1$s min</string>
+    <string name="more">اقرأ أكثر</string>
+    <string name="read_less">أقرأ أقل</string>
+    <string name="trailer">شظية</string>
+    <string name="top_cast">أعلى فواتير يلقي</string>
+    <string name="recommendations">التوصيات</string>
+    <string name="season">موسم</string>
+    <string name="episodes">الحلقات</string>
+    <string name="more_season">كل الفصول</string>
+    <string name="less_season">مواسم أقل</string>
+    <string name="media">وسائط</string>
+    <string name="director">مخرج</string>
+    <string name="original_title">العنوان الأصلي</string>
+    <string name="status">حالة</string>
+    <string name="time">زمن</string>
+    <string name="original_language">لغة</string>
+    <string name="revenue">ربح</string>
+    <string name="media_info">معلومات الوسائط</string>
+    <string name="screenplay">سيناريو ، قصة</string>
+    <string name="budget">الدخل</string>
+    <string name="personal_info">معلومات شخصية</string>
+    <string name="name">اسم</string>
+    <string name="known_for">معروف ب</string>
+    <string name="birthday">عيد ميلاد</string>
+    <string name="gender">جنس</string>
+    <string name="place_of_birth">مكان الميلاد</string>
+    <string name="all_media">جميع وسائل الإعلام</string>
+    <string name="discover">يكتشف</string>
+    <string name="discover_search_hint">فيلم أو برنامج تلفزيوني أو ممثل</string>
+    <string name="language">لغة</string>
+    <string name="settings">إعدادات</string>
+    <string name="top_rated">أعلى التقييمات</string>
+    <string name="watch_list">قائمة المراقبة</string>
+    <string name="movie_remove_watch_list">مسح قائمة مشاهدة الفيلم</string>
+    <string name="movie_remove_watch_list_dsc">كل حذف قائمة مشاهدة الفيلم</string>
+    <string name="tv_remove_watch_list">مسح العروض التلفزيونية قائمة المراقبة</string>
+    <string name="tv_remove_watch_list_dsc">كل حذف قائمة مشاهدة البرامج التلفزيونية</string>
+    <string name="no_entries_list">لا توجد إدخالات في قائمة المراقبة.</string>
+
+    <!--Language-->
+    <string name="english_en">English</string>
+    <string name="turkish_en">Turkish</string>
+    <string name="french_en">French</string>
+    <string name="russian_en">Russian</string>
+    <string name="hindi_en">Hindi</string>
+    <string name="china_en">China</string>
+    <string name="german_en">German</string>
+    <string name="arabic_en">Arabic</string>
+    <string name="italian_en">Italian</string>
+    <string name="portuguese_en">Portuguese</string>
+    <string name="spanish_en">Spanish</string>
+    <string name="japanese_en">Japanese</string>
+
+    <string name="english">الإنجليزية</string>
+    <string name="turkish">اللغة التركية</string>
+    <string name="french">فرنسي</string>
+    <string name="russian">الروسية</string>
+    <string name="hindi">هندي</string>
+    <string name="china">الصين</string>
+    <string name="german">ألمانية</string>
+    <string name="arabic">عربى</string>
+    <string name="italian">إيطالي</string>
+    <string name="portuguese">البرتغالية</string>
+    <string name="spanish">الأسبانية</string>
+    <string name="japanese">اليابانية</string>
+    <!--Language-->
+
+</resources>

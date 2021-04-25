@@ -280,7 +280,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         binding.favoriteButton.setOnClickListener {
             if(!isFavoriteClick) {
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
-                binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
+                binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
             } else {
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)

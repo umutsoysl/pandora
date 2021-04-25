@@ -50,11 +50,13 @@
                     android:id="@+id/lTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:background="@drawable/ic_baseline_language_24"
                     android:layout_centerVertical="true"
                     android:backgroundTint="@color/active_gray"/>
 
                 <TextView
+                    android:id="@+id/title0"
                     style="@style/HeaderTitleStyle"
                     android:textSize="@dimen/medium_margin"
                     android:layout_width="wrap_content"
@@ -71,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/medium_margin"
                     android:layout_toRightOf="@+id/lTitle"
-                    android:layout_below="@+id/lTitle"
+                    android:layout_below="@+id/title0"
                     android:text="English"/>
 
             </RelativeLayout>
@@ -95,11 +97,13 @@
                     android:id="@+id/lmTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:background="@drawable/ic_baseline_remove_from_queue_24"
                     android:layout_centerVertical="true"
                     android:backgroundTint="@color/active_gray"/>
 
                 <TextView
+                    android:id="@+id/title"
                     style="@style/HeaderTitleStyle"
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/medium_margin"
@@ -115,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/medium_margin"
                     android:layout_toRightOf="@+id/lmTitle"
-                    android:layout_below="@+id/lmTitle"
+                    android:layout_below="@+id/title"
                     android:text="@string/movie_remove_watch_list_dsc"/>
 
             </RelativeLayout>
@@ -139,11 +143,13 @@
                     android:id="@+id/lvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:background="@drawable/ic_baseline_remove_from_queue_24"
                     android:layout_centerVertical="true"
                     android:backgroundTint="@color/active_gray"/>
 
                 <TextView
+                    android:id="@+id/title1"
                     style="@style/HeaderTitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -159,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/medium_margin"
                     android:layout_toRightOf="@+id/lvTitle"
-                    android:layout_below="@+id/lvTitle"
+                    android:layout_below="@+id/title1"
                     android:text="@string/tv_remove_watch_list_dsc"/>
 
             </RelativeLayout>

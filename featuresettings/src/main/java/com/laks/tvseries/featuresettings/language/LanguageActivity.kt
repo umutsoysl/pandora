@@ -3,6 +3,7 @@ package com.laks.tvseries.featuresettings.language
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laks.tvseries.core.base.activity.BaseActivity
+import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.language.LanguageOnItemClickListener
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
@@ -58,6 +59,7 @@ class LanguageActivity : BaseActivity<SettingsViewModel>(SettingsViewModel::clas
         StoreShared(this).setStringKeyValue(GlobalConstants.SHARED_LANGUAGE_CODE, model.code!!)
         StoreShared(this).setStringKeyValue(GlobalConstants.SHARED_LANGUAGE_COUNTRY, model.countryCode!!)
         StoreShared(this).setStringKeyValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY, "${model.code!!}-${model.countryCode!!}")
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY, "${model.code!!}-${model.countryCode!!}")
         onBackPressed()
     }
 

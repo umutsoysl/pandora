@@ -1,5 +1,6 @@
 package com.laks.tvseries.core.base.service
 
+import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.loading.MemoryCacheHelper
 import okhttp3.HttpUrl
@@ -35,9 +36,11 @@ class ServiceManager {
         private fun requestBuilder(request: Request): Request {
             val originalHttpUrl: HttpUrl = request.url()
 
+            val language =  MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY) as String
+
             val url = originalHttpUrl.newBuilder()
                     .addQueryParameter("api_key", "api_key")
-                    .addQueryParameter("language", "en-US")
+                    .addQueryParameter("language", language)
                     .build()
 
             val requestBuilder: Request.Builder = request.newBuilder()
