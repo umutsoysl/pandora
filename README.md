@@ -17,7 +17,7 @@ Multi module movies and tv series review android app.
 * [ktlint](https://ktlint.github.io/)
 
 
-## ☘️: Feature
+## ☘️ Feature
 * Trendlist movie and tv shows
 * Search movie, tv shows and actor
 * Multi language
