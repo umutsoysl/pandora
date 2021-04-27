@@ -11,7 +11,4 @@ Multi module movies and tv series review android app
 * [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)
 * [Kotlin Flow](https://developer.android.com/kotlin/flow)
 * [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
-* [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-* [Moshi](https://github.com/square/moshi)
-* [Coil](https://github.com/coil-kt/coil)
 * [ktlint](https://ktlint.github.io/)
