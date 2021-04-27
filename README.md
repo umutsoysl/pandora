@@ -1,5 +1,5 @@
 # pandora
-Multi module tv series android app
+Multi module movies and tv series review android app
 
 ## Kullanılan Teknolojiler
 - Kotlin
