@@ -9,7 +9,6 @@ Multi module movies and tv series review android app.
 * [Architecture Components](https://developer.android.com/topic/libraries/architecture/)
 * [Android X](https://developer.android.com/jetpack/androidx) 
 * [Android KTX](https://developer.android.com/kotlin/ktx.html) 
-* [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 * [Retrofit2](https://square.github.io/retrofit/)
 * [OkHttp3](https://github.com/square/okhttp)
 * [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)
