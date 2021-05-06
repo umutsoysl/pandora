@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">مسح العروض التلفزيونية قائمة المراقبة</string>
     <string name="tv_remove_watch_list_dsc">كل حذف قائمة مشاهدة البرامج التلفزيونية</string>
     <string name="no_entries_list">لا توجد إدخالات في قائمة المراقبة.</string>
+    <string name="mod_select_desc">اختر الوضع الخاص بك لاقتراح الفيلم وفقًا لوضعك ، شاهد الفيلم الخاص بك.</string>
+    <string name="random">عشوائي</string>
+    <string name="mod_select">اختر الوضع</string>
+    <string name="mod_drama">عاطفي</string>
+    <string name="mod_friend">بيئة الصديق</string>
+    <string name="mod_science_fiction">حرق عقلي</string>
+    <string name="mod_funny">مضحك</string>
+    <string name="mod_impressive">بديع</string>
+    <string name="mod_thriller">القصة المثيرة</string>
+    <string name="mod_love">رومانسي</string>
+    <string name="mod_fantastic">جميل</string>
+    <string name="mod_adventure">مغامر</string>
+    <string name="mod_war">عنيف</string>
+    <string name="mod_classic">كلاسيك</string>
+    <string name="mod_musical">موسيقي</string>
+    <string name="mod_random">Pandora إختر</string>
+    <string name="mod_real">قصة حياة حقيقية</string>
 
     <!--Language-->
     <string name="english_en">English</string>

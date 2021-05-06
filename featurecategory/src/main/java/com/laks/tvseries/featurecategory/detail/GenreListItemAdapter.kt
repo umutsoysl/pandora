@@ -6,22 +6,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
 import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.featurecategory.databinding.LayoutGenreItemBinding
 
-class GenreListItemAdapter(private val context: Context) : ListAdapter<Genre, GenreListItemAdapter.GenreListViewHolder>(GenreListItemModelDiffCallback()) {
+class GenreListItemAdapter(private val context: Context, private val clickListener: GenreListItemOnClickListener) : ListAdapter<Genre, GenreListItemAdapter.GenreListViewHolder>(GenreListItemModelDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreListViewHolder {
         return GenreListViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: GenreListViewHolder, position: Int) {
-        holder.bind(context, getItem(position))
+        holder.bind(context, clickListener , getItem(position))
     }
 
     class GenreListViewHolder(private val binding: LayoutGenreItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(context: Context, itemData: Genre) {
+        fun bind(context: Context, clickListener: GenreListItemOnClickListener,  itemData: Genre) {
+            binding.itemClickListener = clickListener
             binding.genre = itemData
             binding.executePendingBindings()
         }

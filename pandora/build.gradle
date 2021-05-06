@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -90,4 +91,8 @@ dependencies {
     implementation libraries.gson
     implementation libraries.picasso
     implementation libraries.shimmer
+
+    // google
+    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.google.android.gms:play-services-vision:10.0.0'
 }

@@ -93,8 +93,6 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitGson
 
-    implementation libraries.firebaseCrashlytics
-
     //Android Room
     implementation libraries.roomRuntime
     implementation libraries.roomKtx

@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">TV Watchlist Löschen</string>
     <string name="tv_remove_watch_list_dsc">Alle löschen tv watchlist</string>
     <string name="no_entries_list">Keine Einträge in der Liste Watchlist.</string>
+    <string name="mod_select_desc">Wählen Sie Ihren Modus für Filmvorschläge entsprechend Ihrem Modus und schauen Sie sich Ihren Film an.</string>
+    <string name="random">Zufällig</string>
+    <string name="mod_select">Wählen Sie Modus</string>
+    <string name="mod_drama">Emotional</string>
+    <string name="mod_friend">Freund Umgebung</string>
+    <string name="mod_science_fiction">Verbrenne mein Gehirn</string>
+    <string name="mod_funny">Komisch</string>
+    <string name="mod_impressive">Beeindruckend</string>
+    <string name="mod_thriller">Thriller</string>
+    <string name="mod_love">Romantisch</string>
+    <string name="mod_fantastic">Fantastisch</string>
+    <string name="mod_adventure">Abenteuerlich</string>
+    <string name="mod_war">Heftig</string>
+    <string name="mod_classic">Klassisch</string>
+    <string name="mod_musical">Musical</string>
+    <string name="mod_random">Pandora wählen</string>
+    <string name="mod_real">Geschichte aus dem wirklichen Leben</string>
 
     <!--Language-->
     <string name="english_en">English</string>

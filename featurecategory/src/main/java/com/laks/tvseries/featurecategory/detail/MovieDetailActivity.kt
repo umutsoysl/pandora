@@ -17,12 +17,14 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
 import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
 import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.PersonInfo
@@ -38,7 +40,7 @@ import com.squareup.picasso.Picasso
 import org.koin.core.module.Module
 
 
-class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewModel::class), PeopleItemClickListener, MediaListItemOnClickListener,
+class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewModel::class), PeopleItemClickListener, MediaListItemOnClickListener, GenreListItemOnClickListener,
     BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
     override val modules: List<Module>
@@ -221,7 +223,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun setAdapter() {
-        adapter = GenreListItemAdapter(this@MovieDetailActivity)
+        adapter = GenreListItemAdapter(this@MovieDetailActivity, this)
         val layoutManager = FlexboxLayoutManager(this@MovieDetailActivity)
         layoutManager.flexDirection = FlexDirection.ROW
         layoutManager.justifyContent = JustifyContent.FLEX_START
@@ -352,4 +354,5 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     override fun onPageSelected(position: Int) {}
 
     override fun onPageScrollStateChanged(state: Int) {}
+    override fun genreListItemOnClickListener(genre: Genre) {}
 }

@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">清除电视节目监视列表</string>
     <string name="tv_remove_watch_list_dsc">全部删除电视节目观看列表</string>
     <string name="no_entries_list">监视列表中没有条目。</string>
+    <string name="mod_select_desc">根据您的模式选择电影建议的模式，观看电影。</string>
+    <string name="random">随机的</string>
+    <string name="mod_select">选择模式</string>
+    <string name="mod_drama">感性的</string>
+    <string name="mod_friend">朋友环境</string>
+    <string name="mod_science_fiction">烧我的脑</string>
+    <string name="mod_funny">有趣的</string>
+    <string name="mod_impressive">感人的</string>
+    <string name="mod_thriller">惊悚片</string>
+    <string name="mod_love">浪漫的</string>
+    <string name="mod_fantastic">极好的</string>
+    <string name="mod_adventure">冒险的</string>
+    <string name="mod_war">暴力</string>
+    <string name="mod_classic">经典的</string>
+    <string name="mod_musical">音乐</string>
+    <string name="mod_random">潘多拉选择</string>
+    <string name="mod_real">现实生活中的故事</string>
 
     <!--Language-->
     <string name="english_en">English</string>

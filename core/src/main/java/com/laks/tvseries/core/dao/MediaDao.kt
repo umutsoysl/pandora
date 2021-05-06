@@ -17,8 +17,8 @@ interface MediaDao {
     @Update
     fun update(vararg note: DBMediaEntity)
 
-    @Query("DELETE FROM favorite_media_table")
-    fun deleteAll()
+    @Query("DELETE FROM favorite_media_table WHERE is_movie = :isMovie")
+    fun deleteAll(isMovie: Boolean)
 
     @Query("SELECT * from favorite_media_table ORDER BY process_date DESC")
     fun getAllData(): List<DBMediaEntity>?

@@ -52,6 +52,28 @@
     <string name="tv_remove_watch_list">Clear Tv Shows Watchlist</string>
     <string name="tv_remove_watch_list_dsc">All delete tv shows watch list</string>
     <string name="no_entries_list">No entries in list Watchlist.</string>
+    <string name="mod_select_desc">Choose your mode for movie suggestion according to your mode, watch your movie.</string>
+    <string name="random">Random</string>
+    <string name="mod_select">Choose Mode</string>
+    <string name="mod_drama">Emotional</string>
+    <string name="mod_friend">Friend environment</string>
+    <string name="mod_science_fiction">Burn my brain</string>
+    <string name="mod_funny">Funny</string>
+    <string name="mod_impressive">Impressive</string>
+    <string name="mod_thriller">Thriller</string>
+    <string name="mod_love">Romantic</string>
+    <string name="mod_fantastic">Fantastic</string>
+    <string name="mod_adventure">Adventurous</string>
+    <string name="mod_war">Violent</string>
+    <string name="mod_classic">Classic</string>
+    <string name="mod_musical">Musical</string>
+    <string name="mod_random">Pandora choose</string>
+    <string name="mod_real">Real life story</string>
+    <string name="alert">Warning</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_favorite_list">It has been added to the watch list.</string>
+    <string name="remove_favorite_list">It has been removed from the watch list.</string>
 
     <!--Language-->
     <string name="english_en">English</string>

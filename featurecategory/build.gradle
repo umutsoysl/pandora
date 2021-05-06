@@ -57,6 +57,14 @@ dependencies {
     implementation libraries.roomKtx
     kapt libraries.roomCompiler
 
+    // firebase
+    implementation libraries.firebaseCrashlytics
+    implementation libraries.remoteConfig
+    implementation libraries.messaging
+    implementation libraries.firebaseAnalytics
+    implementation libraries.firebaseCore
+    implementation libraries.firebaseDatabase
+
     //Dependecy Injection
     implementation libraries.koin
     implementation libraries.koinViewmodel

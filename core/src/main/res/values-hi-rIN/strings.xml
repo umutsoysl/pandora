@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">क्लियर टीवी शो वॉचलिस्ट दिखाता है</string>
     <string name="tv_remove_watch_list_dsc">सभी डिलीट टीवी शो सूची देखते हैं</string>
     <string name="no_entries_list">सूची वॉच लिस्ट में कोई प्रविष्टि नहीं।</string>
+    <string name="mod_select_desc">अपने मोड के अनुसार मूवी सुझाव के लिए अपना मोड चुनें, अपनी मूवी देखें।</string>
+    <string name="random">बिना सोचे समझे</string>
+    <string name="mod_select">मोड चुनें</string>
+    <string name="mod_drama">भावनात्मक</string>
+    <string name="mod_friend">मित्र का वातावरण</string>
+    <string name="mod_science_fiction">मेरे दिमाग को जला दो</string>
+    <string name="mod_funny">मजेदारमजेदार</string>
+    <string name="mod_impressive">प्रभावशाली</string>
+    <string name="mod_thriller">थ्रिलर</string>
+    <string name="mod_love">प्रेम प्रसंगयुक्त</string>
+    <string name="mod_fantastic">बहुत खुबस</string>
+    <string name="mod_adventure">साहसी</string>
+    <string name="mod_war">हिंसा करनेवाला</string>
+    <string name="mod_classic">क्लासिक</string>
+    <string name="mod_musical">संगीत</string>
+    <string name="mod_random">भानुमती चुनें</string>
+    <string name="mod_real">वास्तविक जीवन की कहानी</string>
 
     <!--Language-->
     <string name="english_en">English</string>

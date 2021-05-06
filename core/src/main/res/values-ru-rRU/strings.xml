@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">Очистить список просмотра телешоу</string>
     <string name="tv_remove_watch_list_dsc">Все удалить список просмотра телешоу</string>
     <string name="no_entries_list">Нет записей в списке Watchlist.</string>
+    <string name="mod_select_desc">Выберите режим для предложения фильма в соответствии с вашим режимом, посмотрите фильм.</string>
+    <string name="random">Случайный</string>
+    <string name="mod_select">Выберите режим</string>
+    <string name="mod_drama">Эмоциональный</string>
+    <string name="mod_friend">Дружеская среда</string>
+    <string name="mod_science_fiction">Сжечь мой мозг</string>
+    <string name="mod_funny">Забавный</string>
+    <string name="mod_impressive">Впечатляющий</string>
+    <string name="mod_thriller">Триллер</string>
+    <string name="mod_love">Романтичный</string>
+    <string name="mod_fantastic">Фантастический</string>
+    <string name="mod_adventure">Авантюрный</string>
+    <string name="mod_war">Жестокий</string>
+    <string name="mod_classic">Классический</string>
+    <string name="mod_musical">Музыкальный</string>
+    <string name="mod_random">Pandora выберите</string>
+    <string name="mod_real">Реальная история жизни</string>
 
     <!--Language-->
     <string name="english_en">English</string>

@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.laks.tvseries.core.base.fragment.BaseFragment
+import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.db.PandoraDatabase
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
 import com.laks.tvseries.pandora.R
@@ -29,6 +32,7 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
         initLanguage()
         goLanguageScreen()
+        clickListener()
 
         return binding.root
     }
@@ -46,6 +50,35 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         binding.languageBox.setOnClickListener {
             var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.languageActivityClassName)
             startActivity(intent)
+        }
+    }
+
+    private fun clickListener() {
+        val db: MediaDao? = PandoraDatabase.getDatabase(requireActivity())?.mediaDao()
+        binding.removeMovieList.setOnClickListener {
+            val builder = AlertDialog.Builder(requireActivity(), com.laks.tvseries.core.R.style.PandoraAlertDialogTheme)
+            builder.setTitle(resources.getString(R.string.alert))
+            builder.setMessage(resources.getString(R.string.movie_remove_watch_list_dsc))
+            builder.setPositiveButton(resources.getString(R.string.delete)) { _, _ ->
+                db?.deleteAll(isMovie = true)
+            }
+            builder.setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                dialog.cancel()
+            }
+            builder.show()
+        }
+
+        binding.removeTvList.setOnClickListener {
+            val builder = AlertDialog.Builder(requireActivity(), com.laks.tvseries.core.R.style.PandoraAlertDialogTheme)
+            builder.setTitle(resources.getString(R.string.alert))
+            builder.setMessage(resources.getString(R.string.tv_remove_watch_list_dsc))
+            builder.setPositiveButton(resources.getString(R.string.delete)) { _, _ ->
+                db?.deleteAll(isMovie = false)
+            }
+            builder.setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                dialog.cancel()
+            }
+            builder.show()
         }
     }
 

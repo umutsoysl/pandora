@@ -52,6 +52,23 @@
     <string name="tv_remove_watch_list">Lista de monitoramento de programas de TV claros</string>
     <string name="tv_remove_watch_list_dsc">Excluir lista de exibição de todos os programas de TV</string>
     <string name="no_entries_list">Nenhuma entrada na lista de observação.</string>
+    <string name="mod_select_desc">Escolha o seu modo de sugestão de filme de acordo com o seu modo, assista ao filme.</string>
+    <string name="random">Aleatória</string>
+    <string name="mod_select">Escolha o modo</string>
+    <string name="mod_drama">Emocional</string>
+    <string name="mod_friend">Ambiente amigo</string>
+    <string name="mod_science_fiction">Queime meu cérebro</string>
+    <string name="mod_funny">Engraçado</string>
+    <string name="mod_impressive">Impressionante</string>
+    <string name="mod_thriller">Filme de ação</string>
+    <string name="mod_love">Romântico</string>
+    <string name="mod_fantastic">Fantástico</string>
+    <string name="mod_adventure">Aventureiro</string>
+    <string name="mod_war">Violento</string>
+    <string name="mod_classic">Clássico</string>
+    <string name="mod_musical">Musical</string>
+    <string name="mod_random">Pandora escolher</string>
+    <string name="mod_real">História da vida real</string>
 
     <!--Language-->
     <string name="english_en">English</string>

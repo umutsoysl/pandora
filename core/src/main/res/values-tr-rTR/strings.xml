@@ -52,6 +52,28 @@
     <string name="tv_remove_watch_list">Tv İzleme Listesini Temizle</string>
     <string name="tv_remove_watch_list_dsc">Tüm tv programı izleme listesi silinir</string>
     <string name="no_entries_list">İzleme listesi boş.</string>
+    <string name="mod_select_desc">Moduna göre film önerisi için modunu seç, filmini izle.</string>
+    <string name="random">Rastgele</string>
+    <string name="mod_select">Modunu Seç</string>
+    <string name="mod_drama">Duygusal</string>
+    <string name="mod_friend">Arkadaş ortamı</string>
+    <string name="mod_science_fiction">Beyinimi yaksın</string>
+    <string name="mod_funny">Eğlenceli</string>
+    <string name="mod_impressive">Etkilesin</string>
+    <string name="mod_thriller">Geriliyim</string>
+    <string name="mod_love">Romantik</string>
+    <string name="mod_fantastic">Fantastik</string>
+    <string name="mod_adventure">Maceraya doyursun</string>
+    <string name="mod_war">Vurdulu kırdılı</string>
+    <string name="mod_classic">Klasik</string>
+    <string name="mod_musical">Müzikal</string>
+    <string name="mod_random">Pandora seçsin</string>
+    <string name="mod_real">Gerçek yaşam öyküsü</string>
+    <string name="alert">Uyarı</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">Vazgeç</string>
+    <string name="add_favorite_list">İzleme listesine eklendi.</string>
+    <string name="remove_favorite_list">İzleme listesinden çıkarıldı.</string>
 
     <!--Language-->
     <string name="english_en">English</string>

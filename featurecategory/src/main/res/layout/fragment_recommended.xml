@@ -1,0 +1,95 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featurecategory.category.CategoryViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootRelativeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_color"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/media_title_bottom_margin">
+
+            <TextView
+                android:id="@+id/labelTitle"
+                style="@style/CategoryTypeTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_height="wrap_content"
+                android:text="@string/recommendations" />
+
+            <TextView
+                android:id="@+id/labelSubTitle"
+                style="@style/CategoryTypeSubTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/sub_title_margin"
+                android:layout_marginTop="@dimen/sub_title_top_margin"
+                android:layout_toRightOf="@+id/labelTitle"
+                android:text="@string/movies" />
+
+            <TextView
+                android:id="@+id/labelDesc"
+                style="@style/CategoryTypeSubTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelTitle"
+                android:layout_alignParentLeft="true"
+                android:text="@string/mod_select_desc"
+                />
+
+            <Button
+                android:id="@+id/buttonSelectMod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelDesc"
+                android:backgroundTint="@color/red"
+                android:textSize="@dimen/button_text_size"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:text="@string/mod_select"/>
+
+            <Button
+                android:id="@+id/buttonRandom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelDesc"
+                android:backgroundTint="@color/dark_gray"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/regular_margin"
+                android:layout_toRightOf="@+id/buttonSelectMod"
+                android:textSize="@dimen/button_text_size"
+                android:text="@string/random"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerModList"
+                android:layout_below="@+id/buttonSelectMod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginLeft="-3dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/layout_genre_item" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

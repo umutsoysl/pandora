@@ -17,5 +17,7 @@ class GlobalConstants {
         const val SHARED_LANGUAGE_COUNTRY = "SHARED_LANGUAGE_COUNTRY"
         const val SHARED_LANGUAGE_WITH_CODE_COUNTRY = "SHARED_LANGUAGE_WITH_CODE_COUNTRY"
         const val SHARED_NAME = "pandora_shared"
+        const val FIREBASE_RANDOM_MOVIE_TABLE = "Random"
+        const val FIREBASE_MOD_LIS_MOVIE_TABLE = "ModList"
     }
 }

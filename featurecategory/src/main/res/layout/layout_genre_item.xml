@@ -5,12 +5,17 @@
 
     <data>
         <variable
+            name="itemClickListener"
+            type="com.laks.tvseries.core.common.media.GenreListItemOnClickListener" />
+
+        <variable
             name="genre"
             type="com.laks.tvseries.core.data.model.Genre" />
     </data>
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:onClick="@{() -> itemClickListener.genreListItemOnClickListener(genre)}"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView

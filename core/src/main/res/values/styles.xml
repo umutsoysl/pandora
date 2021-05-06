@@ -141,4 +141,15 @@
         <item name="android:textSize">14dp</item>
     </style>
 
+    <style name="PandoraAlertDialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:background">@color/main_bg_color</item>
+        <item name="colorAccent">@color/red</item>
+        <item name="android:textColor">@color/white_gray</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
 </resources>
