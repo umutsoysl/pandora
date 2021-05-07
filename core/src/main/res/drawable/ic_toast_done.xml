@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/toast_image_size"
+    android:height="@dimen/toast_image_size"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <path
+        android:pathData="M36 1c19.33 0 35 15.67 35 35S55.33 71 36 71 1 55.33 1 36 16.67 1 36 1zm0 4C18.88 5 5 18.88 5 36c0 17.12 13.88 31 31 31 17.12 0 31-13.88 31-31C67 18.88 53.12 5 36 5zm15.414 19.586c.781.78.781 2.047 0 2.828l-20 20c-.78.781-2.047.781-2.828 0l-9-9c-.781-.78-.781-2.047 0-2.828.78-.781 2.047-.781 2.828 0L30 43.172l18.586-18.586c.78-.781 2.047-.781 2.828 0z"
+        android:fillColor="@color/red"/>
+</vector>

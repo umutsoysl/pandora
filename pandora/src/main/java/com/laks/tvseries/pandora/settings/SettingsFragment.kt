@@ -1,6 +1,8 @@
 package com.laks.tvseries.pandora.settings
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +15,9 @@ import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.db.PandoraDatabase
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
+import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentSettingsBinding
-import com.laks.tvseries.pandora.MainViewModel
 
 class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
@@ -33,6 +35,8 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         initLanguage()
         goLanguageScreen()
         clickListener()
+        rateUse()
+        sharePandora()
 
         return binding.root
     }
@@ -50,6 +54,37 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         binding.languageBox.setOnClickListener {
             var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.languageActivityClassName)
             startActivity(intent)
+        }
+    }
+
+    private fun rateUse() {
+        binding.rateBox.setOnClickListener {
+            val appPackageName = requireActivity().packageName
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+            } catch (_: ActivityNotFoundException) {
+                startActivity(
+                        Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                        )
+                )
+            }
+        }
+    }
+
+    private fun sharePandora() {
+        binding.shareBox.setOnClickListener {
+            try {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.share_pandora))
+                var shareMessage = "https://play.google.com/store/apps/details?id=${requireActivity().packageName}".trimIndent()
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+                startActivity(Intent.createChooser(shareIntent, "choose one"))
+            } catch (e: Exception) {
+                //e.toString();
+            }
         }
     }
 
@@ -79,6 +114,11 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
                 dialog.cancel()
             }
             builder.show()
+        }
+
+        binding.aboutBox.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.aboutActivityClassName)
+            startActivity(intent)
         }
     }
 

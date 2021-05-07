@@ -69,6 +69,16 @@
     <string name="mod_musical">音乐</string>
     <string name="mod_random">潘多拉选择</string>
     <string name="mod_real">现实生活中的故事</string>
+    <string name="alert">警告</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="add_favorite_list">它已添加到监视列表。</string>
+    <string name="remove_favorite_list">它已从监视列表中删除。</string>
+    <string name="version">版本</string>
+    <string name="about_pandora">关于潘多拉</string>
+    <string name="term_of_use">使用条款</string>
+    <string name="rate_us">速度</string>
+    <string name="share_pandora">分享潘多拉</string>
 
     <!--Language-->
     <string name="english_en">English</string>

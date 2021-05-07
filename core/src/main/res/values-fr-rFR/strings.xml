@@ -69,6 +69,16 @@
     <string name="mod_musical">Musical</string>
     <string name="mod_random">Pandora choisir</string>
     <string name="mod_real">Histoire de la vraie vie</string>
+    <string name="alert">Avertissement</string>
+    <string name="delete">Effacer</string>
+    <string name="cancel">Annuler</string>
+    <string name="add_favorite_list">Il a été ajouté à la liste de surveillance.</string>
+    <string name="remove_favorite_list">Il a été retiré de la liste de surveillance.</string>
+    <string name="version">Version</string>
+    <string name="about_pandora">À propos de Pandora</string>
+    <string name="term_of_use">Conditions d\'utilisation</string>
+    <string name="rate_us">Évaluer</string>
+    <string name="share_pandora">Partager Pandora</string>
 
     <!--Language-->
     <string name="english_en">English</string>

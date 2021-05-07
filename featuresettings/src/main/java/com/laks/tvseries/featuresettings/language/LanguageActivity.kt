@@ -29,6 +29,7 @@ class LanguageActivity : BaseActivity<SettingsViewModel>(SettingsViewModel::clas
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
         setToolbarTitle(resources.getString(com.laks.tvseries.core.R.string.language))
+        removeHeaderSearchButton()
 
         createLanguageList()
     }

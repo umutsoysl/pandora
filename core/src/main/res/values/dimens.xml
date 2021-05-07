@@ -31,4 +31,8 @@
     <dimen name="media_height">170dp</dimen>
     <dimen name="favorite_icon_size">20dp</dimen>
     <dimen name="button_text_size">12dp</dimen>
+    <dimen name="toast_image_size">72dp</dimen>
+    <dimen name="toast_text_max_size">16dp</dimen>
+    <dimen name="toast_text_min_size">13dp</dimen>
+    <dimen name="toast_max_width">165dp</dimen>
 </resources>

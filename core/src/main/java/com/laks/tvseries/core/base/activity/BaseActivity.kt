@@ -44,7 +44,6 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     private val loadingStateObserver by lazy { LoadingEventObserver(supportFragmentManager) }
     private lateinit var binding: ActivityBaseBinding
     private val classTag = this.javaClass.canonicalName
-    var qnbAppBarLayout: AppBarLayout? = null
     private var qnbNestedScrollView: NestedScrollView? = null
 
     private val localizationManager = LocalizationLanguageManager(this)
@@ -71,6 +70,10 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     fun <T : ViewDataBinding> inflate(layoutResId: Int): T {
         return DataBindingUtil.inflate(layoutInflater, layoutResId,
                 binding.contentLayout, true)
+    }
+
+    fun removeHeaderSearchButton() {
+        binding.buttonSearch.visibility = View.INVISIBLE
     }
 
     private fun onClickHeaderBackButton() {

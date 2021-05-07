@@ -69,6 +69,16 @@
     <string name="mod_musical">ミュージカル</string>
     <string name="mod_random">パンドラ 選択</string>
     <string name="mod_real">実話</string>
+    <string name="alert">警告</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+    <string name="add_favorite_list">ウォッチリストに追加されました。</string>
+    <string name="remove_favorite_list">ウォッチリストから削除されました。</string>
+    <string name="version">バージョン</string>
+    <string name="about_pandora">パンドラについて</string>
+    <string name="term_of_use">利用規約</string>
+    <string name="rate_us">割合</string>
+    <string name="share_pandora">Pandoraを共有する</string>
 
     <!--Language-->
     <string name="english_en">English</string>

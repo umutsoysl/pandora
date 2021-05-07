@@ -67,8 +67,18 @@
     <string name="mod_war">Жестокий</string>
     <string name="mod_classic">Классический</string>
     <string name="mod_musical">Музыкальный</string>
-    <string name="mod_random">Pandora выберите</string>
+    <string name="mod_random">Пандора выберите</string>
     <string name="mod_real">Реальная история жизни</string>
+    <string name="alert">Предупреждение</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
+    <string name="add_favorite_list">Он был добавлен в список наблюдения.</string>
+    <string name="remove_favorite_list">Он был удален из списка наблюдения.</string>
+    <string name="version">Версия</string>
+    <string name="about_pandora">О Пандоре</string>
+    <string name="term_of_use">Условия эксплуатации</string>
+    <string name="rate_us">Показатель</string>
+    <string name="share_pandora">Поделиться Пандора</string>
 
     <!--Language-->
     <string name="english_en">English</string>

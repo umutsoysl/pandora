@@ -69,6 +69,16 @@
     <string name="mod_musical">موسيقي</string>
     <string name="mod_random">Pandora إختر</string>
     <string name="mod_real">قصة حياة حقيقية</string>
+    <string name="alert">تحذير</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">يلغي</string>
+    <string name="add_favorite_list">تمت إضافته إلى قائمة المراقبة.</string>
+    <string name="remove_favorite_list">تمت إزالته من قائمة المراقبة.</string>
+    <string name="version">إصدار</string>
+    <string name="about_pandora">حول باندورا</string>
+    <string name="term_of_use">تعليمات الاستخدام</string>
+    <string name="rate_us">معدل</string>
+    <string name="share_pandora">يشارك Pandora</string>
 
     <!--Language-->
     <string name="english_en">English</string>

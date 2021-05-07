@@ -74,6 +74,11 @@
     <string name="cancel">Vazgeç</string>
     <string name="add_favorite_list">İzleme listesine eklendi.</string>
     <string name="remove_favorite_list">İzleme listesinden çıkarıldı.</string>
+    <string name="version">Versiyon</string>
+    <string name="about_pandora">Pandora Hakında</string>
+    <string name="term_of_use">Kullanım Koşulları</string>
+    <string name="rate_us">Puanla</string>
+    <string name="share_pandora">Pandora\'ı Paylaş</string>
 
     <!--Language-->
     <string name="english_en">English</string>

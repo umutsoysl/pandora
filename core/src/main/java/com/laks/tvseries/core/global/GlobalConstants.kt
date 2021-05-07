@@ -19,5 +19,6 @@ class GlobalConstants {
         const val SHARED_NAME = "pandora_shared"
         const val FIREBASE_RANDOM_MOVIE_TABLE = "Random"
         const val FIREBASE_MOD_LIS_MOVIE_TABLE = "ModList"
+        const val FIREBASE_ABOUT_TABLE = "About"
     }
 }

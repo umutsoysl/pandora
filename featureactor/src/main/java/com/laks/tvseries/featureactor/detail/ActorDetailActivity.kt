@@ -48,6 +48,7 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
         bindingViewModel()
         createActorBackDropImageSlider()
         moreButtonAction()
+        backButtonClick()
     }
 
     private fun getActorDetail() {
@@ -167,6 +168,12 @@ class ActorDetailActivity : BaseActivity<ActorDetailViewModel>(ActorDetailViewMo
         binding.rootRelativeView.requestLayout()
         binding.invalidateAll()
         binding.executePendingBindings()
+    }
+
+    private fun backButtonClick() {
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onSliderClick(slider: BaseSliderView?) {}

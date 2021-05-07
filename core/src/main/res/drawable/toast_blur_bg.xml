@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/toast_bg" /> <!-- change @drawable/nature with your desired image -->
+    <item>
+        <shape android:shape="rectangle">
+
+            <!-- You can use from 1% transparency to 100% transparency, according to your need,-->
+            <solid
+                android:color="#B2222B33"/>  <!-- Here transparency level is 80%-->
+        </shape>
+    </item>
+</layer-list>

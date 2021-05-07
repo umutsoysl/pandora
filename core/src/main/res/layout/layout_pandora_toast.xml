@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="@dimen/toast_max_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toast_blur_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/toast_image_size"
+            android:layout_height="@dimen/toast_image_size"
+            android:background="@drawable/ic_toast_done"
+            android:layout_marginTop="@dimen/list_top_margin"/>
+
+        <TextView
+            style="@style/ToastMessageTextStyle"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="@dimen/toast_text_min_size"
+            app:autoSizeMaxTextSize="@dimen/toast_text_max_size"
+            app:autoSizeStepGranularity="0.2sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imageIcon"
+            android:layout_margin="@dimen/medium_margin"
+            android:id="@+id/labelMessage"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

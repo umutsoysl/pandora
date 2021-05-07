@@ -69,6 +69,16 @@
     <string name="mod_musical">संगीत</string>
     <string name="mod_random">भानुमती चुनें</string>
     <string name="mod_real">वास्तविक जीवन की कहानी</string>
+    <string name="alert">चेतावनी</string>
+    <string name="delete">हटाएं</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="add_favorite_list">इसे वॉच लिस्ट में जोड़ा गया है।</string>
+    <string name="remove_favorite_list">इसे वॉच लिस्ट से हटा दिया गया है।</string>
+    <string name="version">संस्करण</string>
+    <string name="about_pandora">तकरीबन Pandora</string>
+    <string name="term_of_use">उपयोग की शर्तें</string>
+    <string name="rate_us">मूल्यांकन करें</string>
+    <string name="share_pandora">शेयर Pandora</string>
 
     <!--Language-->
     <string name="english_en">English</string>

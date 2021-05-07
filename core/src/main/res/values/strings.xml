@@ -74,6 +74,11 @@
     <string name="cancel">Cancel</string>
     <string name="add_favorite_list">It has been added to the watch list.</string>
     <string name="remove_favorite_list">It has been removed from the watch list.</string>
+    <string name="version">Version</string>
+    <string name="about_pandora">About Pandora</string>
+    <string name="term_of_use">Terms of Use</string>
+    <string name="rate_us">Rate</string>
+    <string name="share_pandora">Share Pandora</string>
 
     <!--Language-->
     <string name="english_en">English</string>

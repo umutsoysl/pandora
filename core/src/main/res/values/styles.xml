@@ -124,6 +124,19 @@
         <item name="android:textColor">@color/active_gray</item>
     </style>
 
+    <style name="PandoraDescriptionTextStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name = "ToastMessageTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/toast_text_color</item>
+        <item name="android:textColorHint">@color/toast_text_color</item>
+        <item name="fontFamily">@font/muli_semi_bold</item>
+    </style>
+
     <style name="pandoraTabLayoutTheme">
         <item name="tabMaxWidth">0dp</item>
         <item name="tabGravity">fill</item>
@@ -142,7 +155,7 @@
     </style>
 
     <style name="PandoraAlertDialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
-        <item name="android:background">@color/main_bg_color</item>
+        <item name="android:background">@color/popup_color</item>
         <item name="colorAccent">@color/red</item>
         <item name="android:textColor">@color/white_gray</item>
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>

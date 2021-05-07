@@ -178,6 +178,206 @@
                 android:layout_marginBottom="@dimen/medium_margin"
                 android:background="@color/dark_gray"/>
 
+            <RelativeLayout
+                android:id="@+id/rateBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingTop="@dimen/regular_margin"
+                android:paddingBottom="@dimen/regular_margin"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/rateIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_baseline_star_rate_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    android:id="@+id/rateTitle"
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/rateIcon"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/rate_us"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:id="@+id/shareBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingTop="@dimen/regular_margin"
+                android:paddingBottom="@dimen/regular_margin"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/shareIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_baseline_share_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    android:id="@+id/shareTitle"
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/shareIcon"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/share_pandora"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:id="@+id/termOfBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingTop="@dimen/regular_margin"
+                android:paddingBottom="@dimen/regular_margin"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/termIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_baseline_verified_user_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/termIcon"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/term_of_use"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:id="@+id/aboutBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingTop="@dimen/regular_margin"
+                android:paddingBottom="@dimen/regular_margin"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/aboutIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_baseline_info_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/aboutIcon"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/about_pandora"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingTop="@dimen/regular_margin"
+                android:paddingBottom="@dimen/regular_margin"
+                android:background="@drawable/ripple_click">
+
+                <ImageView
+                    android:id="@+id/versionIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_baseline_update_24"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/active_gray"/>
+
+                <TextView
+                    android:id="@+id/versionTitle"
+                    style="@style/HeaderTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_toRightOf="@+id/versionIcon"
+                    android:textColor="@color/white_gray"
+                    android:text="@string/version"/>
+
+                <TextView
+                    style="@style/SubTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/versionTitle"
+                    android:text="v.1.0.0"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.05dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:layout_marginLeft="@dimen/settings_item_left_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
+                android:background="@color/dark_gray"/>
+
         </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

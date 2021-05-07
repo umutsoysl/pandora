@@ -12,4 +12,7 @@
     <color name="active_gray">#646C71</color>
     <color name="white_gray">#D5D5D5</color>
     <color name="transparent">#000000FF</color>
+    <color name="popup_color">#3E3E3E</color>
+    <color name="toast_text_color">#D5D5D5</color>
+    <color name="toast_bg_color">#C3222B33</color>
 </resources>

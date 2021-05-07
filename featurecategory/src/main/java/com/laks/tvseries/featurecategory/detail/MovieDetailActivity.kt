@@ -22,6 +22,7 @@ import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.common.people.PeopleItemClickListener
 import com.laks.tvseries.core.common.people.PeopleListItemAdapter
+import com.laks.tvseries.core.component.PandoraToast
 import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.Genre
@@ -166,7 +167,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                     binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                     binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
                 }
-                isFavoriteClick = !it.isFavorite
+                isFavoriteClick = it.isFavorite
 
                 if(it.isWatched) {
                     binding.addButton.setImageResource(R.drawable.ic_baseline_remove_from_queue_24)
@@ -175,7 +176,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                     binding.addButton.setImageResource(R.drawable.ic_baseline_add_to_queue_24)
                     binding.addButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
                 }
-                isAddListClick = !it.isWatched
+                isAddListClick = it.isWatched
             }
         })
     }
@@ -312,8 +313,14 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         PandoraDatabase.execute.execute {
             if(isAddListClick) {
                 mediaDao?.insert(baseViewModel.mediaDBMediaEntity.value)
+                this@MovieDetailActivity.runOnUiThread {
+                    Runnable { PandoraToast.showSuccessMessage(this@MovieDetailActivity, resources.getString(com.laks.tvseries.core.R.string.add_favorite_list)) }
+                }
             } else {
                 baseViewModel.mediaDBMediaEntity.value?.let { mediaDao?.deleteData(it) }
+                this@MovieDetailActivity.runOnUiThread {
+                    Runnable { PandoraToast.showErrorMessage(this@MovieDetailActivity, resources.getString(com.laks.tvseries.core.R.string.remove_favorite_list)) }
+                }
             }
         }
     }
