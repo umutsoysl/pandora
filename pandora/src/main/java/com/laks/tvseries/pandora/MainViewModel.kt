@@ -29,6 +29,8 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
 
     var movieWatchList = MutableLiveData<List<DBMediaEntity>>()
 
+    val shimmerVisible = MutableLiveData<Boolean>(true)
+
     var tvWatchList = MutableLiveData<List<DBMediaEntity>>()
 
     fun getDiscoverMovieList(page: Int) {

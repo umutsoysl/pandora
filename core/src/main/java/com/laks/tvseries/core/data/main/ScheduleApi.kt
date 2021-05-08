@@ -20,10 +20,10 @@ interface ScheduleApi {
     suspend fun getTvDetail(@Path("tvID") tvID: String): Response<MovieDetailModel>
 
     @GET("/3/movie/{movieID}/videos")
-    suspend fun getMovieVideo(@Path("movieID") movieID: String): Response<VideoModel>
+    suspend fun getMovieVideo(@Path("movieID") movieID: String, @Query("language") language: String): Response<VideoModel>
 
     @GET("/3/tv/{tvID}/videos")
-    suspend fun getTvVideo(@Path("tvID") tvID: String): Response<VideoModel>
+    suspend fun getTvVideo(@Path("tvID") tvID: String, @Query("language") language: String): Response<VideoModel>
 
     @GET("/3/movie/{movieID}/credits")
     suspend fun getMovieCredit(@Path("movieID") movieID: String): Response<MovieCreditsModel>

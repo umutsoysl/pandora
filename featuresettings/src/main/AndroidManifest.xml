@@ -16,6 +16,7 @@
     <application>
         <activity android:name=".language.LanguageActivity"></activity>
         <activity android:name=".about.AboutActivity"></activity>
+        <activity android:name=".about.TermOfUseActivity"></activity>
     </application>
 
 </manifest>

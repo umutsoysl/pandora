@@ -34,7 +34,7 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
         binding = inflate(R.layout.activity_all_movie_list)
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
-        var title = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.ALL_MOVIE_TITLE)
+        val title = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.ALL_MOVIE_TITLE)
         setToolbarTitle(title.let { title.toString() })
         movieType = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MOVIE_TYPE) as String
 

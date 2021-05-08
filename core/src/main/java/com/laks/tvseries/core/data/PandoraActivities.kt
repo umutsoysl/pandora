@@ -51,4 +51,7 @@ object PandoraActivities {
 
     val aboutActivityClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SETTINGS.about.AboutActivity"
+
+    val termOfUseActivityClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SETTINGS.about.TermOfUseActivity"
 }

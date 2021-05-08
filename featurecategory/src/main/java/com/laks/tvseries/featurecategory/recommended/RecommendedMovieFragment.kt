@@ -37,12 +37,20 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
     private var isOpenModList: Boolean = true
     private lateinit var fbDatabase : DatabaseReference
     private var randomMovie: FbMovieDataModel? = null
-    // private var modListMovie: ArrayList<FbModListMovieDataModel> = arrayListOf()
+    private var modListMovie: ArrayList<FbMovieDataModel> = arrayListOf()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getFirebaseDatabaseValueList(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE)
+        if(MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) == null) {
+            getFirebaseDatabaseValueList(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE)
+        }
         getFirebaseDatabaseValueList(GlobalConstants.FIREBASE_MOD_LIS_MOVIE_TABLE)
+        if (MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.FIREBASE_ABOUT_TABLE) == null) {
+            getFirebaseDatabaseValueList(GlobalConstants.FIREBASE_ABOUT_TABLE)
+        }
+        if (MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.FIREBASE_TERM_OF_USE_TABLE) == null) {
+            getFirebaseDatabaseValueList(GlobalConstants.FIREBASE_TERM_OF_USE_TABLE)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -58,6 +66,7 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
         }
 
         binding.buttonRandom.setOnClickListener {
+            randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) as FbMovieDataModel
             randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
         }
 
@@ -81,9 +90,21 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
         fbDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (ds in dataSnapshot.children) {
-                    if(path == GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) {
-                        randomMovie = ds.getValue(FbMovieDataModel::class.java)
-                    } else {
+                    when (path) {
+                        GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE -> {
+                            ds.getValue(FbMovieDataModel::class.java)?.let { MemoryCache.cache.setMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE, it) }
+                        }
+                        GlobalConstants.FIREBASE_MOD_LIS_MOVIE_TABLE -> {
+                            ds.getValue(FbMovieDataModel::class.java)?.let { modListMovie.add(it) }
+                        }
+                        GlobalConstants.FIREBASE_ABOUT_TABLE -> {
+                            ds.value?.let { MemoryCache.cache.setMemoryCacheValue(GlobalConstants.FIREBASE_ABOUT_TABLE, it) }
+                        }
+                        GlobalConstants.FIREBASE_TERM_OF_USE_TABLE -> {
+                            ds.value?.let { MemoryCache.cache.setMemoryCacheValue(GlobalConstants.FIREBASE_TERM_OF_USE_TABLE, it) }
+                        }
+                        else -> {
+                        }
                     }
                 }
             }
@@ -103,5 +124,12 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
     }
 
     override fun genreListItemOnClickListener(genre: Genre) {
+        val movieId = genre.id.toInt() - 1
+        modListMovie[movieId].id?.let {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, it)
+            var intent = Intent(requireActivity(), MovieDetailActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

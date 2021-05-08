@@ -164,7 +164,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                     binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
                     binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
                 } else {
-                    binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    binding.favoriteButton.setImageResource(R.drawable.ic_favorite_border_24)
                     binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
                 }
                 isFavoriteClick = it.isFavorite
@@ -285,7 +285,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
                 binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_24)
                 binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.red)
             } else {
-                binding.favoriteButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.favoriteButton.setImageResource(R.drawable.ic_favorite_border_24)
                 binding.favoriteButton.imageTintList = ContextCompat.getColorStateList(this, R.color.white)
             }
             addFavoriteDatabase(!isFavoriteClick)

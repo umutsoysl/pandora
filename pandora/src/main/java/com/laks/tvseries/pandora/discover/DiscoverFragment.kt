@@ -59,6 +59,18 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
             binding.rootRelativeView.requestLayout()
             binding.invalidateAll()
         })
+
+        binding.buttonMoreMovie.setOnClickListener {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE, resources.getString(R.string.movies))
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, MediaType.movie)
+            startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
+        }
+
+        binding.buttonMoreTV.setOnClickListener {
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE, resources.getString(R.string.tv_shows))
+            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, MediaType.tv)
+            startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
+        }
     }
 
     private fun goSearchScreen() {

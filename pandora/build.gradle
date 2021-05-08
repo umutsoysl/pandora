@@ -34,6 +34,24 @@ android {
         jvmTarget = '1.8'
     }
 
+    bundle {
+
+        //Generate APKs for devices with different screen densities//
+        density {
+            enableSplit true
+        }
+
+        //Generate APKs for devices with different CPU architectures//
+        abi {
+            enableSplit true
+        }
+
+        //Create a split APK for each language//
+        language {
+            enableSplit false
+        }
+    }
+
     dataBinding {
         enabled = true
     }

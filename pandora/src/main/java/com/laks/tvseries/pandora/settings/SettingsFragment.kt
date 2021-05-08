@@ -42,7 +42,7 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
     }
 
     private fun initLanguage() {
-        var resLanguage = StoreShared(requireActivity()).getIntValue(GlobalConstants.SHARED_LANGUAGE)
+        val resLanguage = StoreShared(requireActivity()).getIntValue(GlobalConstants.SHARED_LANGUAGE)
         if (resLanguage == 0) {
             binding.labelLanguage.text = resources.getString(R.string.english)
         } else {
@@ -52,7 +52,7 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
     private fun goLanguageScreen() {
         binding.languageBox.setOnClickListener {
-            var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.languageActivityClassName)
+            val intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.languageActivityClassName)
             startActivity(intent)
         }
     }
@@ -79,7 +79,7 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.share_pandora))
-                var shareMessage = "https://play.google.com/store/apps/details?id=${requireActivity().packageName}".trimIndent()
+                val shareMessage = "https://play.google.com/store/apps/details?id=${requireActivity().packageName}".trimIndent()
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
                 startActivity(Intent.createChooser(shareIntent, "choose one"))
             } catch (e: Exception) {
@@ -117,7 +117,12 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         }
 
         binding.aboutBox.setOnClickListener {
-            var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.aboutActivityClassName)
+            val intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.aboutActivityClassName)
+            startActivity(intent)
+        }
+
+        binding.termOfBox.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.termOfUseActivityClassName)
             startActivity(intent)
         }
     }

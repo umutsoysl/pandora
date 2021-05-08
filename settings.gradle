@@ -4,4 +4,3 @@ include ':featureactor'
 include ':featurecategory'
 include ':core'
 include ':pandora'
-rootProject.name = "Pandora"

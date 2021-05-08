@@ -3,6 +3,7 @@ package com.laks.tvseries.core.util
 import android.content.Context
 import com.laks.tvseries.core.R
 import com.laks.tvseries.core.data.model.Genre
+import java.text.DecimalFormat
 
 
 fun getModList(context: Context): ArrayList<Genre> {
@@ -25,3 +26,13 @@ fun getModList(context: Context): ArrayList<Genre> {
 
     return modList
 }
+
+fun currencyFormat(amount: String): String? {
+    if (amount == "0") {
+        return "0.00"
+    }
+    val formatter = DecimalFormat("###,###,###.00")
+    return formatter.format(amount.toDouble())
+}
+
+fun Double.format(digits: Int) = "%.${digits}f".format(this)

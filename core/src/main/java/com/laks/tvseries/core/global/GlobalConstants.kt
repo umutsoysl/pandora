@@ -20,5 +20,9 @@ class GlobalConstants {
         const val FIREBASE_RANDOM_MOVIE_TABLE = "Random"
         const val FIREBASE_MOD_LIS_MOVIE_TABLE = "ModList"
         const val FIREBASE_ABOUT_TABLE = "About"
+        const val FIREBASE_TERM_OF_USE_TABLE = "TermOfUse"
+        const val DEFAULT_EN_CODE = "en-US"
+        const val DISCOVER_MEDIA_TITLE= "DISCOVER_MEDIA_TITLE"
+        const val DISCOVER_MEDIA_TYPE= "DISCOVER_MEDIA_TYPE"
     }
 }

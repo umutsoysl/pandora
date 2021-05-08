@@ -35,4 +35,6 @@
     <dimen name="toast_text_max_size">16dp</dimen>
     <dimen name="toast_text_min_size">13dp</dimen>
     <dimen name="toast_max_width">165dp</dimen>
+    <dimen name="genre_button_size">38dp</dimen>
+    <dimen name="genre_button_text_size">12dp</dimen>
 </resources>

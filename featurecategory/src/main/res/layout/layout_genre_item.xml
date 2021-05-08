@@ -15,31 +15,18 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:onClick="@{() -> itemClickListener.genreListItemOnClickListener(genre)}"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <Button
+        android:onClick="@{() -> itemClickListener.genreListItemOnClickListener(genre)}"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/gender_box"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="3dp"
-        app:cardMaxElevation="3dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            style="@style/GenreTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{genre.name}"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="-1dp"
-            android:layout_marginHorizontal="@dimen/regular_margin"/>
-
-    </androidx.cardview.widget.CardView>
+        android:layout_height="@dimen/genre_button_size"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/gender_box"
+        android:layout_marginLeft="@dimen/five_margin"
+        android:textSize="@dimen/genre_button_text_size"
+        android:fontFamily="@font/muli_regular"
+        android:text="@{genre.name}"/>
 
 </LinearLayout>
 

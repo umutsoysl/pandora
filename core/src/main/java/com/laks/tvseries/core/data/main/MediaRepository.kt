@@ -2,6 +2,7 @@ package com.laks.tvseries.core.data.main
 
 import com.laks.tvseries.core.base.service.BaseRepository
 import com.laks.tvseries.core.data.model.*
+import com.laks.tvseries.core.global.GlobalConstants
 import kotlinx.coroutines.flow.Flow
 
 class MediaRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
@@ -32,13 +33,13 @@ class MediaRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
 
     fun getMovieVideo(requestModel: GlobalRequestModel): Flow<VideoModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getMovieVideo(movieID = requestModel.movieID!!)
+            api.getMovieVideo(movieID = requestModel.movieID!!, GlobalConstants.DEFAULT_EN_CODE)
         }
     }
 
     fun getTvVideo(requestModel: GlobalRequestModel): Flow<VideoModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getTvVideo(tvID = requestModel.movieID!!)
+            api.getTvVideo(tvID = requestModel.movieID!!, GlobalConstants.DEFAULT_EN_CODE)
         }
     }
 

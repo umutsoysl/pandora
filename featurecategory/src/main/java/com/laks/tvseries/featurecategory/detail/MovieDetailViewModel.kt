@@ -11,6 +11,7 @@ import com.laks.tvseries.core.data.db.DBMediaEntity
 import com.laks.tvseries.core.data.main.MediaRepository
 import com.laks.tvseries.core.data.model.*
 import com.laks.tvseries.core.db.PandoraDatabase
+import com.laks.tvseries.core.util.currencyFormat
 import com.laks.tvseries.core.util.getDate
 import com.laks.tvseries.core.util.getProcessDate
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,8 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
     val mediaDirector = MutableLiveData<String>()
     val mediaWriting = MutableLiveData<String>()
     val formatRunTime = MutableLiveData<String>()
+    val formatRevenue = MutableLiveData<String>()
+    val formatBudget = MutableLiveData<String>()
 
     fun allSeasonButtonOnClickListener() {
         _allSeasonClickEvent.value = Unit
@@ -68,6 +71,8 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
                     createDBEntity(movieModel = it!!, true)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
                     createRunTime(it?.runtime!!)
+                    formatBudget.postValue(moneyFormat(it.budget))
+                    formatRevenue.postValue(moneyFormat(it.revenue))
                     getMovieCredits(requestModel)
                     getMovieVideo(requestModel)
                     getMovieImages(requestModel)
@@ -89,6 +94,8 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
                     seasonList.postValue(it?.seasons)
                     releaseDate.postValue(it?.releaseDate?.let { it1 -> getFormatDate(it1) })
                     createRunTime(it?.tvRuntime?.get(0)!!)
+                    formatBudget.postValue(moneyFormat(it.budget))
+                    formatRevenue.postValue(moneyFormat(it.revenue))
                     getTVCredits(requestModel)
                     getTVVideo(requestModel)
                     getTvImages(requestModel)
@@ -285,6 +292,14 @@ class MovieDetailViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(medi
         } else if (time in 1..59) {
             var minute = time % 60
             formatRunTime.postValue("$minute mins")
+        }
+    }
+
+    private fun moneyFormat(money: String): String {
+        return if(money!=null && money!="-") {
+            currencyFormat(money)!!
+        } else {
+            "?"
         }
     }
 }

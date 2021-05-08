@@ -1,6 +1,7 @@
 package com.laks.tvseries.core.data.model.firebase
 
 import androidx.annotation.LongDef
+import com.laks.tvseries.core.base.model.BaseModel
 import com.laks.tvseries.core.data.model.firebase.ModeType.Companion.adventure
 import com.laks.tvseries.core.data.model.firebase.ModeType.Companion.classic
 import com.laks.tvseries.core.data.model.firebase.ModeType.Companion.drama
@@ -19,7 +20,7 @@ import com.laks.tvseries.core.data.model.firebase.ModeType.Companion.war
 data class FbMovieDataModel (
         var id: Long? = null,
         var name: String? = null
-)
+): BaseModel()
 
 @LongDef(drama, friend, scienceFiction, funny, impressive, thriller,
         romantic, fantastic, adventure, war, real, musical, classic, pandoraChoose)

@@ -40,6 +40,7 @@ abstract class BaseRepository<TServiceInterface>(clazz: Class<TServiceInterface>
                     hideLoadingFragment(requestUrl)
                 } else {
                     // Error handler
+                    hideLoadingFragment(requestUrl)
                 }
 
             } catch (e: Exception) {

@@ -12,6 +12,8 @@ import android.text.style.ClickableSpan
 import android.text.style.URLSpan
 import android.view.View
 import com.laks.tvseries.core.base.activity.BaseActivity
+import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featuresettings.R
 import com.laks.tvseries.featuresettings.SettingsViewModel
 import com.laks.tvseries.featuresettings.databinding.ActivityAboutBinding
@@ -75,14 +77,5 @@ class AboutActivity : BaseActivity<SettingsViewModel>(SettingsViewModel::class) 
         strBuilder.removeSpan(span)
     }
 
-    private var aboutHtml = "<h5>Pandora; Movie Review Application Bringing Thousands of Movies, TV Series and Actors Together with Users</h5><br/>" +
-            "<p>Pandora; It gives you access to thousands of movies and series from multiple categories, including trending, popular, top rated, now playing, recommendations and upcoming.</p>\n" +
-            "<p><br/>It allows you to search among millions of movies and TV shows.</p><br/>" +
-            "<p>Pandora; recommends movies to you according to your mood.</p></br>" +
-            "<p>No need to try many other movies apps, Pandora will be anough for all.</p><br/>" +
-            "<p>You can enjoy Pandora and its pleasant experience from your Android devices.</p>" +
-            "<br/><h3>Support</h3><br/>" +
-            "<p>We always appreciate your feedback. We would like continue improving Pandora with your help.</p><br/>" +
-            "<p>Please send us your feedback and questions.</p>" +
-            "<p><a href=\"https://play.google.com/store/apps/details?id=com.laks.tvseries.pandora\" target=\"_blank\">Visit google play</a></p>"
+    private var aboutHtml = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.FIREBASE_ABOUT_TABLE).let { it.toString() }
 }
