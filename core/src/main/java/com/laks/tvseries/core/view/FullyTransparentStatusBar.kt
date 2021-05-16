@@ -7,7 +7,6 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
-
 class FullyTransparentStatusBar {
 
     private var activity: Activity? = null
@@ -19,8 +18,6 @@ class FullyTransparentStatusBar {
     }
 
     fun setFullTransparentStatus() {
-
-        // make translucent statusBar on kitkat devices
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(activity!!, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
         }
@@ -30,7 +27,6 @@ class FullyTransparentStatusBar {
         if (Build.VERSION.SDK_INT >= 21) {
             setWindowFlag(activity!!, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
             window!!.statusBarColor = Color.TRANSPARENT
-            window!!.navigationBarColor = Color.TRANSPARENT
         }
     }
 

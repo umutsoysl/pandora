@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/87de2ac8d5d9d686479a96d400a6a718/jetified-play-services-instantapps-12.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/87de2ac8d5d9d686479a96d400a6a718/jetified-play-services-instantapps-12.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/87de2ac8d5d9d686479a96d400a6a718/jetified-play-services-instantapps-12.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9b63f7054a97f659ade2e25c82cc679/jetified-play-services-instantapps-12.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9b63f7054a97f659ade2e25c82cc679/jetified-play-services-instantapps-12.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9b63f7054a97f659ade2e25c82cc679/jetified-play-services-instantapps-12.0.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

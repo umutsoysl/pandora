@@ -37,4 +37,6 @@
     <dimen name="toast_max_width">165dp</dimen>
     <dimen name="genre_button_size">38dp</dimen>
     <dimen name="genre_button_text_size">12dp</dimen>
+    <dimen name="splash_logo_width">210dp</dimen>
+    <dimen name="splash_logo_height">110dp</dimen>
 </resources>

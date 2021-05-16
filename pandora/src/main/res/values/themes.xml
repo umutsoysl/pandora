@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Pandora" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -12,7 +12,14 @@
         <!-- Status bar color. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.Pandora">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+
 </resources>

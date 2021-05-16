@@ -36,12 +36,16 @@ class ServiceManager {
         private fun requestBuilder(request: Request): Request {
             val originalHttpUrl: HttpUrl = request.url()
 
-            val language =  MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY) as String
+            var language =  MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY) as String
+
+            if (originalHttpUrl.queryParameter("language") != null) {
+                language = GlobalConstants.DEFAULT_EN_CODE
+            }
 
             val url = originalHttpUrl.newBuilder()
-                    .addQueryParameter("api_key", "api_key")
-                    .addQueryParameter("language", language)
-                    .build()
+                .addQueryParameter("api_key", "api_key")
+                .addQueryParameter("language", language)
+                .build()
 
             val requestBuilder: Request.Builder = request.newBuilder()
                     .url(url)

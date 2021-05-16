@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MobilePandora.iml" filepath="$PROJECT_DIR$/.idea/modules/MobilePandora.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/MobilePandora.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/MobilePandora.core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featureactor/MobilePandora.featureactor.iml" filepath="$PROJECT_DIR$/.idea/modules/featureactor/MobilePandora.featureactor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featurecategory/MobilePandora.featurecategory.iml" filepath="$PROJECT_DIR$/.idea/modules/featurecategory/MobilePandora.featurecategory.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresearch/MobilePandora.featuresearch.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresearch/MobilePandora.featuresearch.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresettings/MobilePandora.featuresettings.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresettings/MobilePandora.featuresettings.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pandora/MobilePandora.pandora.iml" filepath="$PROJECT_DIR$/.idea/modules/pandora/MobilePandora.pandora.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pandora.iml" filepath="$PROJECT_DIR$/.idea/modules/pandora.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/pandora.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/pandora.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featureactor/pandora.featureactor.iml" filepath="$PROJECT_DIR$/.idea/modules/featureactor/pandora.featureactor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featurecategory/pandora.featurecategory.iml" filepath="$PROJECT_DIR$/.idea/modules/featurecategory/pandora.featurecategory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresearch/pandora.featuresearch.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresearch/pandora.featuresearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/featuresettings/pandora.featuresettings.iml" filepath="$PROJECT_DIR$/.idea/modules/featuresettings/pandora.featuresettings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pandora/pandora.pandora.iml" filepath="$PROJECT_DIR$/.idea/modules/pandora/pandora.pandora.iml" />
     </modules>
   </component>
 </project>

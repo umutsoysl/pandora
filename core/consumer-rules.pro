@@ -1,0 +1,3 @@
+-keep class com.laks.tvseries.core.data.** {*;}
+-keep class com.laks.tvseries.core.base.** {*;}
+-keep class com.laks.tvseries.core.global.** {*;}
