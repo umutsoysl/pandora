@@ -24,5 +24,7 @@ class GlobalConstants {
         const val DEFAULT_EN_CODE = "en-US"
         const val DISCOVER_MEDIA_TITLE= "DISCOVER_MEDIA_TITLE"
         const val DISCOVER_MEDIA_TYPE= "DISCOVER_MEDIA_TYPE"
+        const val YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID"
+        const val YOUTUBE_VIDEO_DURACTION = "YOUTUBE_VIDEO_DURACTION"
     }
 }

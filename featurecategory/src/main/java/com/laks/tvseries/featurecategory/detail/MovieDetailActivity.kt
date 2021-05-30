@@ -37,12 +37,13 @@ import com.laks.tvseries.featurecategory.detail.season.SeasonListAdapter
 import com.laks.tvseries.featurecategory.di.detailDIModule
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import com.squareup.picasso.Picasso
 import org.koin.core.module.Module
 
 
 class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewModel::class), PeopleItemClickListener, MediaListItemOnClickListener, GenreListItemOnClickListener,
-    BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+    BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener, YouTubePlayerFullScreenListener{
 
     override val modules: List<Module>
         get() = listOf(detailDIModule)
@@ -58,6 +59,8 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
 
     private var isFavoriteClick = false
     private var isAddListClick = false
+    private var videoKey: String? = null
+    private var videoDuraction: Float? = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,6 +144,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         })
 
         baseViewModel.videoKey.observe(this, Observer {
+            videoKey = it
             playVideo(it)
         })
 
@@ -265,10 +269,16 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     private fun playVideo(videoId: String?) {
         lifecycle.addObserver(binding.youtubePlayerView)
 
+        binding.youtubePlayerView.addFullScreenListener(this)
+
         binding.youtubePlayerView.addYouTubePlayerListener(object :
             AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 videoId?.let { youTubePlayer.loadVideo(it, 0f) }
+            }
+            override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
+                videoDuraction = duration
+                super.onVideoDuration(youTubePlayer, duration)
             }
         })
     }
@@ -362,4 +372,15 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
 
     override fun onPageScrollStateChanged(state: Int) {}
     override fun genreListItemOnClickListener(genre: Genre) {}
+
+    override fun onYouTubePlayerEnterFullScreen() {
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.YOUTUBE_VIDEO_ID, videoKey!!)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.YOUTUBE_VIDEO_DURACTION, videoDuraction!!.toString())
+        var intent = Intent(this, FullScreenVideoPlayerActivity::class.java)
+        startActivity(intent)
+        binding.youtubePlayerView.exitFullScreen()
+    }
+
+    override fun onYouTubePlayerExitFullScreen() {
+    }
 }

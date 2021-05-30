@@ -1,6 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:motion="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -14,7 +13,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/main_bg_color">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scr"
@@ -69,6 +69,9 @@
                     android:layout_marginHorizontal="@dimen/medium_margin"
                     android:layout_marginTop="-14dp"
                     android:layout_toRightOf="@+id/cardView"
+                    android:autoSizeMinTextSize="@dimen/button_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="3"
                     android:text="@{viewModel.movieModel.title}" />
 
                 <TextView
@@ -246,7 +249,8 @@
                             android:id="@+id/youtube_player_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/medium_margin" />
+                            android:layout_marginTop="@dimen/medium_margin"
+                            app:showFullScreenButton="true" />
 
                     </LinearLayout>
 
@@ -272,6 +276,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:minWidth="200dp"
                                 android:orientation="vertical">
 
                                 <TextView
@@ -345,6 +350,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:autoSizeMinTextSize="@dimen/regular_margin"
+                                    android:autoSizeTextType="uniform"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.movieModel.title}" />
 
                                 <TextView
@@ -352,6 +360,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.mediaDirector}"
                                     android:visibility="@{viewModel.mediaDirector.length()>1? View.VISIBLE: View.GONE}" />
 
@@ -360,6 +369,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.mediaWriting}"
                                     android:visibility="@{viewModel.mediaWriting.length()>1? View.VISIBLE: View.GONE}" />
 
@@ -368,6 +378,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.movieModel.status}" />
 
                                 <TextView
@@ -375,6 +386,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.formatRunTime}" />
 
                                 <TextView
@@ -382,6 +394,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.movieModel.originalLanguage}" />
 
                                 <TextView
@@ -389,6 +402,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.formatBudget}" />
 
                                 <TextView
@@ -396,6 +410,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/medium_margin"
+                                    android:maxLines="1"
                                     android:text="@{viewModel.formatRevenue}" />
 
                             </LinearLayout>
@@ -548,29 +563,29 @@
         </androidx.core.widget.NestedScrollView>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:clickable="true"
-        android:layout_marginTop="@dimen/status_bar_size"
-        android:layout_marginLeft="@dimen/regular_margin"
-        app:backgroundTint="@color/transparent"
-        app:borderWidth="0dp"
-        app:elevation="0dp"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        app:tint="@color/white" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/regular_margin"
+            android:layout_marginTop="@dimen/status_bar_size"
+            android:clickable="true"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/favoriteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:clickable="true"
-            android:layout_marginRight="@dimen/regular_margin"
             android:layout_marginTop="@dimen/status_bar_size"
+            android:layout_marginRight="@dimen/regular_margin"
+            android:clickable="true"
             app:backgroundTint="@color/transparent"
             app:borderWidth="0dp"
             app:elevation="0dp"
@@ -582,10 +597,10 @@
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/status_bar_size"
+            android:layout_marginRight="@dimen/regular_margin"
             android:layout_toLeftOf="@+id/favoriteButton"
             android:clickable="true"
-            android:layout_marginRight="@dimen/regular_margin"
-            android:layout_marginTop="@dimen/status_bar_size"
             app:backgroundTint="@color/transparent"
             app:borderWidth="0dp"
             app:elevation="0dp"
