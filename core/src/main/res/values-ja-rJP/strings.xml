@@ -78,7 +78,10 @@
     <string name="about_pandora">パンドラについて</string>
     <string name="term_of_use">利用規約</string>
     <string name="rate_us">割合</string>
-    <string name="share_pandora">Pandoraを共有する</string>
+    <string name="share_pandora">パンドラを共有する</string>
+    <string name="notification_random_movie_title">今週のパンドラの提案</string>
+    <string name="notification_movie_title">映画休憩</string>
+    <string name="notification_random_movie_desc">%1$s 今すぐコンテンツを表示.</string>
 
     <!--Language-->
     <string name="english_en">English</string>
@@ -93,7 +96,13 @@
     <string name="portuguese_en">Portuguese</string>
     <string name="spanish_en">Spanish</string>
     <string name="japanese_en">Japanese</string>
+    <string name="greek_en">Greek</string>
+    <string name="croatian_en">Croatian</string>
+    <string name="czech_en">Czech</string>
 
+    <string name="greek">ギリシャ語</string>
+    <string name="croatian">クロアチア語</string>
+    <string name="czech">チェコ人v</string>
     <string name="english">英語</string>
     <string name="turkish">トルコ語</string>
     <string name="french">フランス語</string>

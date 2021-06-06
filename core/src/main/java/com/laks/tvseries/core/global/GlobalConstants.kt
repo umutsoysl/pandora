@@ -6,6 +6,7 @@ class GlobalConstants {
         const val SERVER_IMAGE_URL = "https://image.tmdb.org/t/p/w500/"
         const val SERVER_BACK_DROP_IMAGE_URL = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/"
         const val PACKAGE_NAME = "com.laks.tvseries"
+        const val APP_PACKAGE_NAME = "com.laks.tvseries.pandora"
         const val MEDIA_DETAIL_ID = "media_detail_id"
         const val MEDIA_DETAIL_TYPE = "media_detail_type"
         const val ACTOR_DETAIL_ID = "actor_detail_id"
@@ -26,5 +27,8 @@ class GlobalConstants {
         const val DISCOVER_MEDIA_TYPE= "DISCOVER_MEDIA_TYPE"
         const val YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID"
         const val YOUTUBE_VIDEO_DURACTION = "YOUTUBE_VIDEO_DURACTION"
+        const val IS_APP_KILL_NOTIFICATION = "IS_APP_KILL"
+        const val SCREEN_TYPE = "SCREEN_TYPE"
+        const val IS_APP_OPEN = "IS_APP_OPEN"
     }
 }

@@ -79,6 +79,9 @@
     <string name="term_of_use">Termini di utilizzo</string>
     <string name="rate_us">Vota</string>
     <string name="share_pandora">Condividere Pandora</string>
+    <string name="notification_random_movie_title">La proposta di Pandora questa settimana</string>
+    <string name="notification_movie_title">Pausa film</string>
+    <string name="notification_random_movie_desc">%1$s visualizza il contenuto ora.</string>
 
     <!--Language-->
     <string name="english_en">English</string>
@@ -93,7 +96,13 @@
     <string name="portuguese_en">Portuguese</string>
     <string name="spanish_en">Spanish</string>
     <string name="japanese_en">Japanese</string>
+    <string name="greek_en">Greek</string>
+    <string name="croatian_en">Croatian</string>
+    <string name="czech_en">Czech</string>
 
+    <string name="greek">Greco</string>
+    <string name="croatian">Croato</string>
+    <string name="czech">Ceco</string>
     <string name="english">Inglese</string>
     <string name="turkish">Turco</string>
     <string name="french">Francese</string>

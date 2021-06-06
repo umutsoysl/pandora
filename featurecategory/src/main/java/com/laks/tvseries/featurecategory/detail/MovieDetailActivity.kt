@@ -82,12 +82,13 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun getDetail() {
-        var movieID = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_ID).toString()
+        val movieID = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_ID).toString()
         type = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.MEDIA_DETAIL_TYPE).toString()
 
-        if(type == MediaType.movie) {
+        if(type == MediaType.movie || type == MediaType.defined) {
             baseViewModel.getMovieDetail(movieID = movieID)
-        } else {
+        }else
+         {
             baseViewModel.getTVDetail(movieID = movieID)
         }
     }
@@ -120,7 +121,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
             binding.labelRuntime.text = if (type == MediaType.movie) (resources.getString(
                     com.laks.tvseries.core.R.string.run_time,
                 movie.runtime
-            )) else (resources.getString(com.laks.tvseries.core.R.string.run_time, movie.tvRuntime?.get(0)))
+            )) else (resources.getString(com.laks.tvseries.core.R.string.run_time, if(movie.tvRuntime?.isNullOrEmpty()!!) "?" else movie.tvRuntime?.get(0)))
             baseViewModel.findDBEntity(applicationContext, movie.id)
             requestLayout()
         })

@@ -1,8 +1,11 @@
 package com.laks.tvseries.core.util
 
+import android.app.ActivityManager
 import android.content.Context
 import com.laks.tvseries.core.R
+import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.data.model.Genre
+import com.laks.tvseries.core.global.GlobalConstants
 import java.text.DecimalFormat
 
 
@@ -36,3 +39,20 @@ fun currencyFormat(amount: String): String? {
 }
 
 fun Double.format(digits: Int) = "%.${digits}f".format(this)
+
+
+@Synchronized
+fun isActivityCreated(context: Context): Boolean {
+    try {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val procInfos = activityManager.runningAppProcesses
+        for (i in procInfos.indices) {
+            if (procInfos[i].importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND && procInfos[i].processName == GlobalConstants.APP_PACKAGE_NAME) {
+                return true
+            }
+        }
+    } catch (e: Exception) {
+        // Exception
+    }
+    return false
+}

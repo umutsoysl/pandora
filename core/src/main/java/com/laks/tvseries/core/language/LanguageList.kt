@@ -103,6 +103,33 @@ fun getLanguageList(context: Context) : ArrayList<LanguageModel> {
         R.string.italian
     )
 
+    val csModel = LanguageModel(
+            context.resources.getString(R.string.czech),
+            context.resources.getString(R.string.china_en),
+            false,
+            "cs",
+            "CZ",
+            R.string.czech
+    )
+
+    val grModel = LanguageModel(
+            context.resources.getString(R.string.greek),
+            context.resources.getString(R.string.greek_en),
+            false,
+            "el",
+            "GR",
+            R.string.greek
+    )
+
+    val hrModel = LanguageModel(
+            context.resources.getString(R.string.croatian),
+            context.resources.getString(R.string.croatian_en),
+            false,
+            "hr",
+            "HR",
+            R.string.croatian
+    )
+
     languageList!!.add(enModel)
     languageList.add(deModel)
     languageList.add(frModel)
@@ -115,6 +142,9 @@ fun getLanguageList(context: Context) : ArrayList<LanguageModel> {
     languageList.add(ptModel)
     languageList.add(jaModel)
     languageList.add(esModel)
+    languageList.add(csModel)
+    languageList.add(grModel)
+    languageList.add(hrModel)
 
     return languageList
 }

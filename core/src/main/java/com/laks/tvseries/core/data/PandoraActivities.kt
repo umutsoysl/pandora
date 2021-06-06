@@ -13,6 +13,9 @@ object PandoraActivities {
     private const val FEATURE_SEARCH = "featuresearch"
     private const val FEATURE_SETTINGS = "featuresettings"
 
+    val splashScreenClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$PANDORA.SplashActivity"
+
     val trendingMovieFragmentClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.movie.TrendMovieFragment"
 

@@ -27,6 +27,7 @@ annotation class MediaType {
                 const val movie = "movie"
                 const val tv = "tv"
                 const val person = "person"
+                const val defined = "null"
         }
 }
 

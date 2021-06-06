@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.laks.tvseries.core.CoreActivity
 import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
 import java.util.*
@@ -41,8 +42,17 @@ class SplashActivity : CoreActivity() {
         waitTimer!!.schedule(object : TimerTask() {
             override fun run() {
                 this@SplashActivity.runOnUiThread(Runnable {
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent) })
+                    val screenType = StoreShared(this@SplashActivity).getIntValue(GlobalConstants.SCREEN_TYPE)
+                    if (screenType != null && screenType > 0 && StoreShared(this@SplashActivity).getBooleanValue(GlobalConstants.IS_APP_KILL_NOTIFICATION)) {
+                        StoreShared(this@SplashActivity).setBooleanKeyValue(GlobalConstants.IS_APP_KILL_NOTIFICATION, false)
+                        StoreShared(this@SplashActivity).setIntKeyValue(GlobalConstants.SCREEN_TYPE, -1)
+                        val intent = Intent(Intent.ACTION_VIEW).setClassName(this@SplashActivity, PandoraActivities.movieDetailActivityClassName)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                })
             }
         }, 900)
     }

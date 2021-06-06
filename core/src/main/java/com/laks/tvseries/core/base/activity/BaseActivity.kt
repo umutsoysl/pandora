@@ -12,7 +12,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.BuildConfig
-import com.google.android.material.appbar.AppBarLayout
 import com.laks.tvseries.core.R
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
@@ -27,7 +26,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
-import org.koin.core.context.stopKoin
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.logger.Level
 import org.koin.core.module.Module
@@ -178,9 +176,9 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
 
     override fun onDestroy() {
-        super.onDestroy()
         unloadKoinModules(modules)
         MemoryCacheHelper.removeCache(classTag)
+        super.onDestroy()
     }
 
     private fun setUp() {

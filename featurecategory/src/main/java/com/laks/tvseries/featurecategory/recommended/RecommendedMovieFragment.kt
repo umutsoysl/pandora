@@ -66,8 +66,12 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
         }
 
         binding.buttonRandom.setOnClickListener {
-            randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) as FbMovieDataModel
-            randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
+            try {
+                randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) as FbMovieDataModel
+                randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
+            } catch (e: Exception) {
+
+            }
         }
 
         return binding.root
@@ -125,11 +129,13 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
 
     override fun genreListItemOnClickListener(genre: Genre) {
         val movieId = genre.id.toInt() - 1
-        modListMovie[movieId].id?.let {
-            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
-            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, it)
-            var intent = Intent(requireActivity(), MovieDetailActivity::class.java)
-            startActivity(intent)
+        if (modListMovie.size > movieId) {
+            modListMovie[movieId].id?.let {
+                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
+                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, it)
+                var intent = Intent(requireActivity(), MovieDetailActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
