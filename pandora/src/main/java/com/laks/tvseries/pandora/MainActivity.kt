@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.view.active
 import com.laks.tvseries.core.view.attach
@@ -41,7 +42,7 @@ class MainActivity : BaseActivity<MainViewModel>(MainViewModel::class) {
                 switchFragment(navPosition)
             }
         }
-
+        FirebaseMessaging.getInstance().subscribeToTopic("pandora")
         initFragment(savedInstanceState)
     }
 
