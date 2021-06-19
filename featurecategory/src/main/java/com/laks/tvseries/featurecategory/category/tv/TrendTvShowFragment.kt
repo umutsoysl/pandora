@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
@@ -17,6 +20,7 @@ import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.MovieType
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
+import com.laks.tvseries.featurecategory.ads.PandoraBannerAdsFragment
 import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.category.movie.TrendMovieFragment
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
@@ -41,6 +45,7 @@ class TrendTvShowFragment: CategoryBaseFragment<CategoryViewModel>(CategoryViewM
 
         binding.labelSubTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.tv_shows)
         setAdapter()
+        createBannerAds()
 
         return binding.root
     }
@@ -51,6 +56,15 @@ class TrendTvShowFragment: CategoryBaseFragment<CategoryViewModel>(CategoryViewM
         baseViewModel.getTrendingList(MediaType.tv)
 
         bindingViewModel()
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = childFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = PandoraBannerAdsFragment()
+        fragTransaction.add(binding.layoutAds.id, myFrag, "pandoraFragmentAdsTvTrend")
+        fragTransaction.commit()
     }
 
     private fun bindingViewModel() {

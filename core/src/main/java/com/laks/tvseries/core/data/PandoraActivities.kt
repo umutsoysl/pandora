@@ -57,4 +57,7 @@ object PandoraActivities {
 
     val termOfUseActivityClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_SETTINGS.about.TermOfUseActivity"
+
+    val pandoraBannerAdsFragmentClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.ads.PandoraBannerAdsFragment"
 }

@@ -378,6 +378,16 @@
                 android:layout_marginBottom="@dimen/medium_margin"
                 android:background="@color/dark_gray"/>
 
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/layoutAds"/>
+
+            <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
         </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

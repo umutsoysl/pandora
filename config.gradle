@@ -1,6 +1,6 @@
 ext.versions = [
-        code                         : 103,
-        name                         : '1.0.3',
+        code                         : 105,
+        name                         : '1.0.5',
         minSdk                       : 21,
         targetSdk                    : 29,
         compileSdk                   : 30,
@@ -8,6 +8,7 @@ ext.versions = [
 
         // android
         multidex                     : '2.0.1',
+        workManager                  : '2.4.0',
         supportLibs                  : '1.0.0',
         recyclerView                 : '1.1.0',
         constraintLayout             : '2.0.0-beta4',
@@ -81,6 +82,7 @@ ext.libraries = [
         // google
         gson                       : "com.google.code.gson:gson:$versions.gson",
         zxing                      : "com.google.zxing:core:$versions.zxing",
+        ads                        : "com.google.android.gms:play-services-ads:19.4.0",
 
         // firebase
         remoteConfig               : "com.google.firebase:firebase-config:19.1.4",

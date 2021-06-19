@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daimajia.slider.library.Animations.DescriptionAnimation
@@ -32,6 +35,7 @@ import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.db.PandoraDatabase
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
+import com.laks.tvseries.featurecategory.ads.PandoraBannerAdsFragment
 import com.laks.tvseries.featurecategory.databinding.ActivityMovieDetailBinding
 import com.laks.tvseries.featurecategory.detail.season.SeasonListAdapter
 import com.laks.tvseries.featurecategory.di.detailDIModule
@@ -79,6 +83,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         backButtonClick()
         createAdapterListObserver()
         createImageSlider()
+        createBannerAds()
     }
 
     private fun getDetail() {
@@ -91,6 +96,15 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
          {
             baseViewModel.getTVDetail(movieID = movieID)
         }
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = supportFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = PandoraBannerAdsFragment()
+        fragTransaction.replace(binding.layoutAds.id, myFrag, "pandoraFragmentAdsDetailMovie")
+        fragTransaction.commit()
     }
 
     @SuppressLint("StringFormatInvalid")

@@ -11,8 +11,12 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.laks.tvseries.core.base.activity.BaseActivity
 import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featuresettings.R
 import com.laks.tvseries.featuresettings.SettingsViewModel
@@ -34,6 +38,16 @@ class AboutActivity : BaseActivity<SettingsViewModel>(SettingsViewModel::class) 
         setToolbarTitle(resources.getString(com.laks.tvseries.core.R.string.about_pandora))
         removeHeaderSearchButton()
         textLink()
+        createBannerAds()
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = supportFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = (Class.forName(PandoraActivities.pandoraBannerAdsFragmentClassName).newInstance() as Fragment)
+        fragTransaction.replace(binding.layoutAds.id, myFrag, "pandoraFragmentAdsAboutPage")
+        fragTransaction.commit()
     }
 
     private fun textLink() {

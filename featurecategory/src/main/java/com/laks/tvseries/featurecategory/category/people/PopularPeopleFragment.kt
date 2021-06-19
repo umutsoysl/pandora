@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
@@ -16,6 +19,7 @@ import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.featurecategory.R
+import com.laks.tvseries.featurecategory.ads.PandoraBannerAdsFragment
 import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.category.tv.PopularTvShowFragment
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
@@ -39,8 +43,18 @@ class PopularPeopleFragment: CategoryBaseFragment<CategoryViewModel>(CategoryVie
         binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.popular_people)
         binding.labelSubTitle.visibility = View.GONE
         setAdapter()
+        createBannerAds()
 
         return binding.root
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = childFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = PandoraBannerAdsFragment()
+        fragTransaction.add(binding.layoutAds.id, myFrag, "pandoraFragmentAdsPeople")
+        fragTransaction.commit()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

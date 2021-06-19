@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.laks.tvseries.core.base.fragment.BaseFragment
 import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.PandoraActivities
@@ -25,6 +28,7 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        createBannerAds()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +43,15 @@ class SettingsFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         sharePandora()
 
         return binding.root
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = childFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = (Class.forName(PandoraActivities.pandoraBannerAdsFragmentClassName).newInstance() as Fragment)
+        fragTransaction.replace(binding.layoutAds.id, myFrag, "pandoraFragmentAdsDiscoverMovie")
+        fragTransaction.commit()
     }
 
     private fun initLanguage() {

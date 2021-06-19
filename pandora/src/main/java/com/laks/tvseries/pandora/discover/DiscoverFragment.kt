@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.fragment.BaseFragment
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.MediaListItemAdapter
@@ -17,8 +19,8 @@ import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.global.GlobalConstants
-import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.MainViewModel
+import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentDiscoverBinding
 
 class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener {
@@ -29,6 +31,7 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        createBannerAds()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,6 +46,15 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
         bindingViewModel()
 
         return binding.root
+    }
+
+    private fun createBannerAds() {
+        val fragMan: FragmentManager? = childFragmentManager
+        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
+
+        val myFrag: Fragment = (Class.forName(PandoraActivities.pandoraBannerAdsFragmentClassName).newInstance() as Fragment)
+        fragTransaction.replace(binding.layoutAds.id, myFrag, "pandoraFragmentAdsDiscoverMovie")
+        fragTransaction.commit()
     }
 
     private fun bindingViewModel() {

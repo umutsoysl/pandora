@@ -52,6 +52,7 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.supportConstraint
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation libraries.multidex
 
     implementation libraries.roomRuntime
     implementation libraries.roomKtx
@@ -82,4 +83,7 @@ dependencies {
     implementation libraries.youtubePlayer
     implementation libraries.imageSlider
     implementation libraries.nineOldAndroids
+
+    //google ads
+    implementation libraries.ads
 }

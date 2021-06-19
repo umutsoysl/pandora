@@ -1,9 +1,11 @@
 package com.laks.tvseries.pandora
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.laks.tvseries.core.CoreActivity
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.data.PandoraActivities
@@ -16,6 +18,8 @@ class SplashActivity : CoreActivity() {
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 2200
     private var waitTimer: Timer? = null
+    private var mInterstitialAd: InterstitialAd? = null
+    private var interstitialCanceled = false
 
     private val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
@@ -49,6 +53,11 @@ class SplashActivity : CoreActivity() {
                         val intent = Intent(Intent.ACTION_VIEW).setClassName(this@SplashActivity, PandoraActivities.movieDetailActivityClassName)
                         startActivity(intent)
                     } else {
+                        try {
+                            initInterstitialAd()
+                        }catch (ex:Exception){
+                            //handle
+                        }
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                     }
@@ -61,6 +70,33 @@ class SplashActivity : CoreActivity() {
         val languageCode = StoreShared(this).getStringValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY)
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.SHARED_LANGUAGE_WITH_CODE_COUNTRY, if (languageCode.isNullOrEmpty()) "en-US" else languageCode)
         initTimer()
+    }
+
+    private fun initInterstitialAd() {
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd!!.adUnitId = resources.getString(com.laks.tvseries.core.R.string.ads_full_screen_id)
+        val adRequestInter = AdRequest.Builder().build()
+        mInterstitialAd!!.loadAd(adRequestInter)
+        mInterstitialAd!!.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                waitTimer!!.cancel()
+                if (!interstitialCanceled) {
+                    mInterstitialAd!!.show()
+                    interstitialCanceled = true
+                }
+            }
+
+            override fun onAdClicked() {
+                waitTimer!!.cancel()
+                interstitialCanceled = true
+            }
+
+            override fun onAdFailedToLoad(var1: Int) {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     override fun onDestroy() {
