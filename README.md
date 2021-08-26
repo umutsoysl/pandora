@@ -20,6 +20,7 @@ Multi module movies and tv series review android app.
 * [OkHttp3](https://github.com/square/okhttp)
 * [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)
 * [Kotlin Flow](https://developer.android.com/kotlin/flow)
+* [Koin](https://insert-koin.io/)
 * [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
 * [ktlint](https://ktlint.github.io/)
 
