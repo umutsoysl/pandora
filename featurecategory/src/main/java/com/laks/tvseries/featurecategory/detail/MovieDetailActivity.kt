@@ -289,7 +289,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         binding.youtubePlayerView.addYouTubePlayerListener(object :
             AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                videoId?.let { youTubePlayer.loadVideo(it, 0f) }
+                videoId?.let { youTubePlayer.cueVideo(it, 0f) }
             }
             override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
                 videoDuraction = duration

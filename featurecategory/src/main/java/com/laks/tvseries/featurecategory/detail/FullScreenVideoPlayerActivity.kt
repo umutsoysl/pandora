@@ -32,7 +32,7 @@ class FullScreenVideoPlayerActivity : AppCompatActivity() {
         youtubePlayerView?.addYouTubePlayerListener(object :
                 AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                videoID?.let { youTubePlayer.loadVideo(it, 0f) }
+                videoID?.let { youTubePlayer.cueVideo(it, 0f) }
             }
         })
     }

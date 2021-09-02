@@ -43,7 +43,7 @@ class ServiceManager {
             }
 
             val url = originalHttpUrl.newBuilder()
-                .addQueryParameter("api_key", "api_key")
+                .addQueryParameter("api_key", "d9f2f7f0f3215b25a68386eb9f7ae480")
                 .addQueryParameter("language", language)
                 .build()
 

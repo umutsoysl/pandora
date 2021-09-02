@@ -11,3 +11,7 @@ pandora/release/pandora-release.aab
 .idea/libraries/Gradle__com_google_firebase_firebase_storage_common_12_0_1_aar.xml
 *.xml
 .idea/libraries/Gradle__com_google_firebase_firebase_storage_12_0_1_aar.xml
+*.bin
+*.lock
+*.bin
+*.aab
