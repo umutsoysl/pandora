@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemClickListener"
+            type="com.laks.tvseries.core.common.media.GenreListItemOnClickListener" />
+
+        <variable
+            name="genre"
+            type="com.laks.tvseries.core.data.model.Genre" />
+
+    </data>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:onClick="@{() -> itemClickListener.genreListItemOnClickListener(genre)}"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/genre_button_size"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/gender_box"
+        android:layout_marginLeft="@dimen/five_margin"
+        android:textSize="@dimen/genre_button_text_size"
+        android:fontFamily="@font/muli_regular"
+        android:text="@{genre.name}"/>
+
+</LinearLayout>
+
+</layout>

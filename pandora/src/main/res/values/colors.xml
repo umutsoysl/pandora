@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_gray">#D5D5D5</color>
     <color name="dark_gray">#222B33</color>
+    <color name="gender_box">#3F3F40</color>
 </resources>

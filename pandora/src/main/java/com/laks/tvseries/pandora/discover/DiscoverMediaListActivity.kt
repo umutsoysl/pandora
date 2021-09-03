@@ -25,6 +25,7 @@ class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::clas
     private var page = 1
     private var movieList = ArrayList<MovieModel>()
     private var mediaType = MediaType.movie
+    private var genre = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,11 @@ class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::clas
         setToolbarTitle(title.let { title.toString() })
 
         mediaType = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.DISCOVER_MEDIA_TYPE) as String
+        genre = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.GENRE_ID) as String
+
+        if (genre.isNullOrEmpty()) {
+            genre = ""
+        }
 
         setAdapter()
         bindingViewModel()
@@ -69,8 +75,8 @@ class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::clas
 
     private fun getDiscoverData() {
         when(mediaType) {
-            MediaType.movie -> baseViewModel.getDiscoverMovieList(page)
-            MediaType.tv -> baseViewModel.getDiscoverTVList(page)
+            MediaType.movie -> baseViewModel.getDiscoverMovieList(page, genre)
+            MediaType.tv -> baseViewModel.getDiscoverTVList(page, genre)
         }
     }
 

@@ -8,10 +8,10 @@ import retrofit2.http.Query
 
 interface ScheduleApi {
     @GET("/3/discover/movie")
-    suspend fun getDiscoverMoviesList(@Query("page") page: Int): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverMoviesList(@Query("page") page: Int, @Query("short_by") shortBy: String, @Query("with_genres") genre: String): Response<DiscoverMovieListModel>
 
     @GET("/3/discover/tv")
-    suspend fun getDiscoverTvList(@Query("page") page: Int): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverTvList(@Query("page") page: Int, @Query("short_by") shortBy: String, @Query("with_genres") genre: String): Response<DiscoverMovieListModel>
 
     @GET("/3/movie/{movieID}")
     suspend fun getMovieDetail(@Path("movieID") movieID: String): Response<MovieDetailModel>
@@ -42,5 +42,11 @@ interface ScheduleApi {
 
     @GET("/3/tv/{tvID}/images")
     suspend fun getTvImage(@Path("tvID") tvID: String): Response<MediaImageModel>
+
+    @GET("/3/genre/movie/list")
+    suspend fun getMovieGenres(): Response<GenreListModel>
+
+    @GET("/3/genre/tv/list")
+    suspend fun getTvGenres(): Response<GenreListModel>
 
 }

@@ -1,4 +1,4 @@
-package com.laks.tvseries.featurecategory.detail
+package com.laks.tvseries.pandora.discover.genre
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
 import com.laks.tvseries.core.data.model.Genre
-import com.laks.tvseries.featurecategory.databinding.LayoutGenreItemBinding
+import com.laks.tvseries.pandora.databinding.LayoutGenreItemBinding
 
-class GenreListItemAdapter(private val context: Context, private val clickListener: GenreListItemOnClickListener, private val isMovie: Boolean = true) : ListAdapter<Genre, GenreListItemAdapter.GenreListViewHolder>(GenreListItemModelDiffCallback()) {
+class GenreAdapter(private val context: Context, private val clickListener: GenreListItemOnClickListener, private val isMovie: Boolean = true) : ListAdapter<Genre, GenreAdapter.GenreListViewHolder>(GenreListItemModelDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreListViewHolder {
         return GenreListViewHolder.from(parent)
@@ -22,13 +22,12 @@ class GenreListItemAdapter(private val context: Context, private val clickListen
 
     class GenreListViewHolder(private val binding: LayoutGenreItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(context: Context, clickListener: GenreListItemOnClickListener,  itemData: Genre, isMovie: Boolean) {
+        fun bind(context: Context, clickListener: GenreListItemOnClickListener, itemData: Genre, isMovie: Boolean) {
             binding.itemClickListener = clickListener
             itemData.isMovie = isMovie
             binding.genre = itemData
             binding.executePendingBindings()
         }
-
 
         companion object {
             fun from(parent: ViewGroup): GenreListViewHolder {

@@ -86,6 +86,8 @@
     <string name="notification_random_movie_title">Pandora\'s suggestion for this week</string>
     <string name="notification_movie_title">Movie break</string>
     <string name="notification_random_movie_desc">%1$s view content now.</string>
+    <string name="movie_genres">Movie Genres</string>
+    <string name="tv_genres">TV Genres</string>
 
     <!--Language-->
     <string name="english_en">English</string>

@@ -7,15 +7,15 @@ import kotlinx.coroutines.flow.Flow
 
 class MediaRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
 
-    fun getDiscoverMoviesList(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
+    fun getDiscoverMoviesList(requestModel: DiscoverRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getDiscoverMoviesList( page = requestModel.page!!)
+            api.getDiscoverMoviesList( page = requestModel.page!!, shortBy = requestModel.sortBy, genre = requestModel.genre)
         }
     }
 
-    fun getDiscoverTvList(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
+    fun getDiscoverTvList(requestModel: DiscoverRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getDiscoverTvList(page = requestModel.page!!)
+            api.getDiscoverTvList(page = requestModel.page!!,  shortBy = requestModel.sortBy, genre = requestModel.genre)
         }
     }
 
@@ -76,6 +76,18 @@ class MediaRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
     fun getTvImage(requestModel: GlobalRequestModel): Flow<MediaImageModel?> {
         return fetchData(isLoadingShown = true) {
             api.getTvImage(tvID = requestModel.movieID!!)
+        }
+    }
+
+    fun getTvGenreList(): Flow<GenreListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getTvGenres()
+        }
+    }
+
+    fun getMovieGenreList(): Flow<GenreListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getMovieGenres()
         }
     }
 }

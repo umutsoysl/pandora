@@ -11,23 +11,31 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.laks.tvseries.core.base.fragment.BaseFragment
 import com.laks.tvseries.core.cache.MemoryCache
+import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
 import com.laks.tvseries.core.common.media.MediaListItemAdapter
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentDiscoverBinding
+import com.laks.tvseries.pandora.discover.genre.GenreAdapter
 
-class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener {
+class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener, GenreListItemOnClickListener {
 
     private lateinit var binding: FragmentDiscoverBinding
     private lateinit var adapterMovie: MediaListItemAdapter
     private lateinit var adapterTV: MediaListItemAdapter
+    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var genreTvAdapter: GenreAdapter
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -41,6 +49,7 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
 
         setAdapterMovie()
         setAdapterTV()
+        setGenreAdapter()
         goSearchScreen()
 
         bindingViewModel()
@@ -69,6 +78,20 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
             adapterTV.submitList(it.results)
             adapterTV.notifyDataSetChanged()
             binding.rootRelativeView.requestLayout()
+            binding.invalidateAll()
+        })
+
+        baseViewModel.genreMovieList.observe(requireActivity(), Observer {
+            genreAdapter.submitList(it.genres)
+            genreAdapter.notifyDataSetChanged()
+            binding.recyclerMovieGenreList.requestLayout()
+            binding.invalidateAll()
+        })
+
+        baseViewModel.genreTvList.observe(requireActivity(), Observer {
+            genreTvAdapter.submitList(it.genres)
+            genreTvAdapter.notifyDataSetChanged()
+            binding.recyclerTvGenreList.requestLayout()
             binding.invalidateAll()
         })
 
@@ -106,10 +129,31 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
         binding.recyclerDiscoverTvList.adapter = adapterTV
     }
 
+    private fun setGenreAdapter() {
+        val layoutManager = FlexboxLayoutManager(requireContext())
+        layoutManager.flexDirection = FlexDirection.ROW
+        layoutManager.justifyContent = JustifyContent.CENTER
+
+        genreAdapter = GenreAdapter(requireActivity(), this, isMovie = true)
+        binding.recyclerMovieGenreList.layoutManager = layoutManager
+        binding.recyclerMovieGenreList.adapter = genreAdapter
+
+        val layoutManagerTv = FlexboxLayoutManager(requireContext())
+        layoutManagerTv.flexDirection = FlexDirection.ROW
+        layoutManagerTv.justifyContent = JustifyContent.CENTER
+
+        genreTvAdapter = GenreAdapter(requireActivity(), this, isMovie = false)
+        binding.recyclerTvGenreList.layoutManager = layoutManagerTv
+        binding.recyclerTvGenreList.adapter = genreTvAdapter
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         baseViewModel.getDiscoverMovieList(1)
         baseViewModel.getDiscoverTVList(1)
+        baseViewModel.getMovieGenreList()
+        baseViewModel.getTvGenreList()
     }
 
     companion object {
@@ -122,5 +166,12 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, scheduleInfo.id!!)
         var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.movieDetailActivityClassName)
         startActivity(intent)
+    }
+
+    override fun genreListItemOnClickListener(genre: Genre) {
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE,  genre.name)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, if(genre.isMovie) MediaType.movie else MediaType.tv)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.GENRE_ID, genre.id.toString())
+        startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
     }
 }

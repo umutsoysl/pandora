@@ -195,9 +195,90 @@
                         android:orientation="vertical"
                         android:id="@+id/layoutAds"/>
 
+                <TextView
+                    style="@style/CategoryTypeTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_genres" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerMovieGenreList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/regular_margin"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_genre_item" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.shimmerGenreMovieVisible? View.VISIBLE: View.GONE}"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.shimmerGenreMovieVisible? View.VISIBLE: View.GONE}">
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <TextView
+                    style="@style/CategoryTypeTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="@string/tv_genres" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTvGenreList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/regular_margin"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_genre_item" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.shimmerGenreTVVisible? View.VISIBLE: View.GONE}"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.shimmerGenreTVVisible? View.VISIBLE: View.GONE}">
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                        <include layout="@layout/layout_genre_item" />
+
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="80dp" />
+                    android:layout_height="100dp" />
 
             </LinearLayout>
 

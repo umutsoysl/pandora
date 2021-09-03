@@ -243,7 +243,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     }
 
     private fun setAdapter() {
-        adapter = GenreListItemAdapter(this@MovieDetailActivity, this)
+        adapter = GenreListItemAdapter(this@MovieDetailActivity, this, isMovie = type == MediaType.movie)
         val layoutManager = FlexboxLayoutManager(this@MovieDetailActivity)
         layoutManager.flexDirection = FlexDirection.ROW
         layoutManager.justifyContent = JustifyContent.FLEX_START
@@ -386,7 +386,13 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
     override fun onPageSelected(position: Int) {}
 
     override fun onPageScrollStateChanged(state: Int) {}
-    override fun genreListItemOnClickListener(genre: Genre) {}
+    override fun genreListItemOnClickListener(genre: Genre) {
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE, genre.name)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, if(genre.isMovie) MediaType.movie else MediaType.tv)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.GENRE_ID, genre.id.toString())
+        var intent = Intent(Intent.ACTION_VIEW).setClassName(this@MovieDetailActivity, PandoraActivities.discoverListClassName)
+        startActivity(intent)
+    }
 
     override fun onYouTubePlayerEnterFullScreen() {
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.YOUTUBE_VIDEO_ID, videoKey!!)

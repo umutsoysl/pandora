@@ -30,5 +30,6 @@ class GlobalConstants {
         const val IS_APP_KILL_NOTIFICATION = "IS_APP_KILL"
         const val SCREEN_TYPE = "SCREEN_TYPE"
         const val IS_APP_OPEN = "IS_APP_OPEN"
+        const val GENRE_ID = "GENRE_ID"
     }
 }

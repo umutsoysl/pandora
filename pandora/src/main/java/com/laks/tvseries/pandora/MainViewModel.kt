@@ -8,7 +8,8 @@ import com.laks.tvseries.core.dao.MediaDao
 import com.laks.tvseries.core.data.db.DBMediaEntity
 import com.laks.tvseries.core.data.main.MediaRepository
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
-import com.laks.tvseries.core.data.model.GlobalRequestModel
+import com.laks.tvseries.core.data.model.DiscoverRequestModel
+import com.laks.tvseries.core.data.model.GenreListModel
 import com.laks.tvseries.core.db.PandoraDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -33,11 +34,20 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
 
     var tvWatchList = MutableLiveData<List<DBMediaEntity>>()
 
-    fun getDiscoverMovieList(page: Int) {
+    var genreTvList = MutableLiveData<GenreListModel>()
+
+    val shimmerGenreTVVisible = MutableLiveData<Boolean>(true)
+
+    var genreMovieList = MutableLiveData<GenreListModel>()
+
+    val shimmerGenreMovieVisible = MutableLiveData<Boolean>(true)
+
+    fun getDiscoverMovieList(page: Int, genre: String = "") {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                var requestModel = DiscoverRequestModel()
                 requestModel.page = page
+                requestModel.genre = genre
                 mediaRepo?.getDiscoverMoviesList(requestModel)?.collect { response ->
                     for (item in response?.results!!)  item.isMovie = true
                     discoverMovieList.postValue(response)
@@ -47,15 +57,38 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
         }
     }
 
-    fun getDiscoverTVList(page: Int) {
+    fun getDiscoverTVList(page: Int, genre: String = "") {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                var requestModel = DiscoverRequestModel()
                 requestModel.page = page
+                requestModel.genre = genre
                 mediaRepo?.getDiscoverTvList(requestModel)?.collect { response ->
                     for (item in response?.results!!)  item.isMovie = false
                     discoverTVList.postValue(response)
                     shimmerTVVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getMovieGenreList() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mediaRepo?.getMovieGenreList()?.collect { response ->
+                    genreMovieList.postValue(response)
+                    shimmerGenreMovieVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getTvGenreList() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mediaRepo?.getTvGenreList()?.collect { response ->
+                    genreTvList.postValue(response)
+                    shimmerGenreTVVisible.postValue(false)
                 }
             }
         }
