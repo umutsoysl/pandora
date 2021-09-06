@@ -40,4 +40,5 @@
     <dimen name="splash_logo_width">210dp</dimen>
     <dimen name="splash_logo_height">110dp</dimen>
     <dimen name="fullscreen_back_button_top">14dp</dimen>
+    <dimen name="genre_discover_size">46dp</dimen>
 </resources>

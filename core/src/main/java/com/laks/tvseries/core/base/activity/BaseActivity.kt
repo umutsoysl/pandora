@@ -16,6 +16,8 @@ import com.laks.tvseries.core.R
 import com.laks.tvseries.core.base.viewmodel.BaseViewModel
 import com.laks.tvseries.core.cache.ViewModelState
 import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.HeaderIconType
+import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.databinding.ActivityBaseBinding
 import com.laks.tvseries.core.language.LocalizationLanguageManager
 import com.laks.tvseries.core.language.OnLocaleLanguageChangedListener
@@ -43,7 +45,7 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
     private lateinit var binding: ActivityBaseBinding
     private val classTag = this.javaClass.canonicalName
     private var qnbNestedScrollView: NestedScrollView? = null
-
+    private var headerIconItemClickListener: HeaderIconItemClickListener? = null
     private val localizationManager = LocalizationLanguageManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +76,11 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
         binding.buttonSearch.visibility = View.INVISIBLE
     }
 
+    fun showFilterButton(handler: HeaderIconItemClickListener) {
+        headerIconItemClickListener = handler
+        binding.buttonFilter.visibility = View.VISIBLE
+    }
+
     private fun onClickHeaderBackButton() {
         binding.buttonBack.setOnClickListener {
             super.onBackPressed()
@@ -82,8 +89,12 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
 
     private fun onClickHeaderSearchButton() {
         binding.buttonSearch.setOnClickListener {
-            var intent = Intent(Intent.ACTION_VIEW).setClassName(this, PandoraActivities.searchActivityClassName)
+            val intent = Intent(Intent.ACTION_VIEW).setClassName(this, PandoraActivities.searchActivityClassName)
             startActivity(intent)
+        }
+
+        binding.buttonFilter.setOnClickListener {
+            headerIconItemClickListener?.headerIconClickListener(HeaderIconType.filter)
         }
     }
 
@@ -188,4 +199,8 @@ abstract class BaseActivity<Q : BaseViewModel>(clazz: KClass<Q>) : AppCompatActi
             modules(modules)
         }
     }
+}
+
+interface HeaderIconItemClickListener {
+    fun headerIconClickListener(headerIconType: String)
 }

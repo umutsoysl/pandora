@@ -60,7 +60,7 @@
     <string name="mod_science_fiction">Beyinimi yaksın</string>
     <string name="mod_funny">Eğlenceli</string>
     <string name="mod_impressive">Etkilesin</string>
-    <string name="mod_thriller">Geriliyim</string>
+    <string name="mod_thriller">Gerileyim</string>
     <string name="mod_love">Romantik</string>
     <string name="mod_fantastic">Fantastik</string>
     <string name="mod_adventure">Maceraya doyursun</string>
@@ -82,6 +82,8 @@
     <string name="notification_random_movie_title">Pandora\'ın bu haftaki önerisi</string>
     <string name="notification_movie_title">Film izleme molası</string>
     <string name="notification_random_movie_desc">%1$s içeriği hemen incele.</string>
+    <string name="movie_genres">Film Türleri</string>
+    <string name="tv_genres">Dizi Türleri</string>
 
     <!--Language-->
     <string name="english_en">English</string>

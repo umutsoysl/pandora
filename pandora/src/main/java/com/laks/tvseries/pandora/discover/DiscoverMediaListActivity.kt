@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.laks.tvseries.core.base.activity.BaseActivity
+import com.laks.tvseries.core.base.activity.HeaderIconItemClickListener
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.MediaListItemOnClickListener
 import com.laks.tvseries.core.data.PandoraActivities
+import com.laks.tvseries.core.data.model.HeaderIconType
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.global.GlobalConstants
@@ -17,7 +19,7 @@ import com.laks.tvseries.pandora.databinding.ActivityDiscoverMediaListBinding
 import com.laks.tvseries.pandora.di.homeDIModule
 import org.koin.core.module.Module
 
-class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener {
+class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::class), MediaListItemOnClickListener, HeaderIconItemClickListener {
     override val modules: List<Module>
         get() = listOf(homeDIModule)
     private lateinit var binding: ActivityDiscoverMediaListBinding
@@ -32,6 +34,7 @@ class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::clas
         binding = inflate(R.layout.activity_discover_media_list)
         binding.viewModel = baseViewModel
         binding.lifecycleOwner = this
+        showFilterButton(this)
         val title = MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.DISCOVER_MEDIA_TITLE)
         setToolbarTitle(title.let { title.toString() })
 
@@ -92,5 +95,11 @@ class DiscoverMediaListActivity: BaseActivity<MainViewModel>(MainViewModel::clas
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, media.id!!)
         var intent = Intent(Intent.ACTION_VIEW).setClassName(this, PandoraActivities.movieDetailActivityClassName)
         startActivity(intent)
+    }
+
+    override fun headerIconClickListener(headerIconType: String) {
+        when(headerIconType) {
+            HeaderIconType.filter -> ""
+        }
     }
 }

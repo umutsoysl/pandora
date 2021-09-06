@@ -14,3 +14,8 @@ pandora/release/pandora-release.aab
 *.lock
 *.bin
 *.aab
+*.lock
+*.bin
+.gradle/6.5/javaCompile/jarAnalysis.bin
+*.bin
+*.bin

@@ -45,7 +45,7 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
     fun getDiscoverMovieList(page: Int, genre: String = "") {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = DiscoverRequestModel()
+                val requestModel = DiscoverRequestModel()
                 requestModel.page = page
                 requestModel.genre = genre
                 mediaRepo?.getDiscoverMoviesList(requestModel)?.collect { response ->
@@ -60,7 +60,7 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
     fun getDiscoverTVList(page: Int, genre: String = "") {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = DiscoverRequestModel()
+                val requestModel = DiscoverRequestModel()
                 requestModel.page = page
                 requestModel.genre = genre
                 mediaRepo?.getDiscoverTvList(requestModel)?.collect { response ->

@@ -37,6 +37,11 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
     private lateinit var genreAdapter: GenreAdapter
     private lateinit var genreTvAdapter: GenreAdapter
 
+    override fun onResume() {
+        super.onResume()
+        clearGenreCache()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         createBannerAds()
@@ -106,6 +111,14 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, MediaType.tv)
             startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
         }
+
+        binding.buttonMoreGenreMovie.setOnClickListener {
+
+        }
+    }
+
+    private fun clearGenreCache() {
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.GENRE_ID, "")
     }
 
     private fun goSearchScreen() {
@@ -130,17 +143,13 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
     }
 
     private fun setGenreAdapter() {
-        val layoutManager = FlexboxLayoutManager(requireContext())
-        layoutManager.flexDirection = FlexDirection.ROW
-        layoutManager.justifyContent = JustifyContent.CENTER
+        val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 
         genreAdapter = GenreAdapter(requireActivity(), this, isMovie = true)
         binding.recyclerMovieGenreList.layoutManager = layoutManager
         binding.recyclerMovieGenreList.adapter = genreAdapter
 
-        val layoutManagerTv = FlexboxLayoutManager(requireContext())
-        layoutManagerTv.flexDirection = FlexDirection.ROW
-        layoutManagerTv.justifyContent = JustifyContent.CENTER
+        val layoutManagerTv = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 
         genreTvAdapter = GenreAdapter(requireActivity(), this, isMovie = false)
         binding.recyclerTvGenreList.layoutManager = layoutManagerTv

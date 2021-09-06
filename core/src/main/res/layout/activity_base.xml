@@ -51,15 +51,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_toLeftOf="@+id/buttonSearch"
+                    android:layout_toLeftOf="@+id/buttonGroup"
                     android:layout_toRightOf="@+id/buttonBack"
                     android:layout_centerVertical="true" />
+
+                <RelativeLayout
+                    android:id="@+id/buttonGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/buttonFilter"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:visibility="gone"
+                    android:layout_toRightOf="@+id/buttonSearch"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_baseline_filter_list_24" />
+
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/buttonSearch"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true">
 
                     <ImageView
@@ -69,7 +91,7 @@
                         android:background="@drawable/ic_baseline_search_24" />
 
                 </RelativeLayout>
-
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
 
