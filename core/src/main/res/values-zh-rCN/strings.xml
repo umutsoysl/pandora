@@ -83,6 +83,23 @@
     <string name="notification_movie_title">电影休息</string>
     <string name="notification_random_movie_desc">%1$s 立即查看内容.</string>
 
+    <string name="movie_genres">電影類型</string>
+    <string name="tv_genres">電視類型</string>
+    <string name="filter">篩選</string>
+    <string name="popularity">人氣</string>
+    <string name="release_date">發布日期</string>
+    <string name="revenue_order">收入</string>
+    <string name="alphabetical_order">按字母順序</string>
+    <string name="vote_average_order">平均票數</string>
+    <string name="sort_by">排序方式</string>
+    <string name="clear">清除</string>
+    <string name="apply">申請</string>
+    <string name="vote_average">平均票數</string>
+    <string name="min">分鐘</string>
+    <string name="max">max</string>
+    <string name="rating">評分</string>
+    <string name="year">年</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

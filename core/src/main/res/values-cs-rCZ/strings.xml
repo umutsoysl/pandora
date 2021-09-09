@@ -84,6 +84,23 @@
     <string name="notification_movie_title">Filmová přestávka</string>
     <string name="notification_random_movie_desc">%1$s zobrazit obsah hned.</string>
 
+    <string name="movie_genres">Filmové žánry</string>
+    <string name="tv_genres">TV žánry</string>
+    <string name="filter">Filtr</string>
+    <string name="popularity">Popularita</string>
+    <string name="release_date">Datum vydání</string>
+    <string name="revenue_order">Příjmy</string>
+    <string name="alphabetical_order">Abecední</string>
+    <string name="vote_average_order">Hlasování</string>
+    <string name="sort_by">Roztřídit</string>
+    <string name="clear">Průhledná</string>
+    <string name="apply">Aplikovat</string>
+    <string name="vote_average">Průměrný hlas</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">Hodnocení</string>
+    <string name="year">Rok</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

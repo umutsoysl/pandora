@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
 import com.laks.tvseries.core.data.model.Genre
-import com.laks.tvseries.pandora.databinding.LayoutGenreItemBinding
+import com.laks.tvseries.pandora.databinding.LayoutDiscoverGenreItemBinding
 
 class GenreAdapter(private val context: Context, private val clickListener: GenreListItemOnClickListener, private val isMovie: Boolean = true) : ListAdapter<Genre, GenreAdapter.GenreListViewHolder>(GenreListItemModelDiffCallback()) {
 
@@ -20,7 +20,7 @@ class GenreAdapter(private val context: Context, private val clickListener: Genr
         holder.bind(context, clickListener , getItem(position), isMovie)
     }
 
-    class GenreListViewHolder(private val binding: LayoutGenreItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class GenreListViewHolder(private val binding: LayoutDiscoverGenreItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(context: Context, clickListener: GenreListItemOnClickListener, itemData: Genre, isMovie: Boolean) {
             binding.itemClickListener = clickListener
@@ -32,7 +32,7 @@ class GenreAdapter(private val context: Context, private val clickListener: Genr
         companion object {
             fun from(parent: ViewGroup): GenreListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = LayoutGenreItemBinding.inflate(layoutInflater, parent, false)
+                val binding = LayoutDiscoverGenreItemBinding.inflate(layoutInflater, parent, false)
                 return GenreListViewHolder(binding)
             }
         }

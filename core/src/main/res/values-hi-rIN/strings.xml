@@ -83,6 +83,23 @@
     <string name="notification_movie_title">मूवी ब्रेक</string>
     <string name="notification_random_movie_desc">%1$s अब सामग्री देखें.</string>
 
+    <string name="movie_genres">मूवी शैलियों</string>
+    <string name="tv_genres">टीवी शैलियों</string>
+    <string name="filter">फ़िल्टर</string>
+    <string name="popularity">लोकप्रियता</string>
+    <string name="release_date">रिलीज़ की तारीख</string>
+    <string name="revenue_order">राजस्व</string>
+    <string name="alphabetical_order">वर्णमाला</string>
+    <string name="vote_average_order">वोट औसत</string>
+    <string name="sort_by">Sort by</string>
+    <string name="clear">Clear</string>
+    <string name="apply">Apply</string>
+    <string name="vote_average">वोट औसत</string>
+    <string name="min">मिनट</string>
+    <string name="max">रक्षा</string>
+    <string name="rating">रेटिंग</string>
+    <string name="year">वर्ष</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

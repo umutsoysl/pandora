@@ -83,6 +83,23 @@
     <string name="notification_movie_title">映画休憩</string>
     <string name="notification_random_movie_desc">%1$s 今すぐコンテンツを表示.</string>
 
+    <string name="movie_genres">映画のジャンル</string>
+    <string name="tv_genres">テレビ番組ジャンル</string>
+    <string name="filter">フィルター</string>
+    <string name="popularity">人気</string>
+    <string name="release_date">発売日</string>
+    <string name="revenue_order">収益</string>
+    <string name="alphabetical_order">アルファベット順</string>
+    <string name="vote_average_order">投票平均</string>
+    <string name="sort_by">並び替え</string>
+    <string name="clear">クリア</string>
+    <string name="apply">申し込み</string>
+    <string name="vote_average">投票平均</string>
+    <string name="min">最小</string>
+    <string name="max">最大</string>
+    <string name="rating">評価</string>
+    <string name="year">年</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

@@ -83,6 +83,23 @@
     <string name="notification_movie_title">Descanso de la película</string>
     <string name="notification_random_movie_desc">%1$s ver contenido ahora.</string>
 
+    <string name="movie_genres">Géneros de películas</string>
+    <string name="tv_genres">Géneros de TV</string>
+    <string name="filter">Filtrar</string>
+    <string name="popularity">Popularidad</string>
+    <string name="release_date">Año de lanzamiento</string>
+    <string name="revenue_order">revista</string>
+    <string name="alphabetical_order">Alfabético</string>
+    <string name="vote_average_order">clasificación</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="clear">Claro</string>
+    <string name="apply">Solicitar</string>
+    <string name="vote_average">Promedio de votos</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">clasificación</string>
+    <string name="year">Año</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

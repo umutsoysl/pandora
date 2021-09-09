@@ -1,5 +1,6 @@
 package com.laks.tvseries.featurecategory.category.movie
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
 import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.MediaListItemAdapter
@@ -16,6 +18,7 @@ import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.data.model.MovieType
 import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.core.util.isInternetAvailable
 import com.laks.tvseries.featurecategory.R
 import com.laks.tvseries.featurecategory.category.CategoryViewModel
 import com.laks.tvseries.featurecategory.databinding.FragmentTrendMovieBinding
@@ -40,6 +43,7 @@ class TopRatedMovieFragment: CategoryBaseFragment<CategoryViewModel>(CategoryVie
         binding.labelTitle.text = requireActivity().resources.getString(com.laks.tvseries.core.R.string.top_rated)
 
         setAdapter()
+        createAds()
 
         return binding.root
     }
@@ -50,6 +54,15 @@ class TopRatedMovieFragment: CategoryBaseFragment<CategoryViewModel>(CategoryVie
         baseViewModel.getTopRatedMovieList()
 
         bindingViewModel()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun createAds() {
+        val request: AdRequest = AdRequest.Builder().build()
+        if (isInternetAvailable(requireActivity())) {
+            binding.adNativeView.loadAd(request)
+            binding.adNativeView.visibility = View.VISIBLE
+        }
     }
 
     private fun bindingViewModel() {

@@ -83,6 +83,23 @@
     <string name="notification_movie_title">перерыв в кино</string>
     <string name="notification_random_movie_desc">%1$s просмотреть контент сейчас.</string>
 
+    <string name="movie_genres">Жанры фильмов</string>
+    <string name="tv_genres">Жанры ТВ</string>
+    <string name="filter">Фильтр</string>
+    <string name="popularity">Популярность</string>
+    <string name="release_date">Дата выхода</string>
+    <string name="revenue_order">Доход</string>
+    <string name="alphabetical_order">По алфавиту</string>
+    <string name="vote_average_order">Рейтинг</string>
+    <string name="sort_by">Сорт по</string>
+    <string name="clear">Прозрачный</string>
+    <string name="apply">хорошо</string>
+    <string name="vote_average">Рейтинг</string>
+    <string name="min">мин</string>
+    <string name="max">Мак</string>
+    <string name="rating">Рейтинг</string>
+    <string name="year">Год</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

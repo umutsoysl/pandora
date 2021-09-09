@@ -84,6 +84,20 @@
     <string name="notification_random_movie_desc">%1$s içeriği hemen incele.</string>
     <string name="movie_genres">Film Türleri</string>
     <string name="tv_genres">Dizi Türleri</string>
+    <string name="filter">Filtreleme</string>
+    <string name="popularity">Popülerliğe göre</string>
+    <string name="release_date">Yıla göre</string>
+    <string name="revenue_order">Kazanca göre</string>
+    <string name="alphabetical_order">Alfabetik</string>
+    <string name="vote_average_order">Oy ortalaması</string>
+    <string name="sort_by">Sırala</string>
+    <string name="clear">Temizle</string>
+    <string name="apply">Filtrele</string>
+    <string name="vote_average">Oy Ortalaması</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">Oylama</string>
+    <string name="year">Yıl</string>
 
     <!--Language-->
     <string name="english_en">English</string>

@@ -2,10 +2,12 @@ package com.laks.tvseries.core.util
 
 import android.app.ActivityManager
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.laks.tvseries.core.R
-import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.core.global.GlobalConstants
+import java.net.InetAddress
 import java.text.DecimalFormat
 
 
@@ -55,4 +57,14 @@ fun isActivityCreated(context: Context): Boolean {
         // Exception
     }
     return false
+}
+
+fun isInternetAvailable(context: Context): Boolean {
+    return try {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        activeNetwork?.isConnectedOrConnecting == true
+    } catch (e: java.lang.Exception) {
+        false
+    }
 }

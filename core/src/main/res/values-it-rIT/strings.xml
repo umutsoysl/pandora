@@ -83,6 +83,23 @@
     <string name="notification_movie_title">Pausa film</string>
     <string name="notification_random_movie_desc">%1$s visualizza il contenuto ora.</string>
 
+    <string name="movie_genres">Generi di film</string>
+    <string name="tv_genres">Generi TV</string>
+    <string name="filter">Filtro</string>
+    <string name="popularity">Popolarità</string>
+    <string name="release_date">Data di rilascio</string>
+    <string name="revenue_order">Reddito</string>
+    <string name="alphabetical_order">Alfabetico</string>
+    <string name="vote_average_order">Voto medio</string>
+    <string name="sort_by">Ordina</string>
+    <string name="clear">Chiaro</string>
+    <string name="apply">Applicare</string>
+    <string name="vote_average">Voto medio</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">Voto</string>
+    <string name="year">Anno</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

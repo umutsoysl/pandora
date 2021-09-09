@@ -83,6 +83,23 @@
     <string name="notification_movie_title">Pausa para cinema</string>
     <string name="notification_random_movie_desc">%1$s veja o conteúdo agora.</string>
 
+    <string name="movie_genres">Gêneros de filmes</string>
+    <string name="tv_genres">Gêneros de TV</string>
+    <string name="filter">Filtro</string>
+    <string name="popularity">Popularidade</string>
+    <string name="release_date">ano</string>
+    <string name="revenue_order">revista</string>
+    <string name="alphabetical_order">Ordem alfabética</string>
+    <string name="vote_average_order">Média de votos</string>
+    <string name="sort_by">arranjo</string>
+    <string name="clear">Claro</string>
+    <string name="apply">Aplique</string>
+    <string name="vote_average">Avaliação</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">Avaliação</string>
+    <string name="year">Ano</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

@@ -164,7 +164,7 @@
                         android:layout_marginLeft="-3dp"
                         android:layout_marginTop="@dimen/regular_margin"
                         android:nestedScrollingEnabled="false"
-                        tools:listitem="@layout/layout_genre_item" />
+                        tools:listitem="@layout/layout_discover_genre_item" />
 
 
                     <LinearLayout

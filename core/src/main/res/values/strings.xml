@@ -3,6 +3,7 @@
     <string name="app_id" translatable="false">ca-app-pub-6717304787651026~8409327424</string>
     <string name="ads_banner_id" translatable="false">ca-app-pub-6717304787651026/6713102375</string>
     <string name="ads_full_screen_id" translatable="false">ca-app-pub-6717304787651026/1268154257</string>
+    <string name="ads_native_id" translatable="false">ca-app-pub-6717304787651026/6026866738</string>
     <string name="default_notification_channel_id" translatable="false">pandora_fb_notification</string>
     <string name="search_hint">Search...</string>
     <string name="movie">Movie</string>

@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.laks.tvseries.core.base.fragment.BaseFragment
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
@@ -24,6 +27,7 @@ import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.MovieModel
 import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.pandora.MainActivity
 import com.laks.tvseries.pandora.MainViewModel
 import com.laks.tvseries.pandora.R
 import com.laks.tvseries.pandora.databinding.FragmentDiscoverBinding
@@ -36,6 +40,8 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
     private lateinit var adapterTV: MediaListItemAdapter
     private lateinit var genreAdapter: GenreAdapter
     private lateinit var genreTvAdapter: GenreAdapter
+    private var mInterstitialAd: InterstitialAd? = null
+    private var interstitialCanceled = false
 
     override fun onResume() {
         super.onResume()
@@ -101,12 +107,14 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
         })
 
         binding.buttonMoreMovie.setOnClickListener {
+            initInterstitialAd()
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE, resources.getString(R.string.movies))
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, MediaType.movie)
             startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
         }
 
         binding.buttonMoreTV.setOnClickListener {
+            initInterstitialAd()
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TITLE, resources.getString(R.string.tv_shows))
             MemoryCache.cache.setMemoryCacheValue(GlobalConstants.DISCOVER_MEDIA_TYPE, MediaType.tv)
             startActivity(Intent(requireActivity(), DiscoverMediaListActivity::class.java))
@@ -123,7 +131,8 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
 
     private fun goSearchScreen() {
         binding.searchBox.setOnClickListener {
-            var intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.searchActivityClassName)
+            initInterstitialAd()
+            val intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.searchActivityClassName)
             startActivity(intent)
         }
     }
@@ -163,6 +172,29 @@ class DiscoverFragment: BaseFragment<MainViewModel>(MainViewModel::class), Media
         baseViewModel.getDiscoverTVList(1)
         baseViewModel.getMovieGenreList()
         baseViewModel.getTvGenreList()
+    }
+
+    private fun initInterstitialAd() {
+        mInterstitialAd = InterstitialAd(requireContext())
+        mInterstitialAd!!.adUnitId = resources.getString(com.laks.tvseries.core.R.string.ads_full_screen_id)
+        val adRequestInter = AdRequest.Builder().build()
+        mInterstitialAd!!.loadAd(adRequestInter)
+        mInterstitialAd!!.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                if (!interstitialCanceled) {
+                    mInterstitialAd!!.show()
+                    interstitialCanceled = true
+                }
+            }
+
+            override fun onAdClicked() {
+                interstitialCanceled = true
+            }
+
+            override fun onAdFailedToLoad(var1: Int) {
+                interstitialCanceled = true
+            }
+        }
     }
 
     companion object {

@@ -83,6 +83,23 @@
     <string name="notification_movie_title">استراحة فيلم</string>
     <string name="notification_random_movie_desc">عرض المحتوى الآن %1$s.</string>
 
+    <string name="movie_genres">أنواع الأفلام</string>
+    <string name="tv_genres">أنواع التلفزيون</string>
+    <string name="filter">منقي</string>
+    <string name="popularity">شعبية</string>
+    <string name="release_date">تاريخ النشر</string>
+    <string name="revenue_order">إيرادات</string>
+    <string name="alphabetical_order">مرتب حسب الحروف الأبجدية</string>
+    <string name="vote_average_order">متوسط التصويت</string>
+    <string name="sort_by">صنف حسب</string>
+    <string name="clear">واضح</string>
+    <string name="apply">تطبيق</string>
+    <string name="vote_average">متوسط التصويت</string>
+    <string name="min">دقيقة</string>
+    <string name="max">الأعلى</string>
+    <string name="rating">تقييم</string>
+    <string name="year">عام</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

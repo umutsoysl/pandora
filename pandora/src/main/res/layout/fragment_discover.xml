@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/regular_margin"
                     android:nestedScrollingEnabled="false"
-                    tools:listitem="@layout/layout_genre_item" />
+                    tools:listitem="@layout/layout_discover_genre_item" />
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:layout_width="match_parent"
@@ -239,13 +239,13 @@
                         android:orientation="horizontal"
                         android:visibility="@{viewModel.shimmerGenreMovieVisible? View.VISIBLE: View.GONE}">
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
                     </LinearLayout>
 
@@ -280,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/regular_margin"
                     android:nestedScrollingEnabled="false"
-                    tools:listitem="@layout/layout_genre_item" />
+                    tools:listitem="@layout/layout_discover_genre_item" />
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:layout_width="match_parent"
@@ -296,13 +296,13 @@
                         android:orientation="horizontal"
                         android:visibility="@{viewModel.shimmerGenreTVVisible? View.VISIBLE: View.GONE}">
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
-                        <include layout="@layout/layout_genre_item" />
+                        <include layout="@layout/layout_discover_genre_item" />
 
                     </LinearLayout>
 

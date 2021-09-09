@@ -84,6 +84,23 @@
     <string name="notification_movie_title">Pauza za film</string>
     <string name="notification_random_movie_desc">%1$s pogledajte sad sadržaj.</string>
 
+    <string name="movie_genres">Filmski žanrovi</string>
+    <string name="tv_genres">TV žanrovi</string>
+    <string name="filter">filtar</string>
+    <string name="popularity">Popularnost</string>
+    <string name="release_date">Datum izlaska</string>
+    <string name="revenue_order">Prihod</string>
+    <string name="alphabetical_order">Abecednim redom</string>
+    <string name="vote_average_order">Prosjek glasova</string>
+    <string name="sort_by">Poredaj po</string>
+    <string name="clear">Čisto</string>
+    <string name="apply">Primijeni</string>
+    <string name="vote_average">Prosjek glasova</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">Ocjena</string>
+    <string name="year">Godina</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

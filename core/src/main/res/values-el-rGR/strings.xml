@@ -84,6 +84,23 @@
     <string name="notification_movie_title">Διάλειμμα ταινίας</string>
     <string name="notification_random_movie_desc">%1$s δείτε το περιεχόμενο τώρα.</string>
 
+    <string name="movie_genres">Είδος ταινιών</string>
+    <string name="tv_genres">Τηλεοπτικά είδη</string>
+    <string name="filter">Φίλτρο</string>
+    <string name="popularity">Δημοτικότητα</string>
+    <string name="release_date">ανά έτος</string>
+    <string name="revenue_order">επιθεώρηση</string>
+    <string name="alphabetical_order">Αλφαβητικός</string>
+    <string name="vote_average_order">Εκτίμηση</string>
+    <string name="sort_by">Συμφωνία</string>
+    <string name="clear">Σαφή</string>
+    <string name="apply">ισχύουν</string>
+    <string name="vote_average">Μέσος όρος ψήφου</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="rating">εκτίμηση</string>
+    <string name="year">Ετος</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>
