@@ -2,40 +2,43 @@ package com.laks.tvseries.core.data.model
 
 import androidx.annotation.StringDef
 import com.google.gson.annotations.SerializedName
-import com.laks.tvseries.core.data.model.ShortBy.Companion.popularityAsc
-import com.laks.tvseries.core.data.model.ShortBy.Companion.popularityDesc
-import com.laks.tvseries.core.data.model.ShortBy.Companion.releaseDateAsc
-import com.laks.tvseries.core.data.model.ShortBy.Companion.releaseDateDesc
-import com.laks.tvseries.core.data.model.ShortBy.Companion.voteAverageAsc
-import com.laks.tvseries.core.data.model.ShortBy.Companion.voteAverageDesc
+import com.laks.tvseries.core.data.model.SortBy.Companion.originalTitleDesc
+import com.laks.tvseries.core.data.model.SortBy.Companion.popularityDesc
+import com.laks.tvseries.core.data.model.SortBy.Companion.releaseDateDesc
+import com.laks.tvseries.core.data.model.SortBy.Companion.revenueDesc
+import com.laks.tvseries.core.data.model.SortBy.Companion.voteAverageDesc
 
 data class DiscoverRequestModel(
         @SerializedName("with_genres")
         var genre: String = "",
 
         @SerializedName("sort_by")
-        @ShortBy val sortBy: String = popularityDesc,
+        @SortBy var sortBy: String = voteAverageDesc,
 
         var page: Int? = 1,
-        val year: Int? = null,
 
         @SerializedName("vote_average.gte")
-        val voteAverageGte: Double? = 0.0,
+        var voteAverageGte: Double = 0.0,
 
         @SerializedName("vote_average.lte")
-        val voteAverageLte: Double? = 10.0
+        var voteAverageLte: Double = 10.0,
+
+        @SerializedName("release_date.gte")
+        var minYear: String = "1900-01-01",
+
+        @SerializedName("release_date.lte")
+        var maxYear: String = "2050-12-30",
 )
 
 
-@StringDef(popularityDesc, popularityAsc, releaseDateAsc, releaseDateDesc, voteAverageAsc, voteAverageDesc)
+@StringDef(popularityDesc, revenueDesc, originalTitleDesc, releaseDateDesc, voteAverageDesc)
 @Retention(AnnotationRetention.SOURCE)
-annotation class ShortBy {
+annotation class SortBy {
     companion object {
         const val popularityDesc = "popularity.desc"
-        const val popularityAsc = "popularity.asc"
-        const val releaseDateAsc = "release_date.asc"
+        const val revenueDesc = "revenue.desc"
+        const val originalTitleDesc = "original_title.desc"
         const val releaseDateDesc = "release_date.desc"
-        const val voteAverageAsc = "vote_average.asc"
         const val voteAverageDesc = "vote_average.desc"
     }
 }

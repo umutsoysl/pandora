@@ -10,6 +10,7 @@ import com.laks.tvseries.core.data.main.MediaRepository
 import com.laks.tvseries.core.data.model.DiscoverMovieListModel
 import com.laks.tvseries.core.data.model.DiscoverRequestModel
 import com.laks.tvseries.core.data.model.GenreListModel
+import com.laks.tvseries.core.data.model.SortBy
 import com.laks.tvseries.core.db.PandoraDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -40,7 +41,19 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
 
     var genreMovieList = MutableLiveData<GenreListModel>()
 
+    var genreCheckList = MutableLiveData<GenreListModel>()
+
     val shimmerGenreMovieVisible = MutableLiveData<Boolean>(true)
+
+    var sortBy = MutableLiveData<String>(SortBy.popularityDesc)
+
+    var minVoteAverage = MutableLiveData<Double>(0.0)
+
+    var maxVoteAverage = MutableLiveData<Double>(10.0)
+
+    var minYear = MutableLiveData<Int>(1900)
+
+    var maxYear = MutableLiveData<Int>(2050)
 
     fun getDiscoverMovieList(page: Int, genre: String = "") {
         viewModelScope.launch {
@@ -48,6 +61,11 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
                 val requestModel = DiscoverRequestModel()
                 requestModel.page = page
                 requestModel.genre = genre
+                requestModel.sortBy = sortBy.value!!
+                requestModel.voteAverageGte = minVoteAverage.value!!
+                requestModel.voteAverageLte = maxVoteAverage.value!!
+                requestModel.minYear = "${minYear.value}-01-01"
+                requestModel.maxYear = "${maxYear.value}-12-30"
                 mediaRepo?.getDiscoverMoviesList(requestModel)?.collect { response ->
                     for (item in response?.results!!)  item.isMovie = true
                     discoverMovieList.postValue(response)
@@ -63,6 +81,11 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
                 val requestModel = DiscoverRequestModel()
                 requestModel.page = page
                 requestModel.genre = genre
+                requestModel.sortBy = sortBy.value!!
+                requestModel.voteAverageGte = minVoteAverage.value!!
+                requestModel.voteAverageLte = maxVoteAverage.value!!
+                requestModel.minYear = "${minYear.value}-01-01"
+                requestModel.maxYear = "${maxYear.value}-12-30"
                 mediaRepo?.getDiscoverTvList(requestModel)?.collect { response ->
                     for (item in response?.results!!)  item.isMovie = false
                     discoverTVList.postValue(response)
@@ -72,11 +95,23 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
         }
     }
 
+    fun addRequestModelGenre(filterGenreList: HashMap<Long, String>) : String {
+        var genreStr = ""
+        if(!filterGenreList.isNullOrEmpty()) {
+            filterGenreList?.forEach { (id, value) ->
+                genreStr = "$genreStr,${id}"
+            }
+        }
+
+        return genreStr
+    }
+
     fun getMovieGenreList() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 mediaRepo?.getMovieGenreList()?.collect { response ->
                     genreMovieList.postValue(response)
+                    genreCheckList.postValue(response)
                     shimmerGenreMovieVisible.postValue(false)
                 }
             }
@@ -88,6 +123,7 @@ class MainViewModel(var mediaRepo: MediaRepository?) : BaseViewModel(mediaRepo) 
             withContext(Dispatchers.IO) {
                 mediaRepo?.getTvGenreList()?.collect { response ->
                     genreTvList.postValue(response)
+                    genreCheckList.postValue(response)
                     shimmerGenreTVVisible.postValue(false)
                 }
             }

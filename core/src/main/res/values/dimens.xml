@@ -40,5 +40,9 @@
     <dimen name="splash_logo_width">210dp</dimen>
     <dimen name="splash_logo_height">110dp</dimen>
     <dimen name="fullscreen_back_button_top">14dp</dimen>
-    <dimen name="genre_discover_size">46dp</dimen>
+    <dimen name="genre_discover_size">44dp</dimen>
+    <dimen name="filter_sort_by_text_size">15dp</dimen>
+    <dimen name="filter_dialog_button_text_size">17dp</dimen>
+    <dimen name="filter_dialog_height">350dp</dimen>
+    <dimen name="filter_dialog_apply_button_size">46dp</dimen>
 </resources>

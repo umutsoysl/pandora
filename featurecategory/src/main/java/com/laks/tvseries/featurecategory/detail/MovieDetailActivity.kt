@@ -83,7 +83,6 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
         backButtonClick()
         createAdapterListObserver()
         createImageSlider()
-        createBannerAds()
     }
 
     private fun getDetail() {
@@ -96,15 +95,6 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
          {
             baseViewModel.getTVDetail(movieID = movieID)
         }
-    }
-
-    private fun createBannerAds() {
-        val fragMan: FragmentManager? = supportFragmentManager
-        val fragTransaction: FragmentTransaction = fragMan!!.beginTransaction()
-
-        val myFrag: Fragment = PandoraBannerAdsFragment()
-        fragTransaction.replace(binding.layoutAds.id, myFrag, "pandoraFragmentAdsDetailMovie")
-        fragTransaction.commit()
     }
 
     @SuppressLint("StringFormatInvalid")
@@ -275,7 +265,7 @@ class MovieDetailActivity : BaseActivity<MovieDetailViewModel>(MovieDetailViewMo
 
     private fun setSeasonListAdapter() {
         adapterSeason = SeasonListAdapter(context = this@MovieDetailActivity)
-        var layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerSeasonList.layoutManager = layoutManager
         binding.recyclerSeasonList.adapter = adapterSeason
 

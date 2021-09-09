@@ -9,13 +9,25 @@ class MediaRepository: BaseRepository<ScheduleApi>(ScheduleApi::class.java) {
 
     fun getDiscoverMoviesList(requestModel: DiscoverRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getDiscoverMoviesList( page = requestModel.page!!, shortBy = requestModel.sortBy, genre = requestModel.genre)
+            api.getDiscoverMoviesList(page = requestModel.page!!,
+                    sortBy = requestModel.sortBy,
+                    genre = requestModel.genre,
+                    minVote = requestModel.voteAverageGte,
+                    maxVote = requestModel.voteAverageLte,
+                    minYear = requestModel.minYear,
+                    maxYear = requestModel.maxYear)
         }
     }
 
     fun getDiscoverTvList(requestModel: DiscoverRequestModel): Flow<DiscoverMovieListModel?> {
         return fetchData(isLoadingShown = true) {
-            api.getDiscoverTvList(page = requestModel.page!!,  shortBy = requestModel.sortBy, genre = requestModel.genre)
+            api.getDiscoverTvList(page = requestModel.page!!,
+                    sortBy = requestModel.sortBy,
+                    genre = requestModel.genre,
+                    minVote = requestModel.voteAverageGte,
+                    maxVote = requestModel.voteAverageLte,
+                    minYear = requestModel.minYear,
+                    maxYear = requestModel.maxYear)
         }
     }
 

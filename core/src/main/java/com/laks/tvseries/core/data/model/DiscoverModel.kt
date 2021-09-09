@@ -63,5 +63,6 @@ data class MovieModel(
 data class Genre (
         val id: Long,
         val name: String,
-        var isMovie: Boolean = true
+        var isMovie: Boolean = true,
+        var isSelect: Boolean = false
 )

@@ -20,7 +20,7 @@
     <Button
         android:onClick="@{() -> itemClickListener.genreListItemOnClickListener(genre)}"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/genre_discover_size"
+        android:layout_height="@dimen/genre_button_size"
         android:textAllCaps="false"
         android:backgroundTint="@color/gender_box"
         android:layout_marginLeft="@dimen/five_margin"

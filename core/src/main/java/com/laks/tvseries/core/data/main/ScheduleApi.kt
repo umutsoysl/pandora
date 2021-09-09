@@ -8,10 +8,10 @@ import retrofit2.http.Query
 
 interface ScheduleApi {
     @GET("/3/discover/movie")
-    suspend fun getDiscoverMoviesList(@Query("page") page: Int, @Query("short_by") shortBy: String, @Query("with_genres") genre: String): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverMoviesList(@Query("page") page: Int, @Query("sort_by") sortBy: String, @Query("with_genres") genre: String, @Query("vote_average.gte") minVote: Double,  @Query("vote_average.lte") maxVote: Double, @Query("primary_release_date.gte") minYear: String,  @Query("primary_release_date.lte") maxYear: String): Response<DiscoverMovieListModel>
 
     @GET("/3/discover/tv")
-    suspend fun getDiscoverTvList(@Query("page") page: Int, @Query("short_by") shortBy: String, @Query("with_genres") genre: String): Response<DiscoverMovieListModel>
+    suspend fun getDiscoverTvList(@Query("page") page: Int, @Query("sort_by") sortBy: String, @Query("with_genres") genre: String, @Query("vote_average.gte") minVote: Double,  @Query("vote_average.lte") maxVote: Double, @Query("primary_release_date.gte") minYear: String,  @Query("primary_release_date.lte") maxYear: String): Response<DiscoverMovieListModel>
 
     @GET("/3/movie/{movieID}")
     suspend fun getMovieDetail(@Path("movieID") movieID: String): Response<MovieDetailModel>
