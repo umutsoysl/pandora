@@ -88,13 +88,14 @@
             android:id="@+id/adNativeView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginHorizontal="@dimen/regular_margin"
             ads:adUnitId="@string/ads_native_id"
-            android:layout_gravity="center_horizontal"
             android:visibility="gone"
-            ads:adSize="LARGE_BANNER">
+            android:layout_gravity="center_horizontal"
+            ads:adSize="FULL_WIDTHx250">
 
         </com.google.android.gms.ads.NativeExpressAdView>
-
 
         <LinearLayout
             android:layout_width="wrap_content"
