@@ -5,6 +5,7 @@
     <string name="ads_full_screen_id" translatable="false">ca-app-pub-6717304787651026/1268154257</string>
     <string name="ads_native_id" translatable="false">ca-app-pub-6717304787651026/6026866738</string>
     <string name="default_notification_channel_id" translatable="false">pandora_fb_notification</string>
+    <string name="ads_reward_id" translatable="false">ca-app-pub-6717304787651026/3073395134</string>
     <string name="search_hint">Search...</string>
     <string name="movie">Movie</string>
     <string name="tv_series">Tv Series</string>

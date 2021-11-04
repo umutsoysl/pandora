@@ -63,4 +63,7 @@ object PandoraActivities {
 
     val discoverListClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$PANDORA.discover.DiscoverMediaListActivity"
+
+    val rewardedAdsClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$PANDORA.ads.PandoraRewardedActivity"
 }

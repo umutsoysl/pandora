@@ -13,6 +13,7 @@ import com.google.firebase.database.*
 import com.laks.tvseries.core.base.fragment.CategoryBaseFragment
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.common.media.GenreListItemOnClickListener
+import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.data.model.Genre
 import com.laks.tvseries.core.data.model.MediaType
 import com.laks.tvseries.core.data.model.firebase.FbModListMovieDataModel
@@ -67,14 +68,20 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
 
         binding.buttonRandom.setOnClickListener {
             try {
-                randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) as FbMovieDataModel
-                randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
+                val movie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE) as FbMovieDataModel
+                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID, movie)
+                showRewardedAdsPage()
             } catch (e: Exception) {
 
             }
         }
 
         return binding.root
+    }
+
+    private fun showRewardedAdsPage() {
+        val intent = Intent(Intent.ACTION_VIEW).setClassName(requireActivity(), PandoraActivities.rewardedAdsClassName)
+        startActivityForResult(intent, GlobalConstants.REWARD_ADS_RESULT_CODE)
     }
 
     private fun setAdapter() {
@@ -119,7 +126,7 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
     private fun goToMovieDetail(movieID: Long) {
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, movieID)
-        var intent = Intent(requireActivity(), MovieDetailActivity::class.java)
+        val intent = Intent(requireActivity(), MovieDetailActivity::class.java)
         startActivity(intent)
     }
 
@@ -130,11 +137,26 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
     override fun genreListItemOnClickListener(genre: Genre) {
         val movieId = genre.id.toInt() - 1
         if (modListMovie.size > movieId) {
-            modListMovie[movieId].id?.let {
-                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, MediaType.movie)
-                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, it)
-                var intent = Intent(requireActivity(), MovieDetailActivity::class.java)
-                startActivity(intent)
+            modListMovie[movieId].let {
+                MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID, it)
+                showRewardedAdsPage()
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == GlobalConstants.REWARD_ADS_RESULT_CODE) {
+            if(data!=null) {
+                val isWatchAds = data.getBooleanExtra(GlobalConstants.IS_WATCH_ADS, false)
+                if(isWatchAds) {
+                    randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID) as FbMovieDataModel
+                    randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
+                }
+            } else {
+                randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID) as FbMovieDataModel
+                randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
             }
         }
     }

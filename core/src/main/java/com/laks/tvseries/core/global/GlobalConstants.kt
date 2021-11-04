@@ -31,5 +31,8 @@ class GlobalConstants {
         const val SCREEN_TYPE = "SCREEN_TYPE"
         const val IS_APP_OPEN = "IS_APP_OPEN"
         const val GENRE_ID = "GENRE_ID"
+        const val REWARD_ADS_RESULT_CODE = 12902
+        const val IS_WATCH_ADS = "IS_WATCH_ADS"
+        const val MOVIE_ADS_ID = "MOVIE_ADS_ID"
     }
 }

@@ -113,6 +113,7 @@ dependencies {
     implementation libraries.gson
     implementation libraries.picasso
     implementation libraries.shimmer
+    implementation libraries.lottie
 
     // google
     implementation 'com.google.android.gms:play-services:12.0.1'
