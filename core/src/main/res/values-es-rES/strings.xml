@@ -100,6 +100,11 @@
     <string name="rating">clasificación</string>
     <string name="year">Año</string>
 
+    <string name="rewarded_ads_title">Esta función está bloqueada</string>
+    <string name="rewarded_ads_content">Esta función está bloqueada actualmente. Puede ver el video del anuncio recompensado para desbloquearlo de inmediato.</string>
+    <string name="show">Ver ahora</string>
+    <string name="close">Cerrar</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

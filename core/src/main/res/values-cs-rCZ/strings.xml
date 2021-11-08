@@ -101,6 +101,11 @@
     <string name="rating">Hodnocení</string>
     <string name="year">Rok</string>
 
+    <string name="rewarded_ads_title">Tato funkce je uzamčena</string>
+    <string name="rewarded_ads_content">Tato funkce je aktuálně uzamčena. Můžete se podívat na video s reklamou s odměnou a ihned ji odemknout.</string>
+    <string name="show">Sledujte nyní</string>
+    <string name="close">Zavřít</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

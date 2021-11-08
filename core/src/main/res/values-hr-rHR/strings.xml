@@ -101,6 +101,11 @@
     <string name="rating">Ocjena</string>
     <string name="year">Godina</string>
 
+    <string name="rewarded_ads_title">Ova značajka je zaključana</string>
+    <string name="rewarded_ads_content">Ova je značajka trenutno zaključana. Možete pogledati nagrađeni oglasni video da biste ga odmah otključali.</string>
+    <string name="show">Pokazati</string>
+    <string name="close">otkazati</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

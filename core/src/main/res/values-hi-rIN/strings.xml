@@ -100,6 +100,11 @@
     <string name="rating">रेटिंग</string>
     <string name="year">वर्ष</string>
 
+    <string name="rewarded_ads_title">यह सुविधा बंद है</string>
+    <string name="rewarded_ads_content">यह सुविधा फिलहाल लॉक है। आप पुरस्कृत विज्ञापन वीडियो को तुरंत अनलॉक करने के लिए देख सकते हैं।</string>
+    <string name="show">अब देखिए</string>
+    <string name="close">बंद करे</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

@@ -100,6 +100,11 @@
     <string name="rating">Avaliação</string>
     <string name="year">Ano</string>
 
+    <string name="rewarded_ads_title">This feature is locked</string>
+    <string name="rewarded_ads_content">This feature is currently locked. You can watch the rewarded ad video to unlock it right away.</string>
+    <string name="show">Assistir</string>
+    <string name="close">Fechar</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

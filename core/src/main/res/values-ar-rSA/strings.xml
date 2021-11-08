@@ -100,6 +100,11 @@
     <string name="rating">تقييم</string>
     <string name="year">عام</string>
 
+    <string name="rewarded_ads_title">هذه الميزة مقفلة</string>
+    <string name="rewarded_ads_content">هذه الميزة مقفلة حاليًا. يمكنك مشاهدة فيديو الإعلان بمكافأة لفتحه على الفور.</string>
+    <string name="show">شاهد الآن</string>
+    <string name="close">قريب</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

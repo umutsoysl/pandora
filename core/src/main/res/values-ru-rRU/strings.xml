@@ -100,6 +100,11 @@
     <string name="rating">Рейтинг</string>
     <string name="year">Год</string>
 
+    <string name="rewarded_ads_title">Эта функция заблокирована</string>
+    <string name="rewarded_ads_content">Эта функция в настоящее время заблокирована. Вы можете посмотреть рекламное видео с вознаграждением, чтобы сразу разблокировать его.</string>
+    <string name="show">Смотри</string>
+    <string name="close">Отмена</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

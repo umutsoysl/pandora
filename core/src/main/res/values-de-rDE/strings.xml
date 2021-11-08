@@ -100,6 +100,11 @@
     <string name="rating">Bewertung</string>
     <string name="year">Jahr</string>
 
+    <string name="rewarded_ads_title">Diese Funktion ist gesperrt</string>
+    <string name="rewarded_ads_content">Diese Funktion ist derzeit gesperrt. Sie können sich das Werbevideo mit Prämie ansehen, um es sofort freizuschalten.</string>
+    <string name="show">Schau jetzt</string>
+    <string name="close">schließen</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

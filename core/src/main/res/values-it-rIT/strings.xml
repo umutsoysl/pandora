@@ -100,6 +100,11 @@
     <string name="rating">Voto</string>
     <string name="year">Anno</string>
 
+    <string name="rewarded_ads_title">Questa funzione è bloccata</string>
+    <string name="rewarded_ads_content">Questa funzione è attualmente bloccata. Puoi guardare il video dell\'annuncio con premio per sbloccarlo subito.</string>
+    <string name="show">Guarda ora</string>
+    <string name="close">Annulla</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

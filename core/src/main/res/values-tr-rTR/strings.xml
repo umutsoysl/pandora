@@ -99,6 +99,11 @@
     <string name="rating">Oylama</string>
     <string name="year">Yıl</string>
 
+    <string name="rewarded_ads_title">Bu özellik kilitli</string>
+    <string name="rewarded_ads_content">Bu özellik şu an için kilitli. Kiliti hemen açmak için ödüllü reklam videosunu izleyebilirsin.</string>
+    <string name="show">Hemen izle</string>
+    <string name="close">Kapat</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

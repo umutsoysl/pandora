@@ -8,14 +8,25 @@
     android:padding="@dimen/medium_margin"
     android:background="@color/main_bg_color">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonGroup"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/title"
         style="@style/DetailSubTitleStyle"
+        android:textSize="@dimen/header_big_title_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/medium_margin"
-        android:text="Bu özellik kilitli!" />
+        android:text="@string/rewarded_ads_title" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
@@ -27,6 +38,7 @@
         android:layout_centerHorizontal="true"
         app:lottie_rawRes="@raw/lock"
         app:lottie_scale="0.5"
+        android:layout_marginTop="@dimen/regular_margin"
         android:layout_gravity="center"
         tools:ignore="MissingClass" />
 
@@ -36,25 +48,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/list_top_margin"
+        android:textSize="28dp"
         android:gravity="center"
-        android:text="Bu kiliti açmak için hemen ödüllü reklamımızı izleyebilirsin. " />
+        android:text="@string/rewarded_ads_content" />
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
+        android:id="@+id/buttonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/regular_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:layout_alignParentBottom="true">
 
         <Button
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="show"
+            android:text="@string/show"
             android:textSize="@dimen/button_text_size"
             android:onClick="showAdsButtonClickListener"
-            android:layout_marginRight="@dimen/regular_margin"
+            android:layout_marginRight="@dimen/five_margin"
             tools:ignore="MissingConstraints"
             android:backgroundTint="@color/red"/>
 
@@ -64,9 +82,9 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/dark_gray"
             android:onClick="cancelButtonClickListener"
-            android:layout_marginLeft="@dimen/regular_margin"
+            android:layout_marginLeft="@dimen/five_margin"
             android:textSize="@dimen/button_text_size"
-            android:text="@string/cancel"/>
+            android:text="@string/close"/>
 
     </LinearLayout>
 

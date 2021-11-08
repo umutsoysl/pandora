@@ -100,6 +100,11 @@
     <string name="rating">Évaluation</string>
     <string name="year">Année</string>
 
+    <string name="rewarded_ads_title">Cette fonctionnalité est verrouillée</string>
+    <string name="rewarded_ads_content">Cette fonctionnalité est actuellement verrouillée. Vous pouvez regarder la vidéo publicitaire récompensée pour la déverrouiller immédiatement.</string>
+    <string name="show">Spectacle</string>
+    <string name="close">proche</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>

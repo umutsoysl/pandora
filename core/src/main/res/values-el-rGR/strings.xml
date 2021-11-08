@@ -101,6 +101,11 @@
     <string name="rating">εκτίμηση</string>
     <string name="year">Ετος</string>
 
+    <string name="rewarded_ads_title">Αυτή η δυνατότητα είναι κλειδωμένη</string>
+    <string name="rewarded_ads_content">Αυτή η λειτουργία είναι κλειδωμένη αυτήν τη στιγμή. Μπορείτε να παρακολουθήσετε το βίντεο της διαφήμισης με ανταμοιβή για να το ξεκλειδώσετε αμέσως.</string>
+    <string name="show">προβολή</string>
+    <string name="close">Κλείσε</string>
+
     <!--Language-->
     <string name="english_en">English</string>
     <string name="turkish_en">Turkish</string>
