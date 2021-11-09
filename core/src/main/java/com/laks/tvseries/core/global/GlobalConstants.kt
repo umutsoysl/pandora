@@ -34,5 +34,7 @@ class GlobalConstants {
         const val REWARD_ADS_RESULT_CODE = 12902
         const val IS_WATCH_ADS = "IS_WATCH_ADS"
         const val MOVIE_ADS_ID = "MOVIE_ADS_ID"
+        const val RANDOM_MOVIE_SHOW_ADS = "RANDOM_MOVIE_SHOW_ADS"
+        const val MOD_MOVIE_SHOW_ADS = "MOD_MOVIE_SHOW_ADS"
     }
 }

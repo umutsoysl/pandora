@@ -24,6 +24,7 @@
         android:textSize="@dimen/header_big_title_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/medium_margin"
         android:text="@string/rewarded_ads_title" />
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/list_top_margin"
-        android:textSize="28dp"
+        android:textSize="25dp"
         android:gravity="center"
         android:text="@string/rewarded_ads_content" />
 

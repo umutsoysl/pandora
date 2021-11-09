@@ -1,6 +1,7 @@
 package com.laks.tvseries.pandora.ads
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,14 +11,20 @@ import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.laks.tvseries.core.global.GlobalConstants
+import com.laks.tvseries.core.language.LocalizationLanguageManager
+import com.laks.tvseries.core.language.OnLocaleLanguageChangedListener
 import com.laks.tvseries.pandora.R
 
 
-class PandoraRewardedActivity : Activity(), RewardedVideoAdListener {
+class PandoraRewardedActivity : Activity(), RewardedVideoAdListener,
+    OnLocaleLanguageChangedListener {
 
     private var mRewardedVideoAd: RewardedVideoAd? = null
+    private val localizationManager = LocalizationLanguageManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        localizationManager.addOnLocaleChangedListener(this)
+        localizationManager.onCreate(savedInstanceState)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pandora_rewarded)
 
@@ -43,7 +50,7 @@ class PandoraRewardedActivity : Activity(), RewardedVideoAdListener {
 
     private fun adsLoad() {
         mRewardedVideoAd!!.loadAd(
-            "ca-app-pub-3940256099942544/5224354917",  //use this id for testing
+            getString(R.string.ads_reward_id),  //use this id for testing
             AdRequest.Builder().build()
         )
     }
@@ -72,4 +79,17 @@ class PandoraRewardedActivity : Activity(), RewardedVideoAdListener {
     override fun onRewardedVideoAdLeftApplication() {}
     override fun onRewardedVideoAdFailedToLoad(p0: Int) { finishAds() }
     override fun onRewardedVideoCompleted() {}
+
+    override fun onBeforeLocaleChanged() {}
+
+    override fun onAfterLocaleChanged() {}
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(localizationManager.attachBaseContext(newBase!!))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        localizationManager.onResume(this)
+    }
 }
