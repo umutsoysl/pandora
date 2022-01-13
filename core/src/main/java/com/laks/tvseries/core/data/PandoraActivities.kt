@@ -66,4 +66,16 @@ object PandoraActivities {
 
     val rewardedAdsClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$PANDORA.ads.PandoraRewardedActivity"
+
+    val netflixTopTvShowsClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.tv.NetflixTvShowFragment"
+
+    val appleTopTvShowsClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.tv.AppleTvShowFragment"
+
+    val amazonTopTvShowsClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.tv.AmazonTvShowFragment"
+
+    val disneyTvShowsClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.tv.DisneyTvShowFragment"
 }

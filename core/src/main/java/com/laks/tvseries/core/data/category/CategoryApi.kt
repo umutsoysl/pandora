@@ -30,4 +30,7 @@ interface CategoryApi {
 
     @GET("/3/movie/top_rated")
     suspend fun getMovieTopRated(@Query("page") page: Int): Response<DiscoverMovieListModel>
+
+    @GET("/3/discover/tv")
+    suspend fun getPublisherTvShowList(@Query("with_networks") publisherID: Int, @Query("page") page: Int): Response<DiscoverMovieListModel>
 }

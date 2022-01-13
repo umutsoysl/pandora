@@ -51,6 +51,10 @@ class HomeFragment: BaseFragment<MainViewModel>(MainViewModel::class) {
         fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.nowPlayingMovieListFragmentClassName)!!)
         fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.popularTvShowsFragmentClassName)!!)
         fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.upComingMovieFragmentClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.netflixTopTvShowsClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.appleTopTvShowsClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.amazonTopTvShowsClassName)!!)
+        fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.disneyTvShowsClassName)!!)
         fragmentList.add(AccessManagement.instantiateFragment(PandoraActivities.popularPeopleFragmentClassName)!!)
     }
 

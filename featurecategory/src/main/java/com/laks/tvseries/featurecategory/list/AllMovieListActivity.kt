@@ -28,6 +28,7 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
     private var page = 1
     private var movieList = ArrayList<MovieModel>()
     private var movieType = MovieType.trend
+    private var mediaType = MediaType.movie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,28 +51,57 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
             MovieType.upComing -> getUpComingMovieList(page)
             MovieType.popularTV -> getUpPopularTVList(page)
             MovieType.topRated -> getTopRatedMovieList(page)
+            MovieType.netflixTvShow -> getNetflixTvShowList(page)
+            MovieType.appleTvShow -> getAppleTvShowList(page)
+            MovieType.amazonTvShow -> getAmazonTvShowList(page)
+            MovieType.disneyTvShow -> getDisneyTvShowList(page)
             else -> getPopularMovieList(page)
         }
     }
 
     private fun getTopRatedMovieList(page: Int) {
         baseViewModel.getTopRatedMovieList(page = page)
+        mediaType = MediaType.movie
     }
 
     private fun getUpPopularTVList(page: Int) {
         baseViewModel.getPopularTvShowList(page = page)
+        mediaType = MediaType.tv
     }
 
     private fun getUpComingMovieList(page: Int) {
         baseViewModel.getUpComingMovieList(page = page)
+        mediaType = MediaType.movie
     }
 
     private fun getPopularMovieList(page: Int) {
         baseViewModel.getPopularMovieList(page = page)
+        mediaType = MediaType.movie
     }
 
     private fun getNowPlayingMovieList(page: Int) {
         baseViewModel.getNowPlayingMovieList(page = page)
+        mediaType = MediaType.movie
+    }
+
+    private fun getNetflixTvShowList(page: Int) {
+        baseViewModel.getNetflixTvShows(page = page)
+        mediaType = MediaType.tv
+    }
+
+    private fun getAppleTvShowList(page: Int) {
+        baseViewModel.getAppleTvShows(page = page)
+        mediaType = MediaType.tv
+    }
+
+    private fun getAmazonTvShowList(page: Int) {
+        baseViewModel.getAmazonTvShows(page = page)
+        mediaType = MediaType.tv
+    }
+
+    private fun getDisneyTvShowList(page: Int) {
+        baseViewModel.getDisneyTvShows(page = page)
+        mediaType = MediaType.tv
     }
 
     private fun bindingViewModel() {
@@ -86,7 +116,7 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
 
         binding.buttonMore.setOnClickListener {
             baseViewModel.shimmerVisible.postValue(true)
-            page = page + 1
+            page += 1
             getLoadMovieList(page)
         }
     }
@@ -99,7 +129,7 @@ class AllMovieListActivity: BaseActivity<CategoryViewModel>(CategoryViewModel::c
     }
 
     override fun mediaListItemOnClickListener(movie: MovieModel) {
-        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, if (movieType == MovieType.popularTV) MediaType.tv else MediaType.movie)
+        MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_TYPE, mediaType)
         MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MEDIA_DETAIL_ID, movie.id!!)
         var intent = Intent(this@AllMovieListActivity, MovieDetailActivity::class.java)
         startActivity(intent)

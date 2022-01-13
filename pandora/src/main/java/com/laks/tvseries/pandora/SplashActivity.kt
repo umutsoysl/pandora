@@ -16,7 +16,7 @@ import java.util.*
 class SplashActivity : CoreActivity() {
 
     private var mDelayHandler: Handler? = null
-    private val SPLASH_DELAY: Long = 2200
+    private val SPLASH_DELAY: Long = 1800
     private var waitTimer: Timer? = null
     private var mInterstitialAd: InterstitialAd? = null
     private var interstitialCanceled = false

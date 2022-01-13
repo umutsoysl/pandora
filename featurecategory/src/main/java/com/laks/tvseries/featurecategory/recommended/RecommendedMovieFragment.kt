@@ -139,7 +139,12 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
         if (modListMovie.size > movieId) {
             modListMovie[movieId].let {
                 MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID, it)
-                showRewardedAdsPage()
+                val isWatchAds = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID) as Boolean
+                if(!isWatchAds) {
+                    showRewardedAdsPage()
+                } else {
+                    it.id?.let { it1 -> goToMovieDetail(it1) }
+                }
             }
         }
     }
@@ -151,6 +156,7 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
             if(data!=null) {
                 val isWatchAds = data.getBooleanExtra(GlobalConstants.IS_WATCH_ADS, false)
                 if(isWatchAds) {
+                    MemoryCache.cache.setMemoryCacheValue(GlobalConstants.IS_WATCH_ADS, true)
                     randomMovie = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID) as FbMovieDataModel
                     randomMovie?.id?.let { movieID -> goToMovieDetail(movieID) }
                 }

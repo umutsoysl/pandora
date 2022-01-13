@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "607975372487",
+    "firebase_url": "https://pandora-7c76c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pandora-7c76c",
+    "storage_bucket": "pandora-7c76c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607975372487:android:ee02d6d630ad1d7f5a30e2",
+        "android_client_info": {
+          "package_name": "com.laks.tvseries.pandora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607975372487-4sor3bon7vulu9qbjccsbi807m8kioc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEeF2Wzda1wHNVcS_gFDnHKo92YPFu0b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607975372487-4sor3bon7vulu9qbjccsbi807m8kioc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

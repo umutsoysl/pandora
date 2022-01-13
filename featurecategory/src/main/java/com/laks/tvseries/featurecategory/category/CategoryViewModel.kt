@@ -23,7 +23,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getTrendingList(type: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.type = type
                 requestModel.time = Time.day
                categoryRepo?.getTrending(requestModel)?.collect {
@@ -40,7 +40,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getPopularMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getMoviePopular(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -54,7 +54,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getNowPlayingMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getNowPlaying(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -67,7 +67,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getPopularTvShowList(page: Int? = 1)  {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getTvPopularShows(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -80,7 +80,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getPopularPeopleList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getPopularPeople(requestModel)?.collect {
                     popularPeopleList.postValue(it)
@@ -93,7 +93,7 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getUpComingMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getUpComingMovie(requestModel)?.collect {
                     allMovieList.postValue(it)
@@ -106,9 +106,65 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
     fun getTopRatedMovieList(page: Int? = 1) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                var requestModel = GlobalRequestModel()
+                val requestModel = GlobalRequestModel()
                 requestModel.page = page
                 categoryRepo?.getMovieTopRated(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getNetflixTvShows(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val requestModel = GlobalRequestModel()
+                requestModel.page = page
+                requestModel.movieID = "213"
+                categoryRepo?.getNetworkTvShows(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getAppleTvShows(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val requestModel = GlobalRequestModel()
+                requestModel.page = page
+                requestModel.movieID = "2552"
+                categoryRepo?.getNetworkTvShows(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getAmazonTvShows(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val requestModel = GlobalRequestModel()
+                requestModel.page = page
+                requestModel.movieID = "1024"
+                categoryRepo?.getNetworkTvShows(requestModel)?.collect {
+                    allMovieList.postValue(it)
+                    shimmerVisible.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun getDisneyTvShows(page: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val requestModel = GlobalRequestModel()
+                requestModel.page = page
+                requestModel.movieID = "2739"
+                categoryRepo?.getNetworkTvShows(requestModel)?.collect {
                     allMovieList.postValue(it)
                     shimmerVisible.postValue(false)
                 }

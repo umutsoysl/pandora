@@ -49,4 +49,10 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
             api.getMovieTopRated(page = requestModel.page!!)
         }
     }
+
+    fun getNetworkTvShows(requestModel: GlobalRequestModel): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getPublisherTvShowList(page = requestModel.page!!, publisherID = requestModel.movieID!!.toInt())
+        }
+    }
 }

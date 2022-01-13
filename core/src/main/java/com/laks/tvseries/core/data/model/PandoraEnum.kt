@@ -19,6 +19,10 @@ annotation class MovieType {
         const val popular = "popular"
         const val popularTV = "popularTV"
         const val topRated = "topRated"
+        const val netflixTvShow = "netflixTvShow"
+        const val appleTvShow = "appleTvShow"
+        const val amazonTvShow = "amazonTvShow"
+        const val disneyTvShow = "disneyTvShow"
     }
 }
 

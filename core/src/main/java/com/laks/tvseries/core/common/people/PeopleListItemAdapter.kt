@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.laks.tvseries.core.R
 import com.laks.tvseries.core.data.model.PersonInfo
 import com.laks.tvseries.core.databinding.LayoutPersonItemBinding
 import com.laks.tvseries.core.global.GlobalConstants
@@ -30,7 +31,12 @@ class PeopleListItemAdapter(private val context: Context, private val clickListe
         fun bind(context: Context, clickListener: PeopleItemClickListener, itemData: PersonInfo) {
             binding.itemClickListener = clickListener
             binding.person = itemData
-            itemData.posterPath.let { Picasso.with(context).load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}").into(binding.imagePerson)}
+            itemData.posterPath.let { Picasso
+                .with(context)
+                .load("${GlobalConstants.SERVER_IMAGE_URL}${itemData.posterPath}")
+                .placeholder(R.drawable.ic_baseline_supervised_user_circle_24)
+                .into(binding.imagePerson)
+            }
             binding.executePendingBindings()
         }
 
