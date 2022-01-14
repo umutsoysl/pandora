@@ -366,7 +366,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/versionTitle"
-                    android:text="v.1.0.8"/>
+                    android:text="v.1.1.1"/>
 
             </RelativeLayout>
 

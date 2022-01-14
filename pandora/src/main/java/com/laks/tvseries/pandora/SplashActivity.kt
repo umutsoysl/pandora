@@ -3,17 +3,17 @@ package com.laks.tvseries.pandora
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import com.laks.tvseries.core.CoreActivity
 import com.laks.tvseries.core.cache.MemoryCache
 import com.laks.tvseries.core.data.PandoraActivities
 import com.laks.tvseries.core.global.GlobalConstants
 import com.laks.tvseries.core.global.StoreShared
 import java.util.*
 
-class SplashActivity : CoreActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 1800

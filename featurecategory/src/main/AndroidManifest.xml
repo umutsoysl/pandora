@@ -16,10 +16,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
+        <activity android:name=".recommended.CollectionDetailActivity"></activity>
         <activity
             android:name=".detail.FullScreenVideoPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".detail.MovieDetailActivity"
             android:screenOrientation="portrait" />
@@ -31,9 +32,9 @@
             android:screenOrientation="portrait" />
 
         <service
-            android:name="com.laks.tvseries.featurecategory.notification.PandoraFirebaseMessagingService"
-            android:exported="false"
-            android:directBootAware="true">
+            android:name=".notification.PandoraFirebaseMessagingService"
+            android:directBootAware="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -42,14 +43,12 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_baseline_local_fire_department_24" />
-
-        <meta-data android:name="com.google.firebase.messaging.default_notification_color"
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/red" />
-
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
-
     </application>
 
 </manifest>

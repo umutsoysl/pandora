@@ -19,6 +19,7 @@ class GlobalConstants {
         const val SHARED_LANGUAGE_WITH_CODE_COUNTRY = "SHARED_LANGUAGE_WITH_CODE_COUNTRY"
         const val SHARED_NAME = "pandora_shared"
         const val FIREBASE_RANDOM_MOVIE_TABLE = "Random"
+        const val FIREBASE_COLLECTION_SERIES_TABLE = "Collections"
         const val FIREBASE_MOD_LIS_MOVIE_TABLE = "ModList"
         const val FIREBASE_ABOUT_TABLE = "About"
         const val FIREBASE_TERM_OF_USE_TABLE = "TermOfUse"
@@ -36,5 +37,6 @@ class GlobalConstants {
         const val MOVIE_ADS_ID = "MOVIE_ADS_ID"
         const val RANDOM_MOVIE_SHOW_ADS = "RANDOM_MOVIE_SHOW_ADS"
         const val MOD_MOVIE_SHOW_ADS = "MOD_MOVIE_SHOW_ADS"
+        const val COLLECTION_MODEL = "COLLECTION_MODEL"
     }
 }

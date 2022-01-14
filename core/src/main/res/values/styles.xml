@@ -165,4 +165,10 @@
         <item name="android:textColor">@color/red</item>
     </style>
 
+    <style name="CollectionTitleStyle">
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white_gray</item>
+    </style>
+
 </resources>

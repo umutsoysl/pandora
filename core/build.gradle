@@ -101,4 +101,5 @@ dependencies {
     implementation libraries.picasso
     implementation libraries.lottie
     implementation libraries.circleimageview
+    implementation libraries.viewPager2
 }

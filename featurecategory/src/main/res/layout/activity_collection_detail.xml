@@ -1,0 +1,120 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.laks.tvseries.featurecategory.category.CategoryViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootRelativeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_color">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageBackdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/collection_slider_backdrop_size" />
+
+                <RelativeLayout
+                    android:id="@+id/gradientView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/collection_slider_backdrop_size"
+                    android:background="@drawable/poster_bottom_gradient" />
+
+                <TextView
+                    android:id="@+id/labelMovieTitle"
+                    style="@style/CategoryTypeTitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradientView"
+                    android:textAlignment="center"
+                    android:layout_marginHorizontal="@dimen/medium_margin"
+                    android:layout_marginTop="-30dp"
+                    android:layout_toRightOf="@+id/cardView"
+                    android:autoSizeMinTextSize="@dimen/button_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="3" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_below="@+id/gradientView"
+                    android:id="@+id/recyclerMovieList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/regular_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:nestedScrollingEnabled="false" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_below="@+id/gradientView"
+                    android:layout_margin="@dimen/regular_margin"
+                    android:id="@+id/shimmerFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.shimmerVisible? View.VISIBLE: View.GONE}"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.shimmerVisible ? View.VISIBLE : View.GONE}">
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                        <include layout="@layout/shimmer_media_item" />
+
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/regular_margin"
+            android:layout_marginTop="@dimen/status_bar_size"
+            android:clickable="true"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+</layout>

@@ -1,6 +1,6 @@
 ext.versions = [
-        code                         : 110,
-        name                         : '1.1.0',
+        code                         : 112,
+        name                         : '1.1.2',
         minSdk                       : 21,
         targetSdk                    : 30,
         compileSdk                   : 30,
@@ -46,6 +46,7 @@ ext.versions = [
         flexbox                      : '2.0.1',
         lottie                       : '3.4.0',
         shimmer                      : '0.5.0',
+        viewPager2                   : '1.0.0',
 
         //di
         koin_version                 : '2.0.1'
@@ -121,6 +122,7 @@ ext.libraries = [
         lottie                     : "com.airbnb.android:lottie:$versions.lottie",
         shimmer                    : "com.facebook.shimmer:shimmer:$versions.shimmer",
         youtubePlayer              : "com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5",
+        viewPager2                 : "androidx.viewpager2:viewpager2:$versions.viewPager2",
 
         //di
         koin                       : "org.koin:koin-android:$versions.koin_version",

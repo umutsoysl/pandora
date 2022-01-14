@@ -55,4 +55,10 @@ class CategoryRepository: BaseRepository<CategoryApi>(CategoryApi::class.java) {
             api.getPublisherTvShowList(page = requestModel.page!!, publisherID = requestModel.movieID!!.toInt())
         }
     }
+
+    fun getCollectionList(listID: Int): Flow<DiscoverMovieListModel?> {
+        return fetchData(isLoadingShown = true) {
+            api.getCollectionList(listID)
+        }
+    }
 }

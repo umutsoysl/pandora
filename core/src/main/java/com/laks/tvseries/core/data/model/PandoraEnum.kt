@@ -23,6 +23,7 @@ annotation class MovieType {
         const val appleTvShow = "appleTvShow"
         const val amazonTvShow = "amazonTvShow"
         const val disneyTvShow = "disneyTvShow"
+        const val collectionList = "collectionList"
     }
 }
 

@@ -171,4 +171,17 @@ class CategoryViewModel(var categoryRepo: CategoryRepository?) : BaseViewModel(c
             }
         }
     }
+
+    fun getCollectionMediaList(listID: Int? = 1) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                if (listID != null) {
+                    categoryRepo?.getCollectionList(listID)?.collect {
+                        allMovieList.postValue(it)
+                        shimmerVisible.postValue(false)
+                    }
+                }
+            }
+        }
+    }
 }

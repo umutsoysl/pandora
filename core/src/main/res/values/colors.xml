@@ -16,4 +16,5 @@
     <color name="toast_text_color">#D5D5D5</color>
     <color name="toast_bg_color">#C3222B33</color>
     <color name="splash_bg_color">#09131d</color>
+    <color name="collection_layout_bg_color">#D5000000</color>
 </resources>

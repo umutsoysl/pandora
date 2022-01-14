@@ -3,6 +3,7 @@
     package="com.laks.tvseries.pandora">
 
     <application
+        android:name=".PandoraApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

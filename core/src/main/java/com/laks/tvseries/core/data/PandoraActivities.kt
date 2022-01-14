@@ -78,4 +78,7 @@ object PandoraActivities {
 
     val disneyTvShowsClassName: String
         get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$CATEGORY.tv.DisneyTvShowFragment"
+
+    val collectionMediaListFragmentClassName: String
+        get() = "${GlobalConstants.PACKAGE_NAME}.$FEATURE_CATEGORY.$RECOMMENDED.CollectionMediaFragment"
 }

@@ -5,6 +5,7 @@ import com.laks.tvseries.core.base.service.BaseResponse
 
 data class DiscoverMovieListModel(
         val page: Long? = 0,
+        @SerializedName("results", alternate = ["items"])
         val results: ArrayList<MovieModel>? = arrayListOf(),
 
         @SerializedName("total_pages")
