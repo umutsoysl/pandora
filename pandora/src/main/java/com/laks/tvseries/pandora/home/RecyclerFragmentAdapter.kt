@@ -73,25 +73,6 @@ class RecyclerFragmentAdapter(private val fragments: ArrayList<CategoryBaseFragm
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-
-            var linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
-
-            val visibleItemCount = linearLayoutManager.childCount
-            val totalItemCount = linearLayoutManager.itemCount
-            val firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
-            val lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition()
-            val firstCompletelyVisibleItemPosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
-            val lastCompletelyVisibleItemPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition()
-
-            val lastItem = firstVisibleItemPosition + visibleItemCount
-
-            Log.d("ZZa visibleItemCount", "\n -----------------")
-            Log.d("ZZa visibleItemCount", visibleItemCount.toString())
-            Log.d("ZZa totalItemCount", totalItemCount.toString())
-            Log.d("ZZa firstVisibleItemPos", firstVisibleItemPosition.toString())
-            Log.d("ZZa lastVisibleItemPosi", lastVisibleItemPosition.toString())
-            Log.d("ZZa firstCompletelyVisi", firstCompletelyVisibleItemPosition.toString())
-            Log.d("ZZa lastCompletelyVisi", lastCompletelyVisibleItemPosition.toString())
         }
     }
 }

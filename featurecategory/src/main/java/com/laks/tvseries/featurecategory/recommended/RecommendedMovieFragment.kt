@@ -139,7 +139,7 @@ class RecommendedMovieFragment: CategoryBaseFragment<CategoryViewModel>(Category
         if (modListMovie.size > movieId) {
             modListMovie[movieId].let {
                 MemoryCache.cache.setMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID, it)
-                val isWatchAds = MemoryCache.cache.findMemoryCacheValue(GlobalConstants.MOVIE_ADS_ID) as Boolean
+                val isWatchAds = if(MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.IS_WATCH_ADS) == null) false else MemoryCache.cache.findMemoryCacheValueAny(GlobalConstants.IS_WATCH_ADS) as Boolean
                 if(!isWatchAds) {
                     showRewardedAdsPage()
                 } else {

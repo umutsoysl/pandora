@@ -85,7 +85,7 @@ class CollectionMediaFragment: CategoryBaseFragment<CategoryViewModel>(CategoryV
                         GlobalConstants.FIREBASE_COLLECTION_SERIES_TABLE -> {
                             ds.getValue(CollectionSliderModel::class.java)?.let { collectionList.add(it) }
                             val collectionArray = CollectionArray(collectionList)
-                            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.FIREBASE_RANDOM_MOVIE_TABLE, collectionArray)
+                            MemoryCache.cache.setMemoryCacheValue(GlobalConstants.FIREBASE_COLLECTION_SERIES_TABLE, collectionArray)
                             setCollectionList()
                             fbDatabase.onDisconnect()
                         }
